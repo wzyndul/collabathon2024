@@ -5,26 +5,49 @@ import { Button } from "../../components/Button/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
-import { Typography } from "@mui/material";
-import { productsCardsStyle, productsContainerStyle } from "./RecommendedProducts.styles";
+import { Divider, Typography } from "@mui/material";
+import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
+import { useFetchProducts } from "../../hooks/useFetchProducts";
 
 export const RecommendedProducts: React.FC = () => {
+
+	const {
+		data,
+		isLoading,
+        isFetched,
+        isError,
+	} = useFetchProducts(true);
+
+
+	console.log(data, isLoading, isFetched, isError);
+
+
+	if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
 	return (
-		<WidgetContainer width={"30rem"} height={"40rem"}>
+		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
 			<div css={productsContainerStyle}>
-				<h2>Recommended Products</h2>
+				<span css={productsHeaderStyle}>
+					<h2>Recommended Products</h2>
+					<Button bgColor={"#FFD700"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
+						READ MORE
+					</Button>
+				</span>
 				<div css={productsCardsStyle}>
 					<Card
 						title={
-							<Typography variant="h6" component="div">
-								Service
-							</Typography>
+							<>
+								<Typography variant="h6">Service</Typography>
+								<Divider/>
+							</>
 						}
 						avatar={<AssuredWorkloadIcon />}
 						content={<p>content</p>}
 					>
 						<div>
-							<Button variant="text" onClick={() => console.log("Button clicked")}>
+							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
 								Choose
 							</Button>
 						</div>
@@ -39,7 +62,7 @@ export const RecommendedProducts: React.FC = () => {
 						content={<p>content</p>}
 					>
 						<div>
-							<Button variant="text" onClick={() => console.log("Button clicked")}>
+							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
 								Choose
 							</Button>
 						</div>
@@ -54,20 +77,12 @@ export const RecommendedProducts: React.FC = () => {
 						content={<p>content</p>}
 					>
 						<div>
-							<Button variant="text" onClick={() => console.log("Button clicked")}>
+							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
 								Choose
 							</Button>
 						</div>
 					</Card>
 				</div>
-				<Button
-					onClick={() => console.log("Button clicked")}
-					bgColor={"#FFE90B"}
-					txtColor={"black"}
-					endIcon={<ArrowForwardIcon />}
-				>
-					CLICK ME
-				</Button>
 			</div>
 		</WidgetContainer>
 	);
