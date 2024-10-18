@@ -1,0 +1,97 @@
+import React from "react";
+import TransferIcon from "@mui/icons-material/SwapHoriz";
+import HistoryIcon from "@mui/icons-material/History";
+import { Card, CardContent, Typography, Button } from "@mui/material";
+
+// Define the props type
+interface AccountCardProps {
+  accountType: string; // Account type (e.g., "Savings", "Checking")
+  accountNumber: string; // Full account number (e.g., "1234567890")
+  balance: number; // Account balance (e.g., 1000.00)
+}
+
+// Function to generate a random account number
+const generateAccountNumber = (length: number = 10): string => {
+  let accountNumber = "";
+  for (let i = 0; i < length; i++) {
+    accountNumber += Math.floor(Math.random() * 10).toString();
+  }
+  return accountNumber;
+};
+
+// Function to generate random account data
+export const generateMockAccounts = (count: number): AccountCardProps[] => {
+  const accountTypes = ["Savings", "Checking", "Business", "Joint"];
+  const mockAccounts: AccountCardProps[] = [];
+
+  for (let i = 0; i < count; i++) {
+    const accountType = accountTypes[Math.floor(Math.random() * accountTypes.length)];
+    const accountNumber = generateAccountNumber();
+    const balance = parseFloat((Math.random() * 10000).toFixed(2)); // Random balance between 0 and 10000
+
+    mockAccounts.push({ accountType, accountNumber, balance });
+  }
+
+  return mockAccounts;
+};
+
+// const AccountWidget: React.FC<AccountCardProps> = ({ accountType, accountNumber, balance }: AccountCardProps) => {
+    const AccountWidget: React.FC = () => {
+  const { accountType, accountNumber, balance } = generateMockAccounts(1)[0];
+  const firstDigit = accountNumber.slice(0, 2);
+  const lastDigit1 = accountNumber.slice(-4);
+  const lastDigit2 = accountNumber.slice(-8, -4);
+
+  return (
+    <Card
+      sx={{
+        width: 400,
+        height: 180,
+        padding: 2,
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <CardContent sx={{ flex: 1 }}>
+        {/* Account Type */}
+        <Typography variant="h6" component="div" sx={{ position: "absolute", top: 12, left: 20 }}>
+          {accountType}
+        </Typography>
+
+        {/* First and Last Digits */}
+        <Typography variant="body2" component="div" sx={{ position: "absolute", top: 35, left: 20 }}>
+          {firstDigit} (...) {lastDigit1} {lastDigit2}
+        </Typography>
+
+        <Typography variant="h6" component="div" sx={{ textAlign: "right", marginTop: "10px" }}>
+          Balance
+        </Typography>
+        <Typography variant="h4" component="div" sx={{ textAlign: "right" }}>
+          ${balance.toFixed(2)}
+        </Typography>
+      </CardContent>
+
+      {/* Action Buttons */}
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Button
+          variant="outlined"
+          sx={{ flex: 1, marginRight: 3, padding: "5px", fontSize: "0.8rem", minWidth: "auto" }}
+          startIcon={<HistoryIcon />}
+        >
+          History
+        </Button>
+        <Button
+          variant="contained"
+          sx={{ flex: 1, padding: "5px", fontSize: "0.8rem", minWidth: "auto" }}
+          startIcon={<TransferIcon />}
+        >
+          Transfer
+        </Button>
+      </div>
+    </Card>
+  );
+};
+
+export default AccountWidget;
