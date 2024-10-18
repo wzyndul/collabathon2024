@@ -20,6 +20,7 @@ export const WidgetContainer: React.FC<WidgetContainerProps> = ({
 		width: width,
 		height: height,
 		padding: "5rem",
+        borderRadius: "1rem",
 	});
 
 	return (
