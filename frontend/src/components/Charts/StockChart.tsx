@@ -85,39 +85,57 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
         return (data: StockDataPoint[]): number[] => {
           return data.map((item) => item.fullIndex);
         };
-
+  
       case periods["1M"]:
+        return (data: StockDataPoint[]): number[] => {
+          const currentDateIndex = data.length - 1; // Current day
+          return data
+            .map((item, index) => {
+              if (index === currentDateIndex || (index % 7 === 0 && index < currentDateIndex)) {
+                return item.fullIndex;
+              }
+              return null;
+            })
+            .filter((item): item is number => item !== null);
+        };
+  
       case periods["3M"]:
         return (data: StockDataPoint[]): number[] => {
           return data
             .map((item, index) => {
-              if (index === 0 || index === data.length - 1 || index % 5 === 0) {
+              if (index === data.length - 1 || index % 14 === 0) {
                 return item.fullIndex;
               }
               return null;
             })
             .filter((item): item is number => item !== null);
         };
-
+  
       case periods["1Y"]:
-      case periods["5Y"]:
         return (data: StockDataPoint[]): number[] => {
           return data
             .map((item, index) => {
-              if (index === 0 || index === data.length - 1 || index % 30 === 0) {
+              if (index === data.length - 1 || index % 15 === 0) {
                 return item.fullIndex;
               }
               return null;
             })
             .filter((item): item is number => item !== null);
         };
-
+  
+      case periods["5Y"]:
+        return (data: StockDataPoint[]): number[] => {
+          return data.map((item) => item.fullIndex);
+        };
+  
       default:
+        // Fallback case
         return (data: StockDataPoint[]): number[] => {
           return data.map((item) => item.fullIndex);
         };
     }
   };
+  
 
   const xLabelGenerator = (): ((date: string) => string) => {
     switch (period) {

@@ -69,17 +69,18 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
               ticks={getCustomXAxisTicks(data)}
               tickFormatter={formatXAxis}
               stroke="rgba(0, 0, 0, 0.54)"
-              padding={{ left: 10, right: 10 }} // Added padding to XAxis
+              padding={{ right: 20 }}
               tick={{
                 fontSize: 12,
-                textAnchor: 'middle', // Center align the tick labels
+                textAnchor: 'middle',
               }}
             />
             <YAxis
               domain={yAxisDomain}
-              ticks={getYAxisTicks}
-              stroke="rgba(0, 0, 0, 0.54)"
-              tickFormatter={(value) => yLabelGenerator(value)}
+              hide={true}
+              // ticks={getYAxisTicks}
+              // stroke="rgba(0, 0, 0, 0.54)"
+              // tickFormatter={(value) => yLabelGenerator(value)}
             />
             <Tooltip
               contentStyle={{
