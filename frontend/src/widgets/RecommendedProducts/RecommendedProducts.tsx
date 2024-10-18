@@ -7,8 +7,25 @@ import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
 import { Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
+import { useFetchProducts } from "../../hooks/useFetchProducts";
 
 export const RecommendedProducts: React.FC = () => {
+
+	const {
+		data,
+		isLoading,
+        isFetched,
+        isError,
+	} = useFetchProducts(true);
+
+
+	console.log(data, isLoading, isFetched, isError);
+
+
+	if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
 	return (
 		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
 			<div css={productsContainerStyle}>
