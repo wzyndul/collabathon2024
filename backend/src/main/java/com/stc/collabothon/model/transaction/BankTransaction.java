@@ -1,4 +1,5 @@
 package com.stc.collabothon.model.transaction;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.stc.collabothon.model.Account;
 import jakarta.persistence.*;
@@ -26,7 +27,8 @@ public abstract class BankTransaction {
     String description;
     @Enumerated(EnumType.STRING)
     private Currency currency;
-
+    @Enumerated(EnumType.STRING)
+    private Status status;
     @ManyToOne
     @JsonBackReference
     private Account account;
