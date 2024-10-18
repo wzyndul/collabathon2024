@@ -54,13 +54,13 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
   return (
     <>
       {label}
-      <Box sx={{ width: 400, height: 200 }}>
+      <Box sx={{ width: '100%', height: 200 }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
             margin={{
-              left: 10,
-              top: 10,
+              // left: 10,
+              // top: 10,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 0, 0, 0.1)" />
@@ -69,7 +69,7 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
               ticks={getCustomXAxisTicks(data)}
               tickFormatter={formatXAxis}
               stroke="rgba(0, 0, 0, 0.54)"
-              padding={{ right: 20 }}
+              padding={{ right: 20, left: 20 }}
               tick={{
                 fontSize: 12,
                 textAnchor: 'middle',
