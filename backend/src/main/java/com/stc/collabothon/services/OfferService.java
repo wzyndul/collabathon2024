@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class OfferService {
+
     private final OfferRepository offerRepository;
     private final OfferRecommendationsAlgorithm offerRecommendationsAlgorithm;
 
