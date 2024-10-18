@@ -1,21 +1,30 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import { Card as MUICard, CardHeader, CardContent, CardActions } from "@mui/material";
+import { cardStyle } from "./Card.styles";
 
 interface CardProps {
-    title?: string;
-    avatar?: React.ReactNode;
+	title?: React.ReactNode;
+	avatar?: React.ReactNode;
 	content: React.ReactNode;
-    children?: React.ReactNode;
-    disableSpacing?: boolean;
+	children?: React.ReactNode;
+	disableSpacing?: boolean;
+	variant?: "outlined" | "elevation";
 }
 
-export const Card: React.FC<CardProps> = ({ title, avatar, content, children, disableSpacing }) => {
+export const Card: React.FC<CardProps> = ({
+	title,
+	avatar,
+	content,
+	children,
+	disableSpacing,
+	variant,
+}) => {
 	return (
-		<MUICard>
-			<CardHeader title={title} avatar={avatar}/>
+		<MUICard variant={variant} css={cardStyle}>
+			<CardHeader avatar={avatar} title={title}></CardHeader>
 			<CardContent>{content}</CardContent>
-            <CardActions disableSpacing={disableSpacing}>{children}</CardActions>
+			<CardActions disableSpacing={disableSpacing}>{children}</CardActions>
 		</MUICard>
 	);
 };

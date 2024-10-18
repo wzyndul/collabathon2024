@@ -16,7 +16,7 @@ export const WidgetContainer: React.FC<WidgetContainerProps> = ({
 	elevation = 3,
 	width,
 	height,
-	backgroundColor = "white",
+	backgroundColor = "#fbfbfe",
 }) => {
 	const style = widgetPaperStyle(width, height, backgroundColor);
 

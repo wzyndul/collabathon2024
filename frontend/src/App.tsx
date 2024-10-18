@@ -1,5 +1,5 @@
 import './App.css'
-import { RecommendedProducts } from './widgets/RecommendedProducts'
+import { RecommendedProducts } from './widgets/RecommendedProducts/RecommendedProducts'
 
 function App() {
 
