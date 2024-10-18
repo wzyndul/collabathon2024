@@ -5,12 +5,12 @@ import { Button } from "../../components/Button/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
-import { Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 
 export const RecommendedProducts: React.FC = () => {
 	return (
-		<WidgetContainer width={"30rem"} height={"37rem"}>
+		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
 			<div css={productsContainerStyle}>
 				<span css={productsHeaderStyle}>
 					<h2>Recommended Products</h2>
@@ -20,7 +20,12 @@ export const RecommendedProducts: React.FC = () => {
 				</span>
 				<div css={productsCardsStyle}>
 					<Card
-						title={<Typography variant="h6">Service</Typography>}
+						title={
+							<>
+								<Typography variant="h6">Service</Typography>
+								<Divider/>
+							</>
+						}
 						avatar={<AssuredWorkloadIcon />}
 						content={<p>content</p>}
 					>
@@ -37,7 +42,7 @@ export const RecommendedProducts: React.FC = () => {
 							</Typography>
 						}
 						avatar={<AssuredWorkloadIcon />}
-						content={<p>content</p>}
+						content={<><Divider/><p>content</p></>}
 					>
 						<div>
 							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>

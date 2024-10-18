@@ -20,7 +20,7 @@ export const cardStyle = css`
 `;
 
 export const cardHeaderStyle = css`
-	padding: 0.8rem 0 0.8rem 1rem;
+	padding: 0.8rem 0 0 1rem;
 `;
 
 export const cardContentStyle = css`
