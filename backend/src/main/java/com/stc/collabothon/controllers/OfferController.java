@@ -1,8 +1,13 @@
 package com.stc.collabothon.controllers;
 
+import com.stc.collabothon.model.Account;
+import com.stc.collabothon.model.CollabothonApiResponse;
 import com.stc.collabothon.model.offer.EligibilityCriteria;
 import com.stc.collabothon.model.offer.Offer;
+import com.stc.collabothon.repo.AccountRepository;
 import com.stc.collabothon.services.OfferService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +18,14 @@ import java.util.Optional;
 @RequestMapping("/api/v1/offers")
 public class OfferController {
 
-    private OfferService offerService;
+    private final AccountRepository accountRepository;
+    private final OfferService offerService;
+
+    @Autowired
+    public OfferController(AccountRepository accountRepository, OfferService offerService) {
+        this.accountRepository = accountRepository;
+        this.offerService = offerService;
+    }
 
     @GetMapping
     public List<Offer> getAllOffers() {
@@ -59,6 +71,18 @@ public class OfferController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/recommendations/{accountId}")
+    public ResponseEntity<CollabothonApiResponse<List<Offer>>> getOfferRecommendations(@PathVariable Long accountId) {
+
+        Optional<Account> account = accountRepository.findById(accountId);
+        if (account.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        List<Offer> recommendedOffers = offerService.getRecommendedOffersByAccount(account.get());
+        CollabothonApiResponse<List<Offer>> response = new CollabothonApiResponse<>(true, recommendedOffers, "Recommended offers found successfully");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
 

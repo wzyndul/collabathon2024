@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import { Card as MUICard, CardHeader, CardContent, CardActions } from "@mui/material";
-import { cardStyle } from "./Card.styles";
+import { cardActionsStyle, cardContentStyle, cardHeaderStyle, cardStyle } from "./Card.styles";
 
 interface CardProps {
 	title?: React.ReactNode;
@@ -22,9 +22,9 @@ export const Card: React.FC<CardProps> = ({
 }) => {
 	return (
 		<MUICard variant={variant} css={cardStyle}>
-			<CardHeader avatar={avatar} title={title}></CardHeader>
-			<CardContent>{content}</CardContent>
-			<CardActions disableSpacing={disableSpacing}>{children}</CardActions>
+			<CardHeader avatar={avatar} title={title} css={cardHeaderStyle}></CardHeader>
+			<CardContent css={cardContentStyle}>{content}</CardContent>
+			<CardActions disableSpacing={disableSpacing} css={cardActionsStyle}>{children}</CardActions>
 		</MUICard>
 	);
 };

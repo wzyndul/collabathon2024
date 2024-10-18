@@ -1,5 +1,7 @@
 package com.stc.collabothon.services;
 
+import com.stc.collabothon.algorithm.OfferRecommendationsAlgorithm;
+import com.stc.collabothon.model.Account;
 import com.stc.collabothon.model.offer.EligibilityCriteria;
 import com.stc.collabothon.model.offer.Offer;
 import com.stc.collabothon.repo.OfferRepository;
@@ -11,7 +13,15 @@ import java.util.Optional;
 
 @Service
 public class OfferService {
-    private OfferRepository offerRepository;
+
+    private final OfferRepository offerRepository;
+    private final OfferRecommendationsAlgorithm offerRecommendationsAlgorithm;
+
+    @Autowired
+    public OfferService(OfferRepository offerRepository, OfferRecommendationsAlgorithm offerRecommendationsAlgorithm) {
+        this.offerRepository = offerRepository;
+        this.offerRecommendationsAlgorithm = offerRecommendationsAlgorithm;
+    }
 
     public List<Offer> getAllOffers() {
         return offerRepository.findAll();
@@ -34,5 +44,9 @@ public class OfferService {
                 .stream()
                 .filter(offer -> offer.getEligibilityCriteria().equals(criteria))
                 .toList();
+    }
+
+    public List<Offer> getRecommendedOffersByAccount(Account account) {
+        return offerRecommendationsAlgorithm.getRecommendedOffersForAccount(account);
     }
 }

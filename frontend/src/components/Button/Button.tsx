@@ -8,7 +8,6 @@ interface ButtonProps {
     size?: "small" | "medium" | "large" | undefined;
 	bgColor?: string;
     txtColor?: string;
-	onClick: () => void;
 	startIcon?: React.ReactNode;
 	endIcon?: React.ReactNode;
 	children: React.ReactNode;
@@ -19,7 +18,6 @@ export const Button: React.FC<ButtonProps> = ({
     size,
 	bgColor,
     txtColor,
-	onClick,
 	startIcon,
 	endIcon,
 	children,
@@ -31,7 +29,6 @@ export const Button: React.FC<ButtonProps> = ({
 			css={style}
 			variant={variant}
             size={size}
-			onClick={onClick}
 			startIcon={startIcon}
 			endIcon={endIcon}
 			disableElevation={true}

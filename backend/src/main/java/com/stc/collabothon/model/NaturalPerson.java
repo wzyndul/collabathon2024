@@ -1,5 +1,6 @@
 package com.stc.collabothon.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +32,7 @@ public class NaturalPerson {
     @Column(name = "postal_Address")
     private String postalAddress;
     private String nationality;
-    @OneToOne(mappedBy = "naturalPerson")
+    @OneToOne(mappedBy = "naturalPerson",  cascade = CascadeType.ALL)
+    @JsonBackReference
     private Account account;
-
-    }
+}
