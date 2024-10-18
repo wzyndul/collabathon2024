@@ -8,7 +8,7 @@ import { Card } from "../../components/Card/Card";
 import { Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
-import { GradientCircularProgress } from "../../components/CircularProgress/CircularProgress";
+import { GradientCircularProgress } from "../../components/CircularProgress/GradientCircularProgress";
 
 export const RecommendedProducts: React.FC = () => {
 
