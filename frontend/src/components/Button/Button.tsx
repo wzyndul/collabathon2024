@@ -5,8 +5,9 @@ import { buttonStyle } from "./Button.styles";
 
 interface ButtonProps {
 	variant?: "text" | "outlined" | "contained" | undefined;
-	bgColor: string;
-    txtColor: string;
+    size?: "small" | "medium" | "large" | undefined;
+	bgColor?: string;
+    txtColor?: string;
 	onClick: () => void;
 	startIcon?: React.ReactNode;
 	endIcon?: React.ReactNode;
@@ -15,6 +16,7 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({
 	variant = "contained",
+    size,
 	bgColor,
     txtColor,
 	onClick,
@@ -28,6 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
 		<MUIButton
 			css={style}
 			variant={variant}
+            size={size}
 			onClick={onClick}
 			startIcon={startIcon}
 			endIcon={endIcon}
