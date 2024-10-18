@@ -14,27 +14,20 @@ export const RecommendedProducts: React.FC = () => {
 			<div css={productsContainerStyle}>
 				<span css={productsHeaderStyle}>
 					<h2>Recommended Products</h2>
-					<Button
-						onClick={() => console.log("Button clicked")}
-						bgColor={"#FFD700"}
-						txtColor={"black"}
-						endIcon={<ArrowForwardIcon />}
-					>
+					<Button bgColor={"#FFD700"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
 						READ MORE
 					</Button>
 				</span>
 				<div css={productsCardsStyle}>
 					<Card
-						title={
-							<Typography variant="h6" component="div">
-								Service
-							</Typography>
-						}
+						title={<Typography variant="h6">Service</Typography>}
 						avatar={<AssuredWorkloadIcon />}
 						content={<p>content</p>}
 					>
 						<div>
-							<Button onClick={() => console.log("Button clicked")}>Choose</Button>
+							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
+								Choose
+							</Button>
 						</div>
 					</Card>
 					<Card
@@ -47,7 +40,9 @@ export const RecommendedProducts: React.FC = () => {
 						content={<p>content</p>}
 					>
 						<div>
-							<Button onClick={() => console.log("Button clicked")}>Choose</Button>
+							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
+								Choose
+							</Button>
 						</div>
 					</Card>
 					<Card
@@ -60,7 +55,9 @@ export const RecommendedProducts: React.FC = () => {
 						content={<p>content</p>}
 					>
 						<div>
-							<Button onClick={() => console.log("Button clicked")}>Choose</Button>
+							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
+								Choose
+							</Button>
 						</div>
 					</Card>
 				</div>
