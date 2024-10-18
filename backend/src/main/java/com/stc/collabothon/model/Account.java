@@ -1,6 +1,7 @@
 package com.stc.collabothon.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.stc.collabothon.model.transaction.BankTransaction;
 import jakarta.persistence.*;
@@ -34,6 +35,7 @@ public class Account {
     private double balanceAmount;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "natural_person_id", referencedColumnName = "id")
+    @JsonManagedReference
     private NaturalPerson naturalPerson;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
