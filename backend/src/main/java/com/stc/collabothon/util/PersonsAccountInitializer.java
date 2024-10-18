@@ -28,7 +28,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
 //                .build();
 //        person = naturalPersonRepository.save(person);
         Account account = Account.builder()
-                .balanceAmount(177000.99)
+                .balanceAmount(50000.99)
                 .build();
         accountRepository.save(account);
 
