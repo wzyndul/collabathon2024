@@ -1,11 +1,11 @@
 import './App.css'
-import { WidgetContainer } from './components/WidgetContainer'
+import { WidgetContainer } from './components/WidgetContainer/WidgetContainer'
 
 function App() {
 
   return (
     <div>
-      <WidgetContainer>abcd</WidgetContainer>
+      <WidgetContainer width={'20rem'} height={'20rem'}>abcd</WidgetContainer>
     </div>
   )
 }
