@@ -8,7 +8,7 @@ interface WidgetContainerProps {
 	elevation?: number;
 	width: number | string;
 	height: number | string;
-	backgroundColor?: string;
+	bgColor?: string;
 }
 
 export const WidgetContainer: React.FC<WidgetContainerProps> = ({
@@ -16,9 +16,9 @@ export const WidgetContainer: React.FC<WidgetContainerProps> = ({
 	elevation = 3,
 	width,
 	height,
-	backgroundColor = "#fbfbfe",
+	bgColor = "#fbfbfe",
 }) => {
-	const style = widgetPaperStyle(width, height, backgroundColor);
+	const style = widgetPaperStyle(width, height, bgColor);
 
 	return (
 		<Paper variant="elevation" elevation={elevation} css={style}>
