@@ -1,11 +1,15 @@
 package com.stc.collabothon.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.stc.collabothon.model.transaction.BankTransaction;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Builder
 @Data
@@ -31,4 +35,8 @@ public class Account {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "natural_person_id", referencedColumnName = "id")
     private NaturalPerson naturalPerson;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<BankTransaction> bankTransactions;
 }
