@@ -15,4 +15,12 @@ import jakarta.persistence.*;
 public class SavingsOffer extends Offer {
     private double interestRate;
     private double minimumBalance;
+
+
+    public SavingsOffer(String title, String description, EligibilityCriteria criteria,
+                        double interestRate, double minimumBalance) {
+        super(title, description, criteria);
+        this.interestRate = interestRate;
+        this.minimumBalance = minimumBalance;
+    }
 }

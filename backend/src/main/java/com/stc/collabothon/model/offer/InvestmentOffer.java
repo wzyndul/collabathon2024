@@ -23,4 +23,17 @@ public class InvestmentOffer extends Offer {
     private double managementFee;
     private int riskLevel;
     private String stockName;
+
+    public InvestmentOffer(String title, String description, EligibilityCriteria criteria,
+                           double expectedReturnRate, InvestmentType investmentType,
+                           double minimumInvestmentAmount, double managementFee,
+                           int riskLevel, String stockName) {
+        super(title, description, criteria);
+        this.expectedReturnRate = expectedReturnRate;
+        this.investmentType = investmentType;
+        this.minimumInvestmentAmount = minimumInvestmentAmount;
+        this.managementFee = managementFee;
+        this.riskLevel = riskLevel;
+        this.stockName = stockName;
+    }
 }

@@ -16,4 +16,13 @@ public class LoanOffer extends Offer {
     private double interestRate;
     private double loanAmount;
     private int loanTermMonths;
+
+
+    public LoanOffer(String title, String description, EligibilityCriteria criteria,
+                     double interestRate, double loanAmount, int loanTermMonths) {
+        super(title, description, criteria);
+        this.interestRate = interestRate;
+        this.loanAmount = loanAmount;
+        this.loanTermMonths = loanTermMonths;
+    }
 }
