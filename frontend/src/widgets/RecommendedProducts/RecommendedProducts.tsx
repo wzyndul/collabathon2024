@@ -8,6 +8,7 @@ import { Card } from "../../components/Card/Card";
 import { Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
+import { GradientCircularProgress } from "../../components/CircularProgress/CircularProgress";
 
 export const RecommendedProducts: React.FC = () => {
 
@@ -23,7 +24,7 @@ export const RecommendedProducts: React.FC = () => {
 
 
 	if (isLoading) {
-        return <p>Loading...</p>;
+        return <GradientCircularProgress />;
     }
 
 	return (
