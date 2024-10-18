@@ -8,7 +8,7 @@ export const GradientCircularProgress: React.FC = () => {
           <defs>
             <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="#FFD700" />
-              <stop offset="100%" stopColor="#FF018C" />
+              <stop offset="100%" stopColor="#d9a702" />
             </linearGradient>
           </defs>
         </svg>
