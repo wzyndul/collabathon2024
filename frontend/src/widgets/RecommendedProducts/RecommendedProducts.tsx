@@ -20,7 +20,7 @@ export const RecommendedProducts: React.FC = () => {
 						txtColor={"black"}
 						endIcon={<ArrowForwardIcon />}
 					>
-						SEE MORE
+						READ MORE
 					</Button>
 				</span>
 				<div css={productsCardsStyle}>
