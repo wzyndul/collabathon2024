@@ -84,6 +84,12 @@
 			<artifactId>fuzzy4j</artifactId>
 			<version>a7a2692</version> <!-- or a specific tag like '1.0.0' -->
 		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.7.0</version> <!-- Use the latest version available -->
+		</dependency>
+
 
 
 	</dependencies>
