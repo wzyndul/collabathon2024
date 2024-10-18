@@ -39,4 +39,7 @@ public class Account {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<BankTransaction> bankTransactions;
+
+    @Column(name = "is_individual")
+    private boolean isIndividual;
 }
