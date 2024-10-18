@@ -26,9 +26,13 @@ public abstract class Offer {
     @Column(name = "eligibility_criteria")
     private EligibilityCriteria eligibilityCriteria;
 
-    public Offer(String title, String description, EligibilityCriteria eligibilityCriteria) {
+    @Enumerated(EnumType.STRING)
+    private OfferType offerType;
+
+    public Offer(String title, String description, EligibilityCriteria eligibilityCriteria, OfferType offerType) {
         this.title = title;
         this.description = description;
         this.eligibilityCriteria = eligibilityCriteria;
+        this.offerType = offerType;
     }
 }

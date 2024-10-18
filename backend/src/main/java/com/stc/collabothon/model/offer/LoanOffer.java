@@ -20,7 +20,7 @@ public class LoanOffer extends Offer {
 
     public LoanOffer(String title, String description, EligibilityCriteria criteria,
                      double interestRate, double loanAmount, int loanTermMonths) {
-        super(title, description, criteria);
+        super(title, description, criteria, OfferType.LOAN);
         this.interestRate = interestRate;
         this.loanAmount = loanAmount;
         this.loanTermMonths = loanTermMonths;
