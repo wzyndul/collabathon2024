@@ -31,7 +31,7 @@ public class NaturalPerson {
     @Column(name = "postal_Address")
     private String postalAddress;
     private String nationality;
-    @OneToOne(mappedBy = "naturalPerson")
+    @OneToOne(mappedBy = "naturalPerson",  cascade = CascadeType.ALL)
     private Account account;
 
     }
