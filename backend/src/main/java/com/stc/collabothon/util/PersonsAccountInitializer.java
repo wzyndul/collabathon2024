@@ -2,12 +2,17 @@ package com.stc.collabothon.util;
 
 import com.stc.collabothon.model.Account;
 import com.stc.collabothon.model.NaturalPerson;
+import com.stc.collabothon.model.offer.InvestmentType;
+import com.stc.collabothon.model.transaction.*;
 import com.stc.collabothon.repo.AccountRepository;
+import com.stc.collabothon.repo.BankTransactionRepository;
 import com.stc.collabothon.repo.NaturalPersonRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class PersonsAccountInitializer implements CommandLineRunner {
@@ -17,6 +22,9 @@ public class PersonsAccountInitializer implements CommandLineRunner {
 
     @Autowired
     NaturalPersonRepository naturalPersonRepository;
+
+    @Autowired
+    private BankTransactionRepository bankTransactionRepository;
 
     @Override
     @Transactional
@@ -48,7 +56,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .build();
 
         person1.setAccount(account1);
-        accountRepository.save(account1);
+        account1 = accountRepository.save(account1);
 
         // Create second individual user
         NaturalPerson person2 = NaturalPerson.builder()
@@ -77,7 +85,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .build();
 
         person2.setAccount(account2);
-        accountRepository.save(account2);
+        account2 = accountRepository.save(account2);
 
         // Create non-individual user (business)
         NaturalPerson business = NaturalPerson.builder()
@@ -106,6 +114,56 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .build();
 
         business.setAccount(account3);
-        accountRepository.save(account3);
+        account3 = accountRepository.save(account3);
+
+        //TRANSACTIONS
+        CurrencyExchange currencyExchange = new CurrencyExchange();
+        currencyExchange.setTransactionDate(LocalDateTime.now());
+        currencyExchange.setAmount(1000.0);
+        currencyExchange.setDescription("Currency exchange from EUR to USD");
+        currencyExchange.setCurrency(Currency.EUR);
+        currencyExchange.setStatus(Status.SUCCESS);
+        currencyExchange.setAccount(account1);  // Use persisted account
+        currencyExchange.setTargetCurrency(Currency.USD);
+        currencyExchange.setExchangeRate(1.1);
+        currencyExchange.setOriginalAmount(1000);
+        currencyExchange.setExchangedAmount(1100);
+
+        Investment investment = new Investment();
+        investment.setTransactionDate(LocalDateTime.now());
+        investment.setAmount(5000.0);
+        investment.setDescription("Investment in tech stocks");
+        investment.setCurrency(Currency.USD);
+        investment.setStatus(Status.SUCCESS);
+        investment.setAccount(account2);  // Use persisted account
+        investment.setInvestmentType(InvestmentType.EQUITY);
+        investment.setManagementFee(1.5);
+        investment.setStockName("Tech Fund");
+
+        Loan loan = new Loan();
+        loan.setTransactionDate(LocalDateTime.now());
+        loan.setAmount(15000.0);
+        loan.setDescription("Home loan");
+        loan.setCurrency(Currency.EUR);
+        loan.setStatus(Status.PENDING);
+        loan.setAccount(account1);  // Use persisted account
+        loan.setInterestRate(3.5);
+        loan.setLoanAmount(15000.0);
+        loan.setLoanDuration(240);
+
+        MoneyTransfer moneyTransfer = new MoneyTransfer();
+        moneyTransfer.setTransactionDate(LocalDateTime.now());
+        moneyTransfer.setAmount(2000.0);
+        moneyTransfer.setDescription("Money transfer to another account");
+        moneyTransfer.setCurrency(Currency.GBP);
+        moneyTransfer.setStatus(Status.SUCCESS);
+        moneyTransfer.setAccount(account2);  // Use persisted account
+        moneyTransfer.setRecipientAccount(account1);  // Use persisted account
+
+        // Now save the transactions
+        bankTransactionRepository.save(currencyExchange);
+        bankTransactionRepository.save(investment);
+        bankTransactionRepository.save(loan);
+        bankTransactionRepository.save(moneyTransfer);
     }
 }
