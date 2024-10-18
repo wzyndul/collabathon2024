@@ -6,13 +6,23 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
 import { Typography } from "@mui/material";
-import { productsCardsStyle, productsContainerStyle } from "./RecommendedProducts.styles";
+import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 
 export const RecommendedProducts: React.FC = () => {
 	return (
-		<WidgetContainer width={"30rem"} height={"40rem"}>
+		<WidgetContainer width={"30rem"} height={"37rem"}>
 			<div css={productsContainerStyle}>
-				<h2>Recommended Products</h2>
+				<span css={productsHeaderStyle}>
+					<h2>Recommended Products</h2>
+					<Button
+						onClick={() => console.log("Button clicked")}
+						bgColor={"#FFE90B"}
+						txtColor={"black"}
+						endIcon={<ArrowForwardIcon />}
+					>
+						SEE MORE
+					</Button>
+				</span>
 				<div css={productsCardsStyle}>
 					<Card
 						title={
@@ -24,9 +34,7 @@ export const RecommendedProducts: React.FC = () => {
 						content={<p>content</p>}
 					>
 						<div>
-							<Button variant="text" onClick={() => console.log("Button clicked")}>
-								Choose
-							</Button>
+							<Button onClick={() => console.log("Button clicked")}>Choose</Button>
 						</div>
 					</Card>
 					<Card
@@ -39,9 +47,7 @@ export const RecommendedProducts: React.FC = () => {
 						content={<p>content</p>}
 					>
 						<div>
-							<Button variant="text" onClick={() => console.log("Button clicked")}>
-								Choose
-							</Button>
+							<Button onClick={() => console.log("Button clicked")}>Choose</Button>
 						</div>
 					</Card>
 					<Card
@@ -54,20 +60,10 @@ export const RecommendedProducts: React.FC = () => {
 						content={<p>content</p>}
 					>
 						<div>
-							<Button variant="text" onClick={() => console.log("Button clicked")}>
-								Choose
-							</Button>
+							<Button onClick={() => console.log("Button clicked")}>Choose</Button>
 						</div>
 					</Card>
 				</div>
-				<Button
-					onClick={() => console.log("Button clicked")}
-					bgColor={"#FFE90B"}
-					txtColor={"black"}
-					endIcon={<ArrowForwardIcon />}
-				>
-					CLICK ME
-				</Button>
 			</div>
 		</WidgetContainer>
 	);
