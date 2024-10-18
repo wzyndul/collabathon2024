@@ -42,7 +42,7 @@ export const RecommendedProducts: React.FC = () => {
 							</Typography>
 						}
 						avatar={<AssuredWorkloadIcon />}
-						content={<><Divider/><p>content</p></>}
+						content={<p>content</p>}
 					>
 						<div>
 							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
