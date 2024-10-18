@@ -28,7 +28,7 @@ public class InvestmentOffer extends Offer {
                            double expectedReturnRate, InvestmentType investmentType,
                            double minimumInvestmentAmount, double managementFee,
                            int riskLevel, String stockName) {
-        super(title, description, criteria);
+        super(title, description, criteria, OfferType.INVESTMENT);
         this.expectedReturnRate = expectedReturnRate;
         this.investmentType = investmentType;
         this.minimumInvestmentAmount = minimumInvestmentAmount;

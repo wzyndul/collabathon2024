@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @Service
 public class OfferService {
+    @Autowired
     private OfferRepository offerRepository;
 
     public List<Offer> getAllOffers() {

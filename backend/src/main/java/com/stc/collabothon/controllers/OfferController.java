@@ -3,6 +3,7 @@ package com.stc.collabothon.controllers;
 import com.stc.collabothon.model.offer.EligibilityCriteria;
 import com.stc.collabothon.model.offer.Offer;
 import com.stc.collabothon.services.OfferService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequestMapping("/api/v1/offers")
 public class OfferController {
 
+    @Autowired
     private OfferService offerService;
 
     @GetMapping
