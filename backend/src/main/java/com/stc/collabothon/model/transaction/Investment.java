@@ -15,13 +15,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class Investment extends BankTransaction{
-    private double expectedReturnRate;
-
     @Enumerated(EnumType.STRING)
     private InvestmentType investmentType;
 
-    private double minimumInvestmentAmount;
     private double managementFee;
-    private int riskLevel;
     private String stockName;
 }
