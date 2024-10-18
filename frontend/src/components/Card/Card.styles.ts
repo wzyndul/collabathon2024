@@ -1,17 +1,17 @@
 import { css } from "@emotion/react";
 
 export const cardStyle = css`
-	border: 1px solid rgba(194, 194, 194, 1);
+	border: 1px solid #DBE2E5;
 	box-shadow: none;
 	height: 9rem;
 	padding: 0;
 
 	&:hover {
-		border-top: 1px solid rgba(194, 194, 194, 1);
-		border-left: 1px solid rgba(194, 194, 194, 1);
-		-webkit-box-shadow: 4px 4px 0px 0px rgba(194, 194, 194, 1);
-		-moz-box-shadow: 4px 4px 0px 0px rgba(194, 194, 194, 1);
-		box-shadow: 4px 4px 0px 0px rgba(194, 194, 194, 1);
+		border-top: 1px solid #DBE2E5;
+		border-left: 1px solid #DBE2E5;
+		-webkit-box-shadow: 4px 4px 0px 0px #DBE2E5;
+		-moz-box-shadow: 4px 4px 0px 0px #DBE2E5;
+		box-shadow: 4px 4px 0px 0px #DBE2E5;
 	}
 `;
 

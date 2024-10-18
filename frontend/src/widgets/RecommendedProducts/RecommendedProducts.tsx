@@ -16,7 +16,7 @@ export const RecommendedProducts: React.FC = () => {
 					<h2>Recommended Products</h2>
 					<Button
 						onClick={() => console.log("Button clicked")}
-						bgColor={"#FFE90B"}
+						bgColor={"#FFD700"}
 						txtColor={"black"}
 						endIcon={<ArrowForwardIcon />}
 					>
