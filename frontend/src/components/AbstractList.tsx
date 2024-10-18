@@ -1,15 +1,5 @@
 import React from "react";
-import { List, ListItem, Avatar, Typography, Box } from "@mui/material";
-
-interface StockItem {
-  id: number;
-  symbol: string;
-  name: string;
-  price: number;
-  change: number;
-  changePercentage: string;
-  color: string;
-}
+import { List, ListItem } from "@mui/material";
 
 interface AbstractListElement {
   id: number;
@@ -21,45 +11,6 @@ interface AbstractListProps {
   onClick: (index: number) => void;
   selectedSymbol: number;
 }
-
-const mockData: StockItem[] = [
-  {
-    id: 1,
-    symbol: "SPXUSD",
-    name: "S&P 500",
-    price: 4290.6,
-    change: 12.3,
-    changePercentage: "+0.29%",
-    color: "#FF0000",
-  },
-  {
-    id: 2,
-    symbol: "NSXUSD",
-    name: "US 100",
-    price: 14607.5,
-    change: 44.1,
-    changePercentage: "+0.30%",
-    color: "#0000FF",
-  },
-  {
-    id: 3,
-    symbol: "DJI",
-    name: "Dow 30",
-    price: 33733.5,
-    change: 73.5,
-    changePercentage: "+0.22%",
-    color: "#00FFFF",
-  },
-  {
-    id: 4,
-    symbol: "NKY",
-    name: "Nikkei 225",
-    price: 32371.9,
-    change: -56.85,
-    changePercentage: "-0.18%",
-    color: "#8A2BE2",
-  },
-];
 
 const AbstractList: React.FC<AbstractListProps> = ({
   elements,

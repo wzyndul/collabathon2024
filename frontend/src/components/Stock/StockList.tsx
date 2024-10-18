@@ -17,7 +17,6 @@ interface AbstractListElement {
 }
 
 interface StockListProps {
-  //   elements: StockItem[]; // Ensure that elements are of type StockItem
   onClick: (index: number) => void;
   selectedSymbol: number;
 }
@@ -63,7 +62,7 @@ const mockData: StockItem[] = [
 
 const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol }: StockListProps) => {
   const generateElement = (elem: AbstractListElement) => {
-    const stockItem = elem as StockItem; // Cast to StockItem
+    const stockItem = elem as StockItem;
 
     return (
       <>
@@ -98,7 +97,7 @@ const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol }: StockL
   return (
     <AbstractList
       onClick={onClick}
-      elements={mockData} // Pass the StockItem data as elements
+      elements={mockData}
       generateElement={generateElement}
       selectedSymbol={selectedSymbol}
     />

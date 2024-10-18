@@ -49,19 +49,19 @@ const periods: Record<string, number> = {
 };
 
 const StyledButton = styled(Button)<{ selected: boolean }>(({ theme, selected }) => ({
-  color: 'black',
-  borderRadius: '20px',
-  margin: '0 5px',
-  backgroundColor: selected ? theme.palette.action.selected : 'transparent',
-  '&:hover': {
+  color: "black",
+  borderRadius: "20px",
+  margin: "0 5px",
+  backgroundColor: selected ? theme.palette.action.selected : "transparent",
+  "&:hover": {
     backgroundColor: theme.palette.action.hover,
   },
 }));
 
-const ButtonContainer = styled('div')({
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginTop: '10px',
+const ButtonContainer = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
+  marginTop: "10px",
 });
 
 const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", selectedSymbol }) => {
@@ -183,11 +183,7 @@ const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", 
       />
       <ButtonContainer>
         {Object.keys(periods).map((key) => (
-          <StyledButton
-            key={key}
-            selected={periods[key] === period}
-            onClick={() => setPeriod(periods[key])}
-          >
+          <StyledButton key={key} selected={periods[key] === period} onClick={() => setPeriod(periods[key])}>
             {key}
           </StyledButton>
         ))}
