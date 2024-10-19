@@ -17,16 +17,11 @@ import {
   HistoryDataElement,
 } from "../types/types";
 
-
-
 interface HistoryListProps {
   data: HistoryDataElement[];
 }
 
-
-
 const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => {
-
   const mapCurrencyToFlag = (currency: string) => {
     switch (currency) {
       case "USD":
@@ -40,7 +35,7 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
       default:
         return "🏳️";
     }
-  }
+  };
 
   const generateElement = (elem: AbstractListElement) => {
     const his = elem as HistoryDataElement;
@@ -49,9 +44,11 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
         const forex = elem as ForexElement;
         return (
           <>
-            <ListItemIcon>
-              <FlagStack country1={mapCurrencyToFlag(forex.currency)} country2={mapCurrencyToFlag(forex.targetCurrency)} />
-              TODO {/* TODO add function map CURENCY TO FLAG */}
+            <ListItemIcon sx={{ alignItems: 'center'}}>
+              <FlagStack
+                country1={mapCurrencyToFlag(forex.currency)}
+                country2={mapCurrencyToFlag(forex.targetCurrency)}
+              />
             </ListItemIcon>
 
             <ListItemText
@@ -86,7 +83,7 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
         return (
           <>
             <ListItemIcon>
-              <img src={StockImage} alt="My SVG" style={{ width: "50px", height: "50px" }} />
+              <img src={StockImage} alt="My SVG" style={{ width: "24px", height: "24px" }} />
             </ListItemIcon>
 
             <ListItemText
@@ -102,10 +99,10 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
             />
 
             {/* <Stack direction="column" alignItems="flex-end" sx={{ flexShrink: 0 }}> */}
-              <Typography variant="body1" color="error">
-                {`${stock.amount} ${stock.currency}`}
-              </Typography>
-              {/* <Typography variant="body2" color="grey">
+            <Typography variant="body1" color="error">
+              {`${stock.amount} ${stock.currency}`}
+            </Typography>
+            {/* <Typography variant="body2" color="grey">
                 {`Amount ${stock.stockAmount}`}
               </Typography> */}
             {/* </Stack> */}
@@ -152,7 +149,7 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
                   <Typography variant="caption" color="textSecondary">
                     {moneyTransfer.transactionDate}
                   </Typography>
-                </Stack>  
+                </Stack>
               }
               sx={{ flexGrow: 1, marginLeft: "8px" }}
             />
@@ -181,7 +178,7 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
     // >
     <>
       <AbstractList generateElement={generateElement} elements={data} />
-      </>
+    </>
     // </Card>
   );
 };
