@@ -22,10 +22,10 @@ export function Header({ onChangeAccount, data }: IProps ): React.ReactNode {
 
   return (
     <div className="header">
-        {data.map((user) => {
-            const personalData = user.client; 
+        {data.slice(0, 3).map((user) => {
+            const personalData = user.client;
             return <Button onClick={() => handleClick(user.id)} size="large" key={user.id} className="user-button" style={{ color: '#eab607'}}>
-                {personalData.salutation} {personalData.firstName}
+                {personalData.type === 'corporateClient' ? `${personalData.companyName}` : `${personalData.salutation} ${personalData.firstName}`}
                 <ButtonTooltip age={personalData.age} gender={personalData.salutation} accountStatus={user.balanceAmount}/>
             </Button>
 })}

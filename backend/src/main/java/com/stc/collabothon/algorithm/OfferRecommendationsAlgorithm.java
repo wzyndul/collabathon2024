@@ -98,22 +98,6 @@ public class OfferRecommendationsAlgorithm {
         return offers;
     }
 
-    private List<Offer> getRecommendedOffersForCorporateAccount(Account account, Map<EligibilityCriteria, FuzzyFunction> eligibilityCriteriaMap) {
-        double accountBalance = account.getBalanceAmount();
-        CorporateClient corporateClient = (CorporateClient) account.getClient();
-        Map<EligibilityCriteria, Double> accountMembershipMap = new HashMap<>();
-        Map<CompanySizeCriteria, Double> companySizeMembershipMap = new HashMap<>();
-        for (Map.Entry<EligibilityCriteria, FuzzyFunction> entry : eligibilityCriteriaMap.entrySet()) {
-            accountMembershipMap.put(entry.getKey(), entry.getValue().apply(accountBalance));
-        }
-
-        for (Map.Entry<CompanySizeCriteria, FuzzyFunction> entry : membershipFunctionStorage.getCompanySizeMembershipFunction().entrySet()) {
-            companySizeMembershipMap.put(entry.getKey(), entry.getValue().apply(corporateClient.getCompanySize()));
-        }
-        System.out.println(accountMembershipMap);
-        return getOffersByMembershipAndCompanySizeMap(accountMembershipMap, companySizeMembershipMap);
-    }
-
     private List<Offer> getOffersByMembershipAndCompanySizeMap(Map<EligibilityCriteria, Double> accountMembershipMap, Map<CompanySizeCriteria, Double> companySizeMembershipMap) {
         List<Offer> offers = new ArrayList<>();
         double sum = accountMembershipMap.values().stream().mapToDouble(Double::doubleValue).sum();
@@ -134,19 +118,44 @@ public class OfferRecommendationsAlgorithm {
             Collections.shuffle(criteriaOffers);
             for (int i = 0; i < numberOfOffersFromCriteria; i++) {
                 Offer offer = criteriaOffers.get(i);
+                System.out.println("OFFER "+ offer.getCompanySizeCriteria());
                 if (offer.getCompanySizeCriteria() != null) {
+                    System.out.println("Company size MAP "+ companySizeMembershipMap);
                     double companySizeMembership = companySizeMembershipMap.get(offer.getCompanySizeCriteria());
                     if (companySizeMembership > 0.0) {
                         offers.add(offer);
+                    } else {
+                        numberOfOffersFromCriteria++;
                     }
-                } else {
+                    // todo dont take individual offers
+                } else if (offer.getAgeCriteria() == null){
                     offers.add(offer);
+                } else {
+                    numberOfOffersFromCriteria++;
                 }
             }
 
         }
         return offers;
     }
+
+    private List<Offer> getRecommendedOffersForCorporateAccount(Account account, Map<EligibilityCriteria, FuzzyFunction> eligibilityCriteriaMap) {
+        double accountBalance = account.getBalanceAmount();
+        CorporateClient corporateClient = (CorporateClient) account.getClient();
+        Map<EligibilityCriteria, Double> accountMembershipMap = new HashMap<>();
+        Map<CompanySizeCriteria, Double> companySizeMembershipMap = new HashMap<>();
+        for (Map.Entry<EligibilityCriteria, FuzzyFunction> entry : eligibilityCriteriaMap.entrySet()) {
+            accountMembershipMap.put(entry.getKey(), entry.getValue().apply(accountBalance));
+        }
+
+        for (Map.Entry<CompanySizeCriteria, FuzzyFunction> entry : membershipFunctionStorage.getCompanySizeMembershipFunction().entrySet()) {
+            companySizeMembershipMap.put(entry.getKey(), entry.getValue().apply(corporateClient.getCompanySize()));
+        }
+        System.out.println(accountMembershipMap);
+        return getOffersByMembershipAndCompanySizeMap(accountMembershipMap, companySizeMembershipMap);
+    }
+
+
 
     List<Offer> getOffersByMembershipMap(Map<EligibilityCriteria, Double> accountMembershipMap, Map<CompanySizeCriteria, Double> companySizeMembershipMap) {
         List<Offer> offers = new ArrayList<>();

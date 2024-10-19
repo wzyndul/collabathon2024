@@ -92,6 +92,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The account encourages disciplined saving, making it easier to plan trips without resorting to last-minute loans or credit cards. " +
                         "Whether it's for a weekend getaway or an international holiday, this account is ideal for travel enthusiasts looking for a reliable savings plan.",
                 EligibilityCriteria.MIDDLE_INCOME, 1.2, 300);
+        ;
 
         SavingsOffer savingOffer7 = new SavingsOffer("Children's Savings Account", "Savings account for children's future",
                 "Children's Savings Account is a specialized product designed to help parents save for their children's future needs, such as education or other life goals. " +
@@ -139,6 +140,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "making it an attractive option for those seeking growth opportunities in cutting-edge technology.",
                 EligibilityCriteria.HIGH_INCOME, 8.0, InvestmentType.EQUITY, 10000, 1.5, 7, "Tech Fund");
 
+
         InvestmentOffer investmentOffer2 = new InvestmentOffer("Retirement Trust Fund", "Safe retirement investment",
                 "The Retirement Trust Fund is a low-risk investment solution tailored for ultra-high-net-worth individuals who are focused on long-term financial stability. " +
                         "This trust fund offers a moderate return of 5.0%, with a minimum investment of 50,000.00 pln, catering to investors who prioritize security over aggressive growth. " +
@@ -146,6 +148,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "to preserve their wealth, ensuring their retirement years are financially secure without the need for hands-on management. It includes diversified assets " +
                         "such as government bonds and low-risk equity, making it a reliable choice for retirement planning.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 5.0, InvestmentType.TRUST_FUND, 50000, 0.8, 4, "Retirement Fund");
+        investmentOffer2.setAgeCriteria(AgeCriteria.PENSIONER);
 
         InvestmentOffer investmentOffer3 = new InvestmentOffer("Green Energy Fund", "Investment in renewable energy",
                 "The Green Energy Fund focuses on the rapidly growing renewable energy sector, offering sustainable investment opportunities for upper-middle-income investors. " +
@@ -163,7 +166,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The fund includes stocks from pharmaceutical giants and biotech innovators, providing a diversified portfolio within the healthcare space. " +
                         "It is ideal for investors who seek both long-term growth and the social impact of improving global health.",
                 EligibilityCriteria.HIGH_INCOME, 7.0, InvestmentType.EQUITY, 20000, 1.3, 5, "Healthcare Fund");
-        investmentOffer4.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+        investmentOffer4.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
 
         InvestmentOffer investmentOffer5 = new InvestmentOffer("Real Estate Fund", "Investment in real estate properties",
                 "The Real Estate Fund offers upper-middle-income investors the opportunity to invest in a diversified portfolio of real estate properties. " +
@@ -172,7 +175,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "seeking lower volatility compared to equity markets while still achieving growth. The Real Estate Fund is ideal for those who prefer tangible assets and the stability " +
                         "of the property market.",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 4.5, InvestmentType.REAL_ESTATE, 30000, 1.0, 10, "Real Estate Trust");
-        investmentOffer5.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
+        investmentOffer5.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
 
         InvestmentOffer investmentOffer6 = new InvestmentOffer("Bond Portfolio", "Safe government bond investments",
                 "The Bond Portfolio is a low-risk investment designed for high-income individuals seeking safety and stability. " +
@@ -190,6 +193,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "and potential of high-value property investments, offering a mix of income generation and long-term capital appreciation. It is ideal for individuals looking for " +
                         "exclusive, high-end investment opportunities with a strong return potential.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 5.5, InvestmentType.REAL_ESTATE, 1000000, 1.2, 8, "Luxury Properties Fund");
+        investmentOffer7.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         InvestmentOffer investmentOffer8 = new InvestmentOffer("Private Equity Fund", "Invest in private equity for high-net-worth individuals",
                 "The Private Equity Fund is designed for ultra-high-net-worth investors looking to engage in high-growth opportunities within private companies. " +
@@ -197,6 +201,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "from technology startups to established businesses looking for growth capital. With a management fee of 2.0%, this fund provides access to exclusive, high-return investments " +
                         "that are not available to the general public. The Private Equity Fund is ideal for sophisticated investors seeking higher returns and diversification outside public markets.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 10.0, InvestmentType.EQUITY, 500000, 2.0, 12, "Private Equity Fund");
+        investmentOffer8.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         InvestmentOffer investmentOffer9 = new InvestmentOffer("Global Index Fund", "Invest in a diversified global portfolio",
                 "The Global Index Fund is an equity-based investment that provides exposure to a broad, diversified portfolio of companies across various sectors and regions globally. " +
@@ -211,6 +216,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The fund aims to generate both income and long-term capital appreciation, with a management fee of 2.0%. It is suitable for wealthy investors seeking " +
                         "long-term, secure real estate investments that offer a mix of income and growth potential.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 6.5, InvestmentType.REAL_ESTATE, 100000, 2.0, 10, "Real Estate Trust");
+        investmentOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         InvestmentOffer investmentOffer11 = new InvestmentOffer("Startup Investment Fund", "Invest in early-stage tech startups",
                 "The Startup Investment Fund is a high-risk, high-reward investment opportunity targeted at high-income individuals interested in early-stage technology startups. " +
@@ -218,6 +224,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "It comes with a management fee of 2.5%, reflecting the intensive research and risk involved in such ventures. This fund is ideal for investors with a high risk tolerance " +
                         "looking for significant upside potential through venture capital-style investing.",
                 EligibilityCriteria.HIGH_INCOME, 10.0, InvestmentType.EQUITY, 50000, 2.5, 3, "Startup Fund");
+        investmentOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
 
         InvestmentOffer investmentOffer12 = new InvestmentOffer("Pension Fund", "Safe investment for pensioners",
                 "The Pension Fund is a low-risk investment designed for middle-income pensioners who seek stable returns to support their post-retirement income. " +

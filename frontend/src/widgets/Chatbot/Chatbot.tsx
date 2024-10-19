@@ -41,10 +41,6 @@ export const Chatbot = ({data}: IProps) => {
 	
 	const [messages, setMessages] = useState([
 		{ text: "Hello! How can I assist you today?", isUser: false },
-		{ text: "I need help with my order.", isUser: true },
-		{ text: "Sure, could you please provide your order number?", isUser: false },
-		{ text: "It's 12345.", isUser: true },
-		{ text: "Thank you! Let me check the status for you.", isUser: false },
 	]);
 
 	const handleSendMessage = useCallback(async () => {
