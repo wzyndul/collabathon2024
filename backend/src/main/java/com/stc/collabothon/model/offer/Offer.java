@@ -41,10 +41,11 @@ public abstract class Offer {
     @Column(columnDefinition = "TEXT")
     private String longDescription;
 
-    public Offer(String title, String description, EligibilityCriteria eligibilityCriteria, OfferType offerType) {
+    public Offer(String title, String description, String longDescription ,EligibilityCriteria eligibilityCriteria, OfferType offerType) {
         this.title = title;
         this.description = description;
         this.eligibilityCriteria = eligibilityCriteria;
         this.offerType = offerType;
+        this.longDescription = longDescription;
     }
 }
