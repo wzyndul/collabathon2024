@@ -37,9 +37,10 @@ function App() {
 					<AccountWidget
 						userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined}
 					/>
-					<HistoryWidget userId={userId} />
 				</div>
 				<div className="two">
+				<HistoryWidget userId={userId} />
+
 					<StockWidget userId={userId} />
 				</div>
 				<div className="three">
