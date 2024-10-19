@@ -47,7 +47,7 @@ const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol, StockIte
   return (
     <AbstractList
       onClick={onClick}
-      elements={StockItemList}
+      elements={StockItemList.slice(0, 4)}
       generateElement={generateElement}
       selectedSymbol={selectedSymbol}
     />
