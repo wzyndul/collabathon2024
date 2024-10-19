@@ -2,7 +2,7 @@ package com.stc.collabothon.services;
 
 import com.stc.collabothon.algorithm.OfferRecommendationsAlgorithm;
 import com.stc.collabothon.model.Account;
-import com.stc.collabothon.model.offer.EligibilityCriteria;
+import com.stc.collabothon.model.offer.criteria.EligibilityCriteria;
 import com.stc.collabothon.model.offer.Offer;
 import com.stc.collabothon.repo.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;

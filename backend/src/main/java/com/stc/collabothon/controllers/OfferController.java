@@ -2,7 +2,7 @@ package com.stc.collabothon.controllers;
 
 import com.stc.collabothon.model.Account;
 import com.stc.collabothon.model.CollabothonApiResponse;
-import com.stc.collabothon.model.offer.EligibilityCriteria;
+import com.stc.collabothon.model.offer.criteria.EligibilityCriteria;
 import com.stc.collabothon.model.offer.Offer;
 import com.stc.collabothon.repo.AccountRepository;
 import com.stc.collabothon.services.OfferService;

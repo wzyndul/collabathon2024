@@ -1,8 +1,9 @@
 package com.stc.collabothon.model;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.stc.collabothon.model.client.Client;
+import com.stc.collabothon.model.client.NaturalPerson;
 import com.stc.collabothon.model.transaction.BankTransaction;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,14 +35,16 @@ public class Account {
     @Column(name = "balance_amount")
     private double balanceAmount;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "natural_person_id", referencedColumnName = "id")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     @JsonManagedReference
-    private NaturalPerson naturalPerson;
+    private Client client;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<BankTransaction> bankTransactions;
 
-    @Column(name = "is_individual")
-    private boolean isIndividual;
+    @Transient
+    public boolean isIndividual() {
+        return client instanceof NaturalPerson;
+    }
 }

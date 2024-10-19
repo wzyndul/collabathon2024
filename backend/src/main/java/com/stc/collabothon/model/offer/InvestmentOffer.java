@@ -1,5 +1,6 @@
 package com.stc.collabothon.model.offer;
 
+import com.stc.collabothon.model.offer.criteria.EligibilityCriteria;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

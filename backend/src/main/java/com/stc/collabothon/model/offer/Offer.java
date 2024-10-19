@@ -1,6 +1,8 @@
 package com.stc.collabothon.model.offer;
 
-import lombok.AllArgsConstructor;
+import com.stc.collabothon.model.offer.criteria.AgeCriteria;
+import com.stc.collabothon.model.offer.criteria.CompanySizeCriteria;
+import com.stc.collabothon.model.offer.criteria.EligibilityCriteria;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +27,14 @@ public abstract class Offer {
     @Enumerated(EnumType.STRING)
     @Column(name = "eligibility_criteria")
     private EligibilityCriteria eligibilityCriteria;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "age_criteria")
+    private AgeCriteria ageCriteria;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "company_size_criteria")
+    private CompanySizeCriteria companySizeCriteria;
 
     @Enumerated(EnumType.STRING)
     private OfferType offerType;
