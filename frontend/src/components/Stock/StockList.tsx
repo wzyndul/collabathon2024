@@ -22,6 +22,7 @@ const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol, StockIte
               width: 40,
               height: 40,
               marginRight: 2,
+              fontSize: 12
             }}
           >
             {stockItem.symbol.slice(0, 3)}

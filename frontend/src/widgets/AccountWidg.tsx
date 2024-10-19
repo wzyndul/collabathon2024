@@ -44,7 +44,7 @@ const AccountWidget: React.FC = () => {
 	return (
 		<Card
 			sx={{
-				width: '30rem',
+				width: "30rem",
 				height: 180,
 				padding: 2,
 				backgroundColor: "#002E3C",
@@ -78,12 +78,18 @@ const AccountWidget: React.FC = () => {
 					txtColor={"#FFD700"}
 					bgHover={"#01394a"}
 					startIcon={<HistoryIcon />}
-          hoverAnimation={true}
+					hoverAnimation={true}
 					variant="outlined"
 				>
 					HISTORY
 				</Button>
-				<Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} startIcon={<TransferIcon />} hoverAnimation={true}>
+				<Button
+					bgColor={"#FFD700"}
+					txtColor={"black"}
+					bgHover={"#ffc400"}
+					startIcon={<TransferIcon />}
+					hoverAnimation={true}
+				>
 					TRANSFER
 				</Button>
 			</div>

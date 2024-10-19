@@ -57,7 +57,7 @@ let mockData: StockData[] = [
 		price: 4290.6,
 		change: 12.3,
 		changePercentage: "+0.29%",
-		color: "#FF0000",
+		color: "#009376",
 		data: [],
 	},
 	{
@@ -67,7 +67,7 @@ let mockData: StockData[] = [
 		price: 14607.5,
 		change: 44.1,
 		changePercentage: "+0.30%",
-		color: "#0000FF",
+		color: "#FF018C",
 		data: [],
 	},
 	{
@@ -77,7 +77,7 @@ let mockData: StockData[] = [
 		price: 33733.5,
 		change: 73.5,
 		changePercentage: "+0.22%",
-		color: "#00FFFF",
+		color: "#002E3C",
 		data: [],
 	},
 	{
@@ -87,7 +87,7 @@ let mockData: StockData[] = [
 		price: 32371.9,
 		change: -56.85,
 		changePercentage: "-0.18%",
-		color: "#8A2BE2",
+		color: "#0299eb",
 		data: [],
 	},
 ];
@@ -117,12 +117,12 @@ const StockWidget: React.FC<StockWidgetProps> = () => {
 
 	return (
 		<WidgetContainer width={"50rem"} height={"auto"} bgColor={"#002E3C"} txtColor={"white"}>
-			<Typography variant="h5" sx={{ fontWeight: "bold", padding: "0 0 0 1rem" }}>
+			<Typography variant="h5" sx={{ fontWeight: "bold", padding: "1rem 0 0 1rem" }}>
 				Price {data[selectedSymbol].name}
 			</Typography>
 			<Box
 				sx={{
-					display: "flex", 
+					display: "flex",
 					flexDirection: "row",
 					width: "100%",
 					height: "100%",
@@ -132,7 +132,7 @@ const StockWidget: React.FC<StockWidgetProps> = () => {
 					<StockChart selectedSymbol={selectedSymbol} data={data[selectedSymbol].data} />
 				</Box>
 
-				<Box sx={{ flex: 1 }}>
+				<Box sx={{ flex: 1, marginTop: "-2rem" }}>
 					<StockList onClick={setSelectedSymbol} selectedSymbol={selectedSymbol} StockItemList={data} />
 				</Box>
 			</Box>
