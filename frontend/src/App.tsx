@@ -8,7 +8,7 @@ import { useFetchProducts } from "./hooks/useFetchProducts";
 import { Box, Grow } from "@mui/material";
 import { FloatingActionButton } from "./components/FloatingActionButton/FloatingActionButton";
 import TextsmsIcon from "@mui/icons-material/Textsms";
-import HistoryWidget from "./widgets/HistoryWidget";
+import HistoryWidget from "./widgets/HistoryWidget/HistoryWidget";
 import AccountWidget from "./widgets/AccountWidg";
 
 import "./App.css";
@@ -35,8 +35,8 @@ function App() {
     <div className="container">
       <Header onChangeAccount={handleChangeAccount} />
       <div className="page">
-        <StockWidget/>
-        {/* <HistoryWidget/> */}
+        {/* <StockWidget/> */}
+        <HistoryWidget/>
         {/* <AccountWidget/> */}
         {/* <Box position="relative" width="30rem">
           <RecommendedProducts data={data} />

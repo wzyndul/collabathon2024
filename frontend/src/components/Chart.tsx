@@ -88,7 +88,7 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
                   "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
               }}
               labelFormatter={formatTooltipLabel}
-              formatter={(value: number) => [`$${value.toFixed(2)}`, "Price"]}
+              formatter={(value: number) => [<span style={{color: "#002E3C"}}>`$${value.toFixed(2)}`, "Price"</span>]}
             />
             <Line type="monotone" dataKey="price" stroke="#FFD700" strokeWidth={2} dot={false} activeDot={{ r: 6 }} />
           </LineChart>

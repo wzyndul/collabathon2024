@@ -15,6 +15,7 @@ interface AbstractListProps {
 	selectedSymbol?: number;
 	onShowMore?: () => void;
 	hasMore?: boolean;
+	isHistory?: boolean;
 }
 
 // Styled components
@@ -27,7 +28,7 @@ const GradientOverlay = styled(Box)({
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	borderRadius: "10rem",
+	borderRadius: "1rem",
 	background:
 		"linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.1) 60%, rgba(255,255,255,0.3) 75%, rgba(255,255,255,1) 100%)",
 });
@@ -43,13 +44,14 @@ const AbstractList: React.FC<AbstractListProps> = ({
 	selectedSymbol,
 	onShowMore,
 	hasMore = true,
+	isHistory = false
 }) => {
 	return (
 		<ListContainer>
 			<List
 				sx={{
 					backgroundColor: "#F1EFED",
-					borderRadius: "1rem",
+					borderRadius: isHistory ? "0 0 1rem 1rem" : "1rem",
 					padding: "0.5rem",
 				}}
 			>
