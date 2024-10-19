@@ -1,17 +1,18 @@
 import { Button } from "@mui/material";
 import { ButtonTooltip } from "../Tooltip/Tooltip";
-import { useFetchAccounts } from "../../hooks/useFetchAccounts";
+// import { useFetchAccounts } from "../../hooks/useFetchAccounts";
+import { IAccount } from "../../hooks/useFetchAccounts";
 
 import './Header.css'
 import { useCallback } from "react";
 
 type IProps = {
     onChangeAccount: (accountId: number) => void;
+    data: IAccount[] | undefined;
 }
 
-export function Header({ onChangeAccount }: IProps ): React.ReactNode {
+export function Header({ onChangeAccount, data }: IProps ): React.ReactNode {
 
-    const { data } = useFetchAccounts();
 
     const handleClick = useCallback((accountId: number) => onChangeAccount(accountId), [onChangeAccount])
 
