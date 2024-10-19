@@ -48,10 +48,10 @@ export const RecommendedProducts = ({ userId }: IProps) => {
 				</span>
 				<div css={productsCardsStyle}>
 					{data &&
-						data.map((product) => {
+						data.map((product, i) => {
 							return (
 								<Card
-									key={`${product.id}`}
+									key={`${product.id}-${i}`}
 									title={
 										<>
 											<Typography variant="h6">{product.title}</Typography>
