@@ -15,6 +15,7 @@ export interface IAccount {
     id: number;
     client: IPersonalInfo;
     balanceAmount: number;
+    bban: string;
 }
 
 interface IFetchAccounts {
