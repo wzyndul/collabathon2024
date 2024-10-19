@@ -11,8 +11,8 @@ export function ButtonTooltip({age, gender, accountStatus}: IProps) {
   return (
     <Tooltip title={
       <>
-            <div>Age: {age}</div>
-            <div>Gender: {gender}</div>
+            { age ? <div>Age: {age}</div> : null }
+            { gender ? <div>Gender: {gender}</div> : null }
             <div>Amount: {accountStatus}</div>
       </>
     }>
