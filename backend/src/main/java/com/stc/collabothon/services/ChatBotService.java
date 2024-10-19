@@ -7,6 +7,7 @@ import com.google.cloud.vertexai.generativeai.GenerativeModel;
 import com.google.cloud.vertexai.generativeai.ResponseHandler;
 import com.google.cloud.vertexai.api.Content;
 import com.google.cloud.vertexai.api.Part;
+import com.stc.collabothon.model.offer.Offer;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -20,14 +21,15 @@ public class ChatBotService {
     private final String modelName = "gemini-1.5-pro";
     private ChatSession chatSession;
 
-    public void startChatSession(String context) {
+    public void startChatSession(List<Offer> offers, List<Long> ids) {
         VertexAI vertexAI = new VertexAI(projectId, location);
         GenerativeModel model = new GenerativeModel(modelName, vertexAI);
         chatSession = model.startChat();
 
+
         Content initialContext = Content.newBuilder()
                 .setRole("user")
-                .addParts(Part.newBuilder().setText(context).build())
+                .addParts(Part.newBuilder().setText("test").build())
                 .build();
         chatSession.setHistory(List.of(initialContext));
     }

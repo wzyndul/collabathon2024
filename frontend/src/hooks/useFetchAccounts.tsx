@@ -6,12 +6,12 @@ interface IPersonalInfo {
     firstName: string;
     lastname: string;
     salutation: string;
-    dateOfBirth: string;
+    age: string;
 }
 
 export interface IAccount {
     id: number;
-    naturalPerson: IPersonalInfo;
+    client: IPersonalInfo;
     balanceAmount: number;
 }
 

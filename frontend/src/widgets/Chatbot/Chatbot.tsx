@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Paper, Typography, IconButton, InputBase, Divider } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { WidgetContainer } from "../../components/WidgetContainer/WidgetContainer";
@@ -11,8 +11,30 @@ import {
 	iconButtonStyle,
 	userInputStyle,
 } from "./Chatbot.style";
+import axios from "axios";
+import { useFetchAIResponse } from "../../hooks/useChat";
 
 export const Chatbot = () => {
+
+	const [inputValue, setInputValue] = useState("dzień dobry");
+
+	// const { data, isLoading, isError } = useFetchAIResponse(inputValue);
+
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 	  try {
+	// 		const response = await axios.post(`http://localhost:8080/api/v1/chatbot/start-chat`);
+	// 		// Handle the response as needed
+	// 		console.log(response.data);
+	// 	  } catch (error) {
+	// 		console.error('Error fetching data:', error);
+	// 	  }
+	// 	};
+	  
+	// 	fetchData();
+	//   }, []);
+
+
 	// mock
 	const [messages, setMessages] = useState([
 		{ text: "Hello! How can I assist you today?", isUser: false },
@@ -21,7 +43,7 @@ export const Chatbot = () => {
 		{ text: "It's 12345.", isUser: true },
 		{ text: "Thank you! Let me check the status for you.", isUser: false },
 	]);
-	const [inputValue, setInputValue] = useState("");
+
 
 	// basic for now
 	const handleSendMessage = () => {
