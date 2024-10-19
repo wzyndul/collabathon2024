@@ -19,7 +19,9 @@ public class OfferInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         LoanOffer loanOffer1 = new LoanOffer("Home Loan", "Low-interest home loan", "long description", EligibilityCriteria.MIDDLE_INCOME, 3.5, 250000, 240);
-        LoanOffer loanOffer2 = new LoanOffer("Car Loan", "Affordable car loan", "long description", EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
+        loanOffer1.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
+        LoanOffer loanOffer2 = new LoanOffer("Business Car Loan", "Affordable car loan", "long description", EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
+        loanOffer2.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
         LoanOffer loanOffer3 = new LoanOffer("Business Loan", "Loan for small businesses", "long description", EligibilityCriteria.UPPER_MIDDLE_INCOME, 5.5, 100000, 120);
         loanOffer3.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
         LoanOffer loanOffer4 = new LoanOffer("Student Loan", "Loan for higher education", "long description", EligibilityCriteria.LOW_INCOME, 2.0, 15000, 84);
@@ -32,6 +34,8 @@ public class OfferInitializer implements CommandLineRunner {
         loanOffer8.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
         LoanOffer loanOffer9 = new LoanOffer("Luxury Car Loan", "Loan for luxury car purchases", "long description", EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 3.0, 150000, 60);
         loanOffer9.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
+        LoanOffer loanOffer10 = new LoanOffer("Corporate Business Loan", "Loan to help big business thrive", "long description", EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
+        loanOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
         offerRepository.save(loanOffer1);
         offerRepository.save(loanOffer2);
         offerRepository.save(loanOffer3);
@@ -41,6 +45,7 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(loanOffer7);
         offerRepository.save(loanOffer8);
         offerRepository.save(loanOffer9);
+        offerRepository.save(loanOffer10);
 
         SavingsOffer savingOffer1 = new SavingsOffer("Basic Savings", "High interest rate savings account",
                 "The Basic Savings account is designed for individuals in the middle-income bracket looking to grow their savings with minimal risk. " +
@@ -121,6 +126,16 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
         savingOffer9.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
 
+        SavingsOffer savingOffer10 = new SavingsOffer("Big Corporation Savings Plan", "Savings plan for big businesses",
+                "longDescription",
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
+        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
+
+        SavingsOffer savingOffer11 = new SavingsOffer("Startup Savings Plan", "Savings plan for small businesses",
+                "longDescription",
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
+        savingOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
+
         offerRepository.save(savingOffer1);
         offerRepository.save(savingOffer2);
         offerRepository.save(savingOffer3);
@@ -130,7 +145,8 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(savingOffer7);
         offerRepository.save(savingOffer8);
         offerRepository.save(savingOffer9);
-
+        offerRepository.save(savingOffer10);
+        offerRepository.save(savingOffer11);
 
         InvestmentOffer investmentOffer1 = new InvestmentOffer("Tech Stocks Fund", "Invest in top tech companies",
                 "The Tech Stocks Fund is a high-risk, high-reward investment vehicle designed for high-income individuals who are keen on capitalizing " +
@@ -234,6 +250,10 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.MIDDLE_INCOME, 4.0, InvestmentType.TRUST_FUND, 30000, 0.8, 5, "Pension Fund");
         investmentOffer12.setAgeCriteria(AgeCriteria.PENSIONER);
 
+        InvestmentOffer investmentOffer13 = new InvestmentOffer("Corporate Investment Fund", "Investment for tech corporations", "longDesc",
+                EligibilityCriteria.HIGH_INCOME, 10.0, InvestmentType.EQUITY, 50000, 2.5, 3, "Startup Fund");
+        investmentOffer13.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+
         offerRepository.save(investmentOffer1);
         offerRepository.save(investmentOffer2);
         offerRepository.save(investmentOffer3);
@@ -246,6 +266,7 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(investmentOffer10);
         offerRepository.save(investmentOffer11);
         offerRepository.save(investmentOffer12);
+        offerRepository.save(investmentOffer13);
 
     }
 }
