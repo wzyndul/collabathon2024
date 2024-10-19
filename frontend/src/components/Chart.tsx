@@ -59,7 +59,7 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
           <LineChart
             data={data}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 0, 0, 0.1)" />
+            <CartesianGrid strokeDasharray="3 3" stroke="white" />
             <XAxis
               dataKey="fullIndex"
               ticks={getCustomXAxisTicks(data)}
@@ -81,6 +81,7 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
             <Tooltip
               contentStyle={{
                 backgroundColor: "white",
+                color: "black",
                 border: "1px solid rgba(0, 0, 0, 0.12)",
                 borderRadius: "4px",
                 boxShadow:

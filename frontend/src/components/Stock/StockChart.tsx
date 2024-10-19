@@ -23,12 +23,14 @@ const periods: Record<string, number> = {
 };
 
 const StyledButton = styled(Button)<{ selected: boolean }>(({ theme, selected }) => ({
-  color: "white",
-  borderRadius: "20px",
+  color: selected? "black" : "white",
+  borderRadius: "4rem",
   margin: "0 5px",
-  backgroundColor: selected ? theme.palette.action.selected : "transparent",
+  border: "1px solid #FFD700",
+  backgroundColor: selected ? "#FFD700" : "transparent",
   "&:hover": {
-    backgroundColor: theme.palette.action.hover,
+    backgroundColor: "#FFD700",
+    color: "black"
   },
 }));
 

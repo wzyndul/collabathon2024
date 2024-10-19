@@ -116,8 +116,8 @@ const StockWidget: React.FC<StockWidgetProps> = () => {
 	}
 
 	return (
-		<WidgetContainer width={"50rem"} height={"22rem"} bgColor={"#002E3C"} txtColor={"white"}>
-			<Typography variant="h5" sx={{ fontWeight: "bold" }}>
+		<WidgetContainer width={"50rem"} height={"auto"} bgColor={"#002E3C"} txtColor={"white"}>
+			<Typography variant="h5" sx={{ fontWeight: "bold", padding: "0 0 0 1rem" }}>
 				Price {data[selectedSymbol].name}
 			</Typography>
 			<Box
@@ -128,7 +128,7 @@ const StockWidget: React.FC<StockWidgetProps> = () => {
 					height: "100%",
 				}}
 			>
-				<Box sx={{ flex: 1, paddingRight: "1rem" }}>
+				<Box sx={{ flex: 1, paddingRight: "1rem", display: "flex", justifyContent: "center", alignItems: "center" }}>
 					<StockChart selectedSymbol={selectedSymbol} data={data[selectedSymbol].data} />
 				</Box>
 
