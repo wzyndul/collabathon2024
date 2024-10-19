@@ -11,14 +11,7 @@ type IProps = {
 
 export function Header({ onChangeAccount }: IProps ): React.ReactNode {
 
-    const {
-        data,
-        isLoading,
-        isFetched,
-        isError,
-    } = useFetchAccounts();
-
-    console.log('app', data, isLoading, isFetched, isError);
+    const { data } = useFetchAccounts();
 
     const handleClick = useCallback((accountId: number) => onChangeAccount(accountId), [onChangeAccount])
 

@@ -2,6 +2,9 @@
 import { WidgetContainer } from "../../components/WidgetContainer/WidgetContainer";
 import { Button } from "../../components/Button/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import AccountBalanceWalletTwoToneIcon from '@mui/icons-material/AccountBalanceWalletTwoTone';
+import AttachMoneyTwoToneIcon from '@mui/icons-material/AttachMoneyTwoTone';
+import HouseTwoToneIcon from '@mui/icons-material/HouseTwoTone';
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
 import { Divider, Typography } from "@mui/material";
@@ -14,11 +17,23 @@ type IProps = {
 };
 
 export const RecommendedProducts = ({ userId }: IProps) => {
-	const { data, isLoading, isFetched, isError } = useFetchProducts(true, userId);
+	const { data, isLoading, isFetched } = useFetchProducts(true, userId);
 
-	console.log(data, isLoading, isFetched, isError);
+	const showIcon = (offerType: string): React.ReactNode => {
+		switch (offerType) {
+			case 'LOAN':
+				return <HouseTwoToneIcon style={{color: '#e0a200'}} />;
+			case 'INVESTMENT':
+				return <AttachMoneyTwoToneIcon style={{color: '#e0a200'}} />;
+			case 'SAVINGS"':
+				return <AccountBalanceWalletTwoToneIcon style={{color: '#e0a200'}} />;
+			default:
+				return <AssuredWorkloadIcon style={{color: '#e0a200'}}/>;
+		}
+	};
 
-	if (isLoading) {
+
+	if (isLoading || !isFetched) {
 		return <GradientCircularProgress />;
 	}
 
@@ -33,17 +48,17 @@ export const RecommendedProducts = ({ userId }: IProps) => {
 				</span>
 				<div css={productsCardsStyle}>
 					{data &&
-						data.map((product, i) => {
+						data.map((product) => {
 							return (
 								<Card
-									key={`${product.id + product.title + i}`}
+									key={`${product.id}`}
 									title={
 										<>
 											<Typography variant="h6">{product.title}</Typography>
 											<Divider />
 										</>
 									}
-									avatar={<AssuredWorkloadIcon />}
+									avatar={showIcon(product.offerType)}
 									bgColor="#002E3C"
 									txtColor="white"
 									content={<p>{product.description}</p>}
