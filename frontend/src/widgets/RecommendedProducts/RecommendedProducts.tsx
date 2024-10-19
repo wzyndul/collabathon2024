@@ -30,7 +30,7 @@ export const RecommendedProducts = ({ data }: IProps) => {
 	};
 
 	return (
-			<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
+			<WidgetContainer width={"30rem"} height={"40rem"} bgColor="#fbfbfe">
 				<div css={productsContainerStyle}>
 					<Box css={productsHeaderStyle}>
 						<Typography variant="h5" css={{ fontWeight: "bold" }}>

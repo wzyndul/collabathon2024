@@ -42,7 +42,7 @@ const AccountWidget: React.FC = () => {
   return (
     <Card
       sx={{
-        width: 400,
+        width: '30rem',
         height: 180,
         padding: 2,
         position: "relative",
