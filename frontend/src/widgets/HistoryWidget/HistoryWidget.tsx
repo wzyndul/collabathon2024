@@ -75,7 +75,6 @@ const HistoryWidget: React.FC = () => {
 		}
 		return false;
 	});
-	console.log("filteredData", filteredData);
 	return (
 		<WidgetContainer width={"30rem"} height={"auto"} bgColor="#fbfbfe">
 			<Box css={historyHeaderStyle}>
