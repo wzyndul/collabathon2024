@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Chart from "./Chart";
-import { Paper } from "@mui/material";
+import Chart from "../Chart";
+import Button from "@mui/material/Button";
+import { styled } from "@mui/material/styles";
 
 interface StockDataPoint {
   date: string;
@@ -9,24 +10,32 @@ interface StockDataPoint {
 }
 
 interface StockChartProps {
-  data?: StockDataPoint[];
   title?: string;
-  symbol: string;
+  selectedSymbol: number;
 }
 
-const generateMockStockData = (days: number): StockDataPoint[] => {
+
+
+const mulberry32 = (seed: number) => {
+
+      seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+}
+
+
+const generateMockStockData = (days: number, selectedSymbol: number): StockDataPoint[] => {
   const data: StockDataPoint[] = [];
   let price: number = 100;
-
-  // Get today's date
   const today = new Date();
+  
 
   for (let i = days; i >= 0; i--) {
-    // Calculate the date for each entry, going back in time
+    // console.log(mulberry32(i))
     const date = new Date(today);
-    date.setDate(today.getDate() - i); // Subtract i days from today
-
-    const change: number = price * (Math.random() * 0.06 - 0.03);
+    date.setDate(today.getDate() - i);
+    const change: number = price * (mulberry32(i | selectedSymbol) * 0.06 - 0.03);
     price += change;
 
     data.push({
@@ -43,7 +52,6 @@ const generateMockStockData = (days: number): StockDataPoint[] => {
   return data;
 };
 
-// Define the number of days for each period
 const periods: Record<string, number> = {
   "1D": 1,
   "1W": 7,
@@ -53,24 +61,38 @@ const periods: Record<string, number> = {
   "5Y": 1825,
 };
 
-const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price History" }) => {
+const StyledButton = styled(Button)<{ selected: boolean }>(({ theme, selected }) => ({
+  color: "black",
+  borderRadius: "20px",
+  margin: "0 5px",
+  backgroundColor: selected ? theme.palette.action.selected : "transparent",
+  "&:hover": {
+    backgroundColor: theme.palette.action.hover,
+  },
+}));
+
+const ButtonContainer = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
+  marginTop: "10px",
+});
+
+const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", selectedSymbol }) => {
   const [data, setData] = useState<StockDataPoint[] | null>(null);
-  const [period, setPeriod] = useState<number>(periods["1W"]); // Default to 1 month
+  const [period, setPeriod] = useState<number>(periods["1W"]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Mocking fetch request
-        const data = generateMockStockData(365); // Generate data for a year
+        const data = generateMockStockData(365, selectedSymbol);
         setData(data);
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, []);
+  }, [selectedSymbol]);
 
-  // Function to filter data based on selected period in days
   const getFilteredData = () => {
     if (!data) return [];
     const today = new Date();
@@ -85,10 +107,9 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
         return (data: StockDataPoint[]): number[] => {
           return data.map((item) => item.fullIndex);
         };
-  
       case periods["1M"]:
         return (data: StockDataPoint[]): number[] => {
-          const currentDateIndex = data.length - 1; // Current day
+          const currentDateIndex = data.length - 1;
           return data
             .map((item, index) => {
               if (index === currentDateIndex || (index % 7 === 0 && index < currentDateIndex)) {
@@ -98,7 +119,6 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
             })
             .filter((item): item is number => item !== null);
         };
-  
       case periods["3M"]:
         return (data: StockDataPoint[]): number[] => {
           return data
@@ -110,7 +130,6 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
             })
             .filter((item): item is number => item !== null);
         };
-  
       case periods["1Y"]:
         return (data: StockDataPoint[]): number[] => {
           return data
@@ -122,20 +141,16 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
             })
             .filter((item): item is number => item !== null);
         };
-  
       case periods["5Y"]:
         return (data: StockDataPoint[]): number[] => {
           return data.map((item) => item.fullIndex);
         };
-  
       default:
-        // Fallback case
         return (data: StockDataPoint[]): number[] => {
           return data.map((item) => item.fullIndex);
         };
     }
   };
-  
 
   const xLabelGenerator = (): ((date: string) => string) => {
     switch (period) {
@@ -149,14 +164,12 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
             month: "short",
           });
         };
-
       case periods["1Y"]:
         return (date: string): string => {
           return new Date(date).toLocaleDateString("en-US", {
             month: "short",
           });
         };
-
       case periods["5Y"]:
         return (date: string): string => {
           return new Date(date).toLocaleDateString("en-US", {
@@ -173,14 +186,7 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
   }
 
   return (
-    <Paper
-      elevation={2}
-      sx={{
-        p: 3,
-        borderRadius: 2,
-        bgcolor: "background.paper",
-      }}
-    >
+    <>
       <Chart
         data={getFilteredData()}
         label={title}
@@ -188,14 +194,14 @@ const StockChart: React.FC<StockChartProps> = ({ symbol, title = "Stock Price Hi
         getCustomXAxisTicks={generateGetCustomXAxisTicks()}
         yLabelGenerator={(val) => `$${val.toFixed(2)}`}
       />
-      <div>
+      <ButtonContainer>
         {Object.keys(periods).map((key) => (
-          <button key={key} onClick={() => setPeriod(periods[key])}>
+          <StyledButton key={key} selected={periods[key] === period} onClick={() => setPeriod(periods[key])}>
             {key}
-          </button>
+          </StyledButton>
         ))}
-      </div>
-    </Paper>
+      </ButtonContainer>
+    </>
   );
 };
 
