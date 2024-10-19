@@ -38,8 +38,8 @@ function App() {
     <div className="container">
       <Header onChangeAccount={handleChangeAccount} data={userAccounts}/>
       <div className="page">
-        <StockWidget />
-        <HistoryWidget />
+      <StockWidget userId={userId}/>
+      <HistoryWidget userId={userId} />
         <AccountWidget userAccount={userAccounts ? userAccounts.find(element => element.id === userId) : undefined}/>
         <Box position="relative" width="30rem">
           <RecommendedProducts data={data} />
