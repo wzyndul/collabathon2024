@@ -1,10 +1,14 @@
 package com.stc.collabothon.controllers;
 
+import com.stc.collabothon.DTO.OffersIdsDto;
+import com.stc.collabothon.model.offer.Offer;
 import com.stc.collabothon.services.ChatBotService;
+import com.stc.collabothon.services.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -14,11 +18,16 @@ public class ChatBotController {
     @Autowired
     private ChatBotService chatBotService;
 
-    @PostMapping("/start-chat")
-    public void startChat(@RequestBody Map<String, String> request) {
-        String context = request.get("context");
+    @Autowired
+    private OfferService offerService;
 
-        chatBotService.startChatSession(context);
+    @PostMapping("/start-chat")
+    public void startChat(@RequestBody OffersIdsDto offersIds) {
+
+        List<Long> ids = offersIds.getIds();
+        List<Offer> offers = offerService.getAllOffers();
+
+        chatBotService.startChatSession(offers, ids);
     }
 
     @PostMapping("/send-message")
