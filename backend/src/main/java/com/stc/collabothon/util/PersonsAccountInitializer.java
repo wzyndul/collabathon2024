@@ -1,12 +1,14 @@
 package com.stc.collabothon.util;
 
 import com.stc.collabothon.model.Account;
-import com.stc.collabothon.model.NaturalPerson;
+import com.stc.collabothon.model.client.Client;
+import com.stc.collabothon.model.client.CorporateClient;
+import com.stc.collabothon.model.client.NaturalPerson;
 import com.stc.collabothon.model.offer.InvestmentType;
 import com.stc.collabothon.model.transaction.*;
 import com.stc.collabothon.repo.AccountRepository;
 import com.stc.collabothon.repo.BankTransactionRepository;
-import com.stc.collabothon.repo.NaturalPersonRepository;
+import com.stc.collabothon.repo.ClientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,7 +23,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
     AccountRepository accountRepository;
 
     @Autowired
-    NaturalPersonRepository naturalPersonRepository;
+    ClientRepository clientRepository;
 
     @Autowired
     private BankTransactionRepository bankTransactionRepository;
@@ -30,10 +32,10 @@ public class PersonsAccountInitializer implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         // Create first individual user
-        NaturalPerson person1 = NaturalPerson.builder()
+        Client person1 = NaturalPerson.builder()
                 .firstName("Wojti")
                 .lastName("TEST")
-                .dateOfBirth("2000-01-01")
+                .dateOfBirth("01-01-2000")
                 .salutation("Mr.")
                 .title("Software Engineer")
                 .phoneNumber("123-456-7890")
@@ -42,7 +44,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .nationality("Polish")
                 .build();
 
-        person1 = naturalPersonRepository.save(person1);
+        person1 = clientRepository.save(person1);
 
         Account account1 = Account.builder()
                 .iban("PL12345678901234567890123456")
@@ -51,18 +53,17 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .accountNumberDisplay("9876543210")
                 .currency("PLN")
                 .balanceAmount(50000.99)
-                .isIndividual(true)
-                .naturalPerson(person1)
+                .client(person1)
                 .build();
 
         person1.setAccount(account1);
         account1 = accountRepository.save(account1);
 
         // Create second individual user
-        NaturalPerson person2 = NaturalPerson.builder()
+        Client person2 = NaturalPerson.builder()
                 .firstName("Anna")
                 .lastName("KOWALSKA")
-                .dateOfBirth("1995-05-15")
+                .dateOfBirth("15-05-1995")
                 .salutation("Ms.")
                 .title("Marketing Specialist")
                 .phoneNumber("987-654-3210")
@@ -71,7 +72,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .nationality("Polish")
                 .build();
 
-        person2 = naturalPersonRepository.save(person2);
+        person2 = clientRepository.save(person2);
 
         Account account2 = Account.builder()
                 .iban("PL65432109876543210987654321")
@@ -80,27 +81,23 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .accountNumberDisplay("1234567890")
                 .currency("PLN")
                 .balanceAmount(75000.50)
-                .isIndividual(true)
-                .naturalPerson(person2)
+                .client(person2)
                 .build();
 
         person2.setAccount(account2);
         account2 = accountRepository.save(account2);
 
         // Create non-individual user (business)
-        NaturalPerson business = NaturalPerson.builder()
-                .firstName("TechCorp")
-                .lastName("Inc.")
-                .dateOfBirth("2010-01-01") // Use a placeholder date for a business
-                .salutation("N/A")
-                .title("Business")
+        Client business = CorporateClient.builder()
+                .companyName("TechCorp")
+                .companySize(150)
                 .phoneNumber("111-222-3333")
                 .emailAddress("contact@techcorp.com")
                 .postalAddress("789 Corporate Blvd, City, Country")
                 .nationality("Polish")
                 .build();
 
-        business = naturalPersonRepository.save(business);
+        business = clientRepository.save(business);
 
         Account account3 = Account.builder()
                 .iban("PL11122334455667788990001122")
@@ -109,59 +106,41 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .accountNumberDisplay("9988776655")
                 .currency("PLN")
                 .balanceAmount(100000.00)
-                .isIndividual(false) // Set to false for a business account
-                .naturalPerson(business)
+                .client(business)
                 .build();
 
         business.setAccount(account3);
         account3 = accountRepository.save(account3);
 
-        //TRANSACTIONS
-        CurrencyExchange currencyExchange = new CurrencyExchange();
-        currencyExchange.setTransactionDate(LocalDateTime.now());
-        currencyExchange.setAmount(1000.0);
-        currencyExchange.setDescription("Currency exchange from EUR to USD");
-        currencyExchange.setCurrency(Currency.EUR);
-        currencyExchange.setStatus(Status.SUCCESS);
-        currencyExchange.setAccount(account1);  // Use persisted account
-        currencyExchange.setTargetCurrency(Currency.USD);
-        currencyExchange.setExchangeRate(1.1);
-        currencyExchange.setOriginalAmount(1000);
-        currencyExchange.setExchangedAmount(1100);
+        // Currency Exchange
+        CurrencyExchange currencyExchange1 = new CurrencyExchange(LocalDateTime.now().minusDays(1), 3000.0, "Currency exchange from PLN to USD", Currency.PLN, Status.SUCCESS, account1, Currency.USD, 0.25, 3000, 750);
 
-        Investment investment = new Investment();
-        investment.setTransactionDate(LocalDateTime.now());
-        investment.setAmount(5000.0);
-        investment.setDescription("Investment in tech stocks");
-        investment.setCurrency(Currency.USD);
-        investment.setStatus(Status.SUCCESS);
-        investment.setAccount(account2);  // Use persisted account
-        investment.setInvestmentType(InvestmentType.EQUITY);
-        investment.setManagementFee(1.5);
-        investment.setStockName("Tech Fund");
+        // Loan for account1
+        Loan loan1 = new Loan(LocalDateTime.now().minusDays(5), 25000.0, "Personal loan", Currency.PLN, Status.PENDING, account1, 5.0, 25000.0, 180);
 
-        Loan loan = new Loan();
-        loan.setTransactionDate(LocalDateTime.now());
-        loan.setAmount(15000.0);
-        loan.setDescription("Home loan");
-        loan.setCurrency(Currency.EUR);
-        loan.setStatus(Status.PENDING);
-        loan.setAccount(account1);  // Use persisted account
-        loan.setInterestRate(3.5);
-        loan.setLoanAmount(15000.0);
-        loan.setLoanDuration(240);
+        // Investment for account1
+        Investment investment1 = new Investment(LocalDateTime.now().minusDays(3), 5000.0, "Investment in renewable energy stocks", Currency.EUR, Status.SUCCESS, account1, InvestmentType.EQUITY, 1.3, "Renewable Energy Fund");
 
-        MoneyTransfer moneyTransfer = new MoneyTransfer();
-        moneyTransfer.setTransactionDate(LocalDateTime.now());
-        moneyTransfer.setAmount(2000.0);
-        moneyTransfer.setDescription("Money transfer to another account");
-        moneyTransfer.setCurrency(Currency.GBP);
-        moneyTransfer.setStatus(Status.SUCCESS);
-        moneyTransfer.setAccount(account2);  // Use persisted account
-        moneyTransfer.setRecipientAccount(account1);  // Use persisted account
+        // Money Transfer for account1
+        MoneyTransfer transfer1 = new MoneyTransfer(LocalDateTime.now().minusDays(7), 1200.0, "Transfer to Anna Kowalska", Currency.PLN, Status.SUCCESS, account1, account2);
 
-        // Now save the transactions
-        bankTransactionRepository.save(currencyExchange);
+        // Save all additional transactions for account1
+        bankTransactionRepository.save(currencyExchange1);
+        bankTransactionRepository.save(loan1);
+        bankTransactionRepository.save(investment1);
+        bankTransactionRepository.save(transfer1);
+
+        // Save other existing transactions
+        CurrencyExchange currencyExchange2 = new CurrencyExchange(LocalDateTime.now(), 1000.0, "Currency exchange from EUR to USD", Currency.EUR, Status.SUCCESS, account1, Currency.USD, 1.1, 1000, 1100);
+
+        Investment investment = new Investment(LocalDateTime.now(), 5000.0, "Investment in tech stocks", Currency.USD, Status.SUCCESS, account1, InvestmentType.EQUITY, 1.5, "Tech Fund");
+
+        Loan loan = new Loan(LocalDateTime.now(), 15000.0, "Home loan", Currency.EUR, Status.PENDING, account1, 3.5, 15000.0, 240);
+
+        MoneyTransfer moneyTransfer = new MoneyTransfer(LocalDateTime.now(), 2000.0, "Money transfer to another account", Currency.GBP, Status.SUCCESS, account2, account1);
+
+        // Now save the original transactions
+        bankTransactionRepository.save(currencyExchange2);
         bankTransactionRepository.save(investment);
         bankTransactionRepository.save(loan);
         bankTransactionRepository.save(moneyTransfer);

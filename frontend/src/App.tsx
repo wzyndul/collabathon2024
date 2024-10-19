@@ -5,6 +5,8 @@ import './App.css';
 import AccountWidget from './widgets/AccountWidg';
 import StockWidget from './widgets/StockWidget';
 import HistoryWidget from './widgets/HistoryWidget';
+import { Chatbot } from './widgets/Chatbot/Chatbot';
+
 
 function App() {
   const [userId, setUserId] = React.useState(1);
@@ -16,8 +18,10 @@ function App() {
       <div className='page'>
         {/* <RecommendedProducts userId={userId}/> */}
         <AccountWidget />
-        <StockWidget />
         <HistoryWidget />
+        <RecommendedProducts userId={userId}/>
+        <StockWidget/>
+        <Chatbot/>
       </div>
     </div>
   )

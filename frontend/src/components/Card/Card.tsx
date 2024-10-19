@@ -10,6 +10,8 @@ interface CardProps {
 	children?: React.ReactNode;
 	disableSpacing?: boolean;
 	variant?: "outlined" | "elevation";
+	bgColor?: string;
+	txtColor?: string;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -19,9 +21,11 @@ export const Card: React.FC<CardProps> = ({
 	children,
 	disableSpacing,
 	variant,
+	bgColor = "#FBFBFE",
+	txtColor = "inherit"
 }) => {
 	return (
-		<MUICard variant={variant} css={cardStyle}>
+		<MUICard variant={variant} css={cardStyle(bgColor, txtColor)}>
 			<CardHeader avatar={avatar} title={title} css={cardHeaderStyle}></CardHeader>
 			<CardContent css={cardContentStyle}>{content}</CardContent>
 			<CardActions disableSpacing={disableSpacing} css={cardActionsStyle}>{children}</CardActions>

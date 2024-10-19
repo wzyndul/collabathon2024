@@ -11,14 +11,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class MoneyTransfer extends BankTransaction {
+    private Long recipientAccountId;
 
-    @ManyToOne
-    @JoinColumn(name = "recipient_account_id", referencedColumnName = "id")
-    private Account recipientAccount;
+    public MoneyTransfer(LocalDateTime transactionDate, double amount, String description, Currency currency, Status status, Account account, Account recipientAccount) {
+        super(transactionDate, amount, description, currency, status, account, TransactionType.MONEY_TRANSFER);
+        this.recipientAccountId = recipientAccount.getId();
+    }
 }

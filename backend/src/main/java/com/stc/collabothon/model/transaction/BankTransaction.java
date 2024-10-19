@@ -22,9 +22,9 @@ public abstract class BankTransaction {
     @SequenceGenerator(name = "transaction_id_seq", sequenceName = "transaction_id_SEQ", allocationSize = 1)
     private Long id;
 
-    LocalDateTime transactionDate;
-    double amount;
-    String description;
+    private LocalDateTime transactionDate;
+    private double amount;
+    private String description;
     @Enumerated(EnumType.STRING)
     private Currency currency;
     @Enumerated(EnumType.STRING)
@@ -33,4 +33,17 @@ public abstract class BankTransaction {
     @JsonBackReference
     private Account account;
 
+    @Enumerated(EnumType.STRING)
+    private TransactionType transactionType;
+
+
+    public BankTransaction(LocalDateTime transactionDate, double amount, String description, Currency currency, Status status, Account account, TransactionType transactionType) {
+        this.transactionDate = transactionDate;
+        this.amount = amount;
+        this.description = description;
+        this.currency = currency;
+        this.status = status;
+        this.account = account;
+        this.transactionType = transactionType;
+    }
 }

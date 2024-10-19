@@ -1,19 +1,36 @@
 package com.stc.collabothon.controllers;
 
+import com.stc.collabothon.model.Account;
+import com.stc.collabothon.model.CollabothonApiResponse;
+import com.stc.collabothon.model.offer.Offer;
 import com.stc.collabothon.model.transaction.BankTransaction;
+import com.stc.collabothon.model.transaction.Investment;
 import com.stc.collabothon.model.transaction.Status;
+import com.stc.collabothon.repo.AccountRepository;
 import com.stc.collabothon.services.BankTransactionService;
+import com.stc.collabothon.services.OfferService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/bank-transactions")
 public class BankTransactionController {
-    private BankTransactionService bankTransactionService;
+    private final BankTransactionService bankTransactionService;
+    private final AccountRepository accountRepository;
+
+
+    @Autowired
+    public BankTransactionController(BankTransactionService bankTransactionService, AccountRepository accountRepository) {
+        this.bankTransactionService = bankTransactionService;
+        this.accountRepository = accountRepository;
+    }
 
     @GetMapping
     public List<BankTransaction> getAllTransactions() {
@@ -72,4 +89,20 @@ public class BankTransactionController {
         }
     }
 
+    @GetMapping("/get-users-investments/{accountId}")
+    public ResponseEntity<CollabothonApiResponse<List<BankTransaction>>> getAllInvestmentsForUser(@PathVariable Long accountId) {
+        Optional<Account> account = accountRepository.findById(accountId);
+        if (account.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<BankTransaction> allTransactions = bankTransactionService.getAllTransactions();
+
+        List<BankTransaction> userInvestments = allTransactions.stream()
+                .filter(transaction -> transaction instanceof Investment)
+                .collect(Collectors.toList());
+
+        CollabothonApiResponse<List<BankTransaction>> response = new CollabothonApiResponse<>(true, userInvestments, "User's investments found successfully");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
