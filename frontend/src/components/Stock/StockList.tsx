@@ -1,66 +1,15 @@
 import React from "react";
 import AbstractList from "../AbstractList";
 import { Avatar, Typography, Box } from "@mui/material";
-
-interface StockItem extends AbstractListElement {
-  id: number;
-  symbol: string;
-  name: string;
-  price: number;
-  change: number;
-  changePercentage: string;
-  color: string;
-}
-
-interface AbstractListElement {
-  id: number;
-}
+import { AbstractListElement, StockItem } from "../../types/types";
 
 interface StockListProps {
   onClick: (index: number) => void;
   selectedSymbol: number;
+  StockItemList: StockItem[];
 }
 
-const mockData: StockItem[] = [
-  {
-    id: 1,
-    symbol: "SPXUSD",
-    name: "S&P 500",
-    price: 4290.6,
-    change: 12.3,
-    changePercentage: "+0.29%",
-    color: "#FF0000",
-  },
-  {
-    id: 2,
-    symbol: "NSXUSD",
-    name: "US 100",
-    price: 14607.5,
-    change: 44.1,
-    changePercentage: "+0.30%",
-    color: "#0000FF",
-  },
-  {
-    id: 3,
-    symbol: "DJI",
-    name: "Dow 30",
-    price: 33733.5,
-    change: 73.5,
-    changePercentage: "+0.22%",
-    color: "#00FFFF",
-  },
-  {
-    id: 4,
-    symbol: "NKY",
-    name: "Nikkei 225",
-    price: 32371.9,
-    change: -56.85,
-    changePercentage: "-0.18%",
-    color: "#8A2BE2",
-  },
-];
-
-const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol }: StockListProps) => {
+const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol, StockItemList }: StockListProps) => {
   const generateElement = (elem: AbstractListElement) => {
     const stockItem = elem as StockItem;
 
@@ -97,7 +46,7 @@ const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol }: StockL
   return (
     <AbstractList
       onClick={onClick}
-      elements={mockData}
+      elements={StockItemList}
       generateElement={generateElement}
       selectedSymbol={selectedSymbol}
     />
