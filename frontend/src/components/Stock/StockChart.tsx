@@ -2,55 +2,15 @@ import React, { useEffect, useState } from "react";
 import Chart from "../Chart";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
+import { StockDataPoint } from "../../types/types";
 
-interface StockDataPoint {
-  date: string;
-  price: number;
-  fullIndex: number;
-}
+
 
 interface StockChartProps {
   title?: string;
   selectedSymbol: number;
+  data: StockDataPoint[];
 }
-
-
-
-const mulberry32 = (seed: number) => {
-
-      seed = seed + 0x6D2B79F5 | 0;
-      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
-      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-      return ((t ^ t >>> 14) >>> 0) / 4294967296;
-}
-
-
-const generateMockStockData = (days: number, selectedSymbol: number): StockDataPoint[] => {
-  const data: StockDataPoint[] = [];
-  let price: number = 100;
-  const today = new Date();
-  
-
-  for (let i = days; i >= 0; i--) {
-    // console.log(mulberry32(i))
-    const date = new Date(today);
-    date.setDate(today.getDate() - i);
-    const change: number = price * (mulberry32(i | selectedSymbol) * 0.06 - 0.03);
-    price += change;
-
-    data.push({
-      date: date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
-      price: Number(price.toFixed(2)),
-      fullIndex: i,
-    });
-  }
-
-  return data;
-};
 
 const periods: Record<string, number> = {
   "1D": 1,
@@ -77,21 +37,10 @@ const ButtonContainer = styled("div")({
   marginTop: "10px",
 });
 
-const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", selectedSymbol }) => {
-  const [data, setData] = useState<StockDataPoint[] | null>(null);
+const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", selectedSymbol, data }) => {
   const [period, setPeriod] = useState<number>(periods["1W"]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = generateMockStockData(365, selectedSymbol);
-        setData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [selectedSymbol]);
+
 
   const getFilteredData = () => {
     if (!data) return [];
@@ -189,7 +138,7 @@ const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", 
     <>
       <Chart
         data={getFilteredData()}
-        label={title}
+        // label={title}
         xLabelGenerator={xLabelGenerator()}
         getCustomXAxisTicks={generateGetCustomXAxisTicks()}
         yLabelGenerator={(val) => `$${val.toFixed(2)}`}

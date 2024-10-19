@@ -7,6 +7,7 @@ import StockWidget from "./widgets/StockWidget";
 import { Loading } from "./components/Loading/Loading";
 import { useFetchProducts } from "./hooks/useFetchProducts";
 
+
 function App() {
 	const [userId, setUserId] = React.useState(1);
 	const handleChangeAccount = useCallback((accountId: number) => setUserId(accountId), []);

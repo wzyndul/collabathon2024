@@ -78,11 +78,17 @@ public class OfferRecommendationsAlgorithm {
             Collections.shuffle(criteriaOffers);
             for (int i = 0; i < numberOfOffersFromCriteria; i++) {
                 Offer offer = criteriaOffers.get(i);
+                System.out.println("OFFER "+ offer.getAgeCriteria());
                 if (offer.getAgeCriteria() != null) {
+                    System.out.println("AGE MEMBERSHIP MAP "+ ageMembershipMap);
+                    System.out.println("AgeCriteriaType: " + offer.getAgeCriteria().getClass().getSimpleName());
                     double ageMembership = ageMembershipMap.get(offer.getAgeCriteria());
                     if (ageMembership > 0.0) {
                         offers.add(offer);
+                    } else {
+                        numberOfOffersFromCriteria++;
                     }
+                    // todo dont take corporate offers
                 } else {
                     offers.add(offer);
                 }

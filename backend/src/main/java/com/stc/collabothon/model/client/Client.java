@@ -1,11 +1,22 @@
 package com.stc.collabothon.model.client;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.stc.collabothon.model.Account;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME, // Use the class name as the type indicator
+        include = JsonTypeInfo.As.PROPERTY, // Include this as a property in JSON
+        property = "type" // This property will be added to your JSON response to indicate the type
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = NaturalPerson.class, name = "naturalPerson"),
+        @JsonSubTypes.Type(value = CorporateClient.class, name = "corporateClient")
+})
 @SuperBuilder
 @Getter
 @Setter
