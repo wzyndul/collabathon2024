@@ -13,6 +13,7 @@ import {
 	userInputStyle,
 } from "./Chatbot.style";
 import { IRecommendedProduct } from "../../hooks/useFetchProducts";
+import Dots from "../../components/Dots/Dots";
 
 type IProps = {
 	data: IRecommendedProduct[] | undefined;
@@ -70,7 +71,7 @@ export const Chatbot = ({data}: IProps) => {
 					Chatbot
 				</Typography>
 			</Box>
-			<Box css={chatWindowStyle}>
+			<Box className='messages-container' css={chatWindowStyle} style={{position: 'relative'}}>
 				{messages.map((message, index) => (
 					<Box key={index} css={dialogLineContainerStyle(message.isUser)}>
 						<Paper elevation={0} css={dialogBubbleStyle(message.isUser)}>
@@ -79,6 +80,8 @@ export const Chatbot = ({data}: IProps) => {
 
 					</Box>
 				))}
+
+				{isLoading?  <Dots/> : null}
 			</Box>
 			<Box css={userInputStyle}>
 				<InputBase
