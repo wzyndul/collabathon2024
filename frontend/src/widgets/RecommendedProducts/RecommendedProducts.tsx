@@ -7,11 +7,9 @@ import AttachMoneyTwoToneIcon from "@mui/icons-material/AttachMoneyTwoTone";
 import HouseTwoToneIcon from "@mui/icons-material/HouseTwoTone";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
-import { Box, Divider, Fab, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 import { IRecommendedProduct } from "../../hooks/useFetchProducts";
-import { FloatingActionButton } from "../../components/FloatingActionButton/FloatingActionButton";
-import TextsmsIcon from "@mui/icons-material/Textsms";
 
 type IProps = {
 	data: IRecommendedProduct[] | undefined;
@@ -32,16 +30,15 @@ export const RecommendedProducts = ({ data }: IProps) => {
 	};
 
 	return (
-		<Box position="relative" width="30rem">
 			<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
 				<div css={productsContainerStyle}>
 					<Box css={productsHeaderStyle}>
 						<Typography variant="h5" css={{ fontWeight: "bold" }}>
 							Recommended Products
 						</Typography>
-						<Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} endIcon={<ArrowForwardIcon />}>
+						{/* <Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} endIcon={<ArrowForwardIcon />}>
 							READ MORE
-						</Button>
+						</Button> */}
 					</Box>
 					<div css={productsCardsStyle}>
 						{data &&
@@ -71,9 +68,5 @@ export const RecommendedProducts = ({ data }: IProps) => {
 					</div>
 				</div>
 			</WidgetContainer>
-			<FloatingActionButton>
-				<TextsmsIcon />
-			</FloatingActionButton>
-		</Box>
 	);
 };
