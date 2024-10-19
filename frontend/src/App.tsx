@@ -29,27 +29,27 @@ function App() {
 		return <Loading />;
 	}
 
-  return (
-    <div className="container">
-      <Header onChangeAccount={handleChangeAccount} data={userAccounts}/>
-      <div className="page">
-      <StockWidget userId={userId}/>
-      <HistoryWidget userId={userId} />
-        <AccountWidget userAccount={userAccounts ? userAccounts.find(element => element.id === userId) : undefined}/>
-        <Box position="relative" width="30rem">
-          <RecommendedProducts data={data} />
-          <FloatingActionButton onClick={toggleChatbot}>
-            <TextsmsIcon />
-          </FloatingActionButton>
-        </Box>
-        <Grow in={isChatbotVisible} timeout={300}>
-          <Box>
-            <Chatbot data={data} />
-          </Box>
-        </Grow> 
-      </div>
-    </div>
-  );
+	return (
+		<div className="container">
+			<Header onChangeAccount={handleChangeAccount} data={userAccounts} />
+			<div className="page">
+				<AccountWidget userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined} />
+				<HistoryWidget userId={userId} />
+				<StockWidget userId={userId} />
+				<Box position="relative" width="30rem">
+					<RecommendedProducts data={data} />
+					<FloatingActionButton onClick={toggleChatbot}>
+						<TextsmsIcon />
+					</FloatingActionButton>
+				</Box>
+				<Grow in={isChatbotVisible} timeout={300}>
+					<Box>
+						<Chatbot data={data} />
+					</Box>
+				</Grow>
+			</div>
+		</div>
+	);
 }
 
 export default App;
