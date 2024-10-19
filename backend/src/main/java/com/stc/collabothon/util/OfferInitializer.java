@@ -1,6 +1,7 @@
 package com.stc.collabothon.util;
 
 import com.stc.collabothon.model.offer.*;
+import com.stc.collabothon.model.offer.criteria.EligibilityCriteria;
 import com.stc.collabothon.repo.OfferRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
