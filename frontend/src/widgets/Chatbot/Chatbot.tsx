@@ -68,18 +68,24 @@ export const Chatbot: React.FC<ChatbotProps> = ({data}) => {
 		<WidgetContainer width={"30rem"} height={"40rem"} bgColor="#fbfbfe">
 			<Box css={chatbotHeaderStyle}>
 				<Typography variant="h5" css={{ fontWeight: "bold" }}>
-					Chatbot
+					Virtual Assistant
 				</Typography>
 			</Box>
 			<Box className='messages-container' css={chatWindowStyle} style={{position: 'relative'}}>
-				{messages.map((message, index) => (
-					<Box key={index} css={dialogLineContainerStyle(message.isUser)}>
-						<Paper elevation={0} css={dialogBubbleStyle(message.isUser)}>
-						{isLoading ? <Dots /> : message.text}
-						</Paper>
-
-					</Box>
-				))}
+			{messages.map((message, index) => (
+                    <Box key={index} css={dialogLineContainerStyle(message.isUser)}>
+                        <Paper elevation={0} css={dialogBubbleStyle(message.isUser)}>
+                            {message.text}
+                        </Paper>
+                    </Box>
+                ))}
+                {isLoading && (
+                    <Box css={dialogLineContainerStyle(false)}>
+                        <Paper elevation={0} css={dialogBubbleStyle(false)}>
+                            <Dots />
+                        </Paper>
+                    </Box>
+                )}
 
 				{/* {isLoading?  <Dots/> : null} */}
 			</Box>
