@@ -55,13 +55,14 @@ public class OfferInitializer implements CommandLineRunner {
                         "With no complicated features, it serves as a foundation for those wanting to build a reliable financial cushion.",
                 EligibilityCriteria.MIDDLE_INCOME, 1.5, 500);
 
-        SavingsOffer savingOffer2 = new SavingsOffer("Premium Savings", "Savings account with premium benefits",
+        SavingsOffer savingOffer2 = new SavingsOffer("Premium Savings for corporations", "Savings account with premium benefits",
                 "Premium Savings is tailored for high-income individuals looking for enhanced benefits and a higher return on their savings. " +
                         "With an interest rate of 2.0%, it is among the best offerings for wealthier clients who can maintain a minimum balance of 5000.00 pln. " +
                         "The account comes with additional perks, such as personalized financial advice and preferential customer service, to cater to affluent customers. " +
                         "It is ideal for those who want their savings to work harder for them, combining flexibility with premium-level rewards. " +
                         "This account is particularly suited for professionals and executives seeking both security and exclusivity in their banking experience.",
                 EligibilityCriteria.HIGH_INCOME, 2.0, 5000);
+        savingOffer2.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         SavingsOffer savingOffer3 = new SavingsOffer("Youth Savings", "Special savings account for young people",
                 "Youth Savings is a savings account crafted specifically for students and young adults at the start of their financial journey. " +
@@ -87,8 +88,8 @@ public class OfferInitializer implements CommandLineRunner {
                         "their savings continue to grow. The minimum balance requirement is 1000.00 pln, making it accessible while still encouraging steady saving. " +
                         "It provides flexible access to funds, enabling retirees to meet their living expenses without compromising on the growth of their savings. " +
                         "This account is perfect for retirees looking for both security and competitive interest rates to preserve and grow their nest egg.",
-                EligibilityCriteria.MIDDLE_INCOME, 2.5, 1000);
-        savingOffer4.setAgeCriteria(AgeCriteria.OLD);
+                EligibilityCriteria.HIGH_INCOME, 2.5, 1000);
+        savingOffer5.setAgeCriteria(AgeCriteria.OLD);
 
         SavingsOffer savingOffer6 = new SavingsOffer("Vacation Savings", "Save for holidays",
                 "Vacation Savings is designed for individuals who wish to save specifically for travel and holiday expenses. " +
@@ -117,7 +118,7 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.HIGH_INCOME, 2.5, 20000);
         savingOffer8.setAgeCriteria(AgeCriteria.PENSIONER);
 
-        SavingsOffer savingOffer9 = new SavingsOffer("Corporate Savings Plan", "Savings plan for small businesses",
+        SavingsOffer savingOffer9 = new SavingsOffer("Corporate Savings Plan", "Savings plan for big businesses",
                 "Corporate Savings Plan is designed for medium-sized businesses looking for a stable way to manage surplus cash flow. " +
                         "With an interest rate of 1.8% and a minimum balance of 5000.00 pln, this plan helps businesses grow their reserves while maintaining liquidity. " +
                         "It is specifically tailored for businesses in the upper-middle-income bracket, offering competitive returns with flexibility in accessing funds. " +
@@ -128,8 +129,8 @@ public class OfferInitializer implements CommandLineRunner {
 
         SavingsOffer savingOffer10 = new SavingsOffer("Big Corporation Savings Plan", "Savings plan for big businesses",
                 "longDescription",
-                EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
-        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 2.8, 50000);
+        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         SavingsOffer savingOffer11 = new SavingsOffer("Startup Savings Plan", "Savings plan for small businesses",
                 "longDescription",
@@ -183,7 +184,7 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 6.5, InvestmentType.EQUITY, 15000, 1.2, 6, "Green Energy Fund");
         investmentOffer3.setAgeCriteria(AgeCriteria.OLD);
 
-        InvestmentOffer investmentOffer4 = new InvestmentOffer("Healthcare Fund", "Invest in healthcare sector",
+        InvestmentOffer investmentOffer4 = new InvestmentOffer("Healthcare Fund for Startups", "Invest in healthcare sector",
                 "The Healthcare Fund provides exposure to one of the most resilient and essential sectors—healthcare. " +
                         "Targeted at high-income investors, this equity fund offers a 7.0% return, with a minimum investment of 20,000.00 pln, focusing on both established and innovative healthcare companies. " +
                         "With a 1.3% management fee, it is a moderate-risk investment that capitalizes on the aging global population and increased demand for medical products and services. " +
