@@ -19,7 +19,9 @@ public class OfferInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         LoanOffer loanOffer1 = new LoanOffer("Home Loan", "Low-interest home loan", "long description", EligibilityCriteria.MIDDLE_INCOME, 3.5, 250000, 240);
-        LoanOffer loanOffer2 = new LoanOffer("Car Loan", "Affordable car loan", "long description", EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
+        loanOffer1.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
+        LoanOffer loanOffer2 = new LoanOffer("Business Car Loan", "Affordable car loan", "long description", EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
+        loanOffer2.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
         LoanOffer loanOffer3 = new LoanOffer("Business Loan", "Loan for small businesses", "long description", EligibilityCriteria.UPPER_MIDDLE_INCOME, 5.5, 100000, 120);
         loanOffer3.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
         LoanOffer loanOffer4 = new LoanOffer("Student Loan", "Loan for higher education", "long description", EligibilityCriteria.LOW_INCOME, 2.0, 15000, 84);
@@ -32,6 +34,8 @@ public class OfferInitializer implements CommandLineRunner {
         loanOffer8.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
         LoanOffer loanOffer9 = new LoanOffer("Luxury Car Loan", "Loan for luxury car purchases", "long description", EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 3.0, 150000, 60);
         loanOffer9.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
+        LoanOffer loanOffer10 = new LoanOffer("Corporate Business Loan", "Loan to help big business thrive", "long description", EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
+        loanOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
         offerRepository.save(loanOffer1);
         offerRepository.save(loanOffer2);
         offerRepository.save(loanOffer3);
@@ -41,6 +45,7 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(loanOffer7);
         offerRepository.save(loanOffer8);
         offerRepository.save(loanOffer9);
+        offerRepository.save(loanOffer10);
 
         SavingsOffer savingOffer1 = new SavingsOffer("Basic Savings", "High interest rate savings account",
                 "The Basic Savings account is designed for individuals in the middle-income bracket looking to grow their savings with minimal risk. " +
@@ -65,6 +70,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "This product is perfect for young individuals in the low-income bracket who are looking to develop strong financial habits. " +
                         "It offers a simple yet effective tool for saving towards educational expenses, travel plans, or even a first car.",
                 EligibilityCriteria.LOW_INCOME, 1.0, 100);
+        savingOffer3.setAgeCriteria(AgeCriteria.YOUNG);
 
         SavingsOffer savingOffer4 = new SavingsOffer("Family Savings", "Savings account for families",
                 "The Family Savings account is designed for upper-middle-income families who want to jointly save for future needs and goals. " +
@@ -73,6 +79,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The account offers flexible withdrawal options while incentivizing families to save regularly. It is an excellent tool for managing and growing family wealth " +
                         "in a structured, reliable manner, ensuring financial stability over the long term.",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 2000);
+        savingOffer4.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
 
         SavingsOffer savingOffer5 = new SavingsOffer("Senior Savings", "Savings for retirees",
                 "Senior Savings is specifically crafted for retirees who want to maximize the returns on their savings while minimizing financial risks. " +
@@ -81,6 +88,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "It provides flexible access to funds, enabling retirees to meet their living expenses without compromising on the growth of their savings. " +
                         "This account is perfect for retirees looking for both security and competitive interest rates to preserve and grow their nest egg.",
                 EligibilityCriteria.MIDDLE_INCOME, 2.5, 1000);
+        savingOffer4.setAgeCriteria(AgeCriteria.OLD);
 
         SavingsOffer savingOffer6 = new SavingsOffer("Vacation Savings", "Save for holidays",
                 "Vacation Savings is designed for individuals who wish to save specifically for travel and holiday expenses. " +
@@ -89,6 +97,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The account encourages disciplined saving, making it easier to plan trips without resorting to last-minute loans or credit cards. " +
                         "Whether it's for a weekend getaway or an international holiday, this account is ideal for travel enthusiasts looking for a reliable savings plan.",
                 EligibilityCriteria.MIDDLE_INCOME, 1.2, 300);
+        ;
 
         SavingsOffer savingOffer7 = new SavingsOffer("Children's Savings Account", "Savings account for children's future",
                 "Children's Savings Account is a specialized product designed to help parents save for their children's future needs, such as education or other life goals. " +
@@ -117,6 +126,16 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
         savingOffer9.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
 
+        SavingsOffer savingOffer10 = new SavingsOffer("Big Corporation Savings Plan", "Savings plan for big businesses",
+                "longDescription",
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
+        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
+
+        SavingsOffer savingOffer11 = new SavingsOffer("Startup Savings Plan", "Savings plan for small businesses",
+                "longDescription",
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
+        savingOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
+
         offerRepository.save(savingOffer1);
         offerRepository.save(savingOffer2);
         offerRepository.save(savingOffer3);
@@ -126,7 +145,8 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(savingOffer7);
         offerRepository.save(savingOffer8);
         offerRepository.save(savingOffer9);
-
+        offerRepository.save(savingOffer10);
+        offerRepository.save(savingOffer11);
 
         InvestmentOffer investmentOffer1 = new InvestmentOffer("Tech Stocks Fund", "Invest in top tech companies",
                 "The Tech Stocks Fund is a high-risk, high-reward investment vehicle designed for high-income individuals who are keen on capitalizing " +
@@ -136,6 +156,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "making it an attractive option for those seeking growth opportunities in cutting-edge technology.",
                 EligibilityCriteria.HIGH_INCOME, 8.0, InvestmentType.EQUITY, 10000, 1.5, 7, "Tech Fund");
 
+
         InvestmentOffer investmentOffer2 = new InvestmentOffer("Retirement Trust Fund", "Safe retirement investment",
                 "The Retirement Trust Fund is a low-risk investment solution tailored for ultra-high-net-worth individuals who are focused on long-term financial stability. " +
                         "This trust fund offers a moderate return of 5.0%, with a minimum investment of 50,000.00 pln, catering to investors who prioritize security over aggressive growth. " +
@@ -143,6 +164,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "to preserve their wealth, ensuring their retirement years are financially secure without the need for hands-on management. It includes diversified assets " +
                         "such as government bonds and low-risk equity, making it a reliable choice for retirement planning.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 5.0, InvestmentType.TRUST_FUND, 50000, 0.8, 4, "Retirement Fund");
+        investmentOffer2.setAgeCriteria(AgeCriteria.PENSIONER);
 
         InvestmentOffer investmentOffer3 = new InvestmentOffer("Green Energy Fund", "Investment in renewable energy",
                 "The Green Energy Fund focuses on the rapidly growing renewable energy sector, offering sustainable investment opportunities for upper-middle-income investors. " +
@@ -160,7 +182,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The fund includes stocks from pharmaceutical giants and biotech innovators, providing a diversified portfolio within the healthcare space. " +
                         "It is ideal for investors who seek both long-term growth and the social impact of improving global health.",
                 EligibilityCriteria.HIGH_INCOME, 7.0, InvestmentType.EQUITY, 20000, 1.3, 5, "Healthcare Fund");
-        investmentOffer4.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+        investmentOffer4.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
 
         InvestmentOffer investmentOffer5 = new InvestmentOffer("Real Estate Fund", "Investment in real estate properties",
                 "The Real Estate Fund offers upper-middle-income investors the opportunity to invest in a diversified portfolio of real estate properties. " +
@@ -169,7 +191,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "seeking lower volatility compared to equity markets while still achieving growth. The Real Estate Fund is ideal for those who prefer tangible assets and the stability " +
                         "of the property market.",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 4.5, InvestmentType.REAL_ESTATE, 30000, 1.0, 10, "Real Estate Trust");
-        investmentOffer5.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
+        investmentOffer5.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
 
         InvestmentOffer investmentOffer6 = new InvestmentOffer("Bond Portfolio", "Safe government bond investments",
                 "The Bond Portfolio is a low-risk investment designed for high-income individuals seeking safety and stability. " +
@@ -187,6 +209,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "and potential of high-value property investments, offering a mix of income generation and long-term capital appreciation. It is ideal for individuals looking for " +
                         "exclusive, high-end investment opportunities with a strong return potential.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 5.5, InvestmentType.REAL_ESTATE, 1000000, 1.2, 8, "Luxury Properties Fund");
+        investmentOffer7.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         InvestmentOffer investmentOffer8 = new InvestmentOffer("Private Equity Fund", "Invest in private equity for high-net-worth individuals",
                 "The Private Equity Fund is designed for ultra-high-net-worth investors looking to engage in high-growth opportunities within private companies. " +
@@ -194,6 +217,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "from technology startups to established businesses looking for growth capital. With a management fee of 2.0%, this fund provides access to exclusive, high-return investments " +
                         "that are not available to the general public. The Private Equity Fund is ideal for sophisticated investors seeking higher returns and diversification outside public markets.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 10.0, InvestmentType.EQUITY, 500000, 2.0, 12, "Private Equity Fund");
+        investmentOffer8.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         InvestmentOffer investmentOffer9 = new InvestmentOffer("Global Index Fund", "Invest in a diversified global portfolio",
                 "The Global Index Fund is an equity-based investment that provides exposure to a broad, diversified portfolio of companies across various sectors and regions globally. " +
@@ -208,6 +232,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The fund aims to generate both income and long-term capital appreciation, with a management fee of 2.0%. It is suitable for wealthy investors seeking " +
                         "long-term, secure real estate investments that offer a mix of income and growth potential.",
                 EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 6.5, InvestmentType.REAL_ESTATE, 100000, 2.0, 10, "Real Estate Trust");
+        investmentOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         InvestmentOffer investmentOffer11 = new InvestmentOffer("Startup Investment Fund", "Invest in early-stage tech startups",
                 "The Startup Investment Fund is a high-risk, high-reward investment opportunity targeted at high-income individuals interested in early-stage technology startups. " +
@@ -215,6 +240,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "It comes with a management fee of 2.5%, reflecting the intensive research and risk involved in such ventures. This fund is ideal for investors with a high risk tolerance " +
                         "looking for significant upside potential through venture capital-style investing.",
                 EligibilityCriteria.HIGH_INCOME, 10.0, InvestmentType.EQUITY, 50000, 2.5, 3, "Startup Fund");
+        investmentOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
 
         InvestmentOffer investmentOffer12 = new InvestmentOffer("Pension Fund", "Safe investment for pensioners",
                 "The Pension Fund is a low-risk investment designed for middle-income pensioners who seek stable returns to support their post-retirement income. " +
@@ -223,6 +249,10 @@ public class OfferInitializer implements CommandLineRunner {
                         "With a low management fee of 0.8%, this fund is ideal for retirees looking to preserve their capital while receiving consistent income during retirement.",
                 EligibilityCriteria.MIDDLE_INCOME, 4.0, InvestmentType.TRUST_FUND, 30000, 0.8, 5, "Pension Fund");
         investmentOffer12.setAgeCriteria(AgeCriteria.PENSIONER);
+
+        InvestmentOffer investmentOffer13 = new InvestmentOffer("Corporate Investment Fund", "Investment for tech corporations", "longDesc",
+                EligibilityCriteria.HIGH_INCOME, 10.0, InvestmentType.EQUITY, 50000, 2.5, 3, "Startup Fund");
+        investmentOffer13.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         offerRepository.save(investmentOffer1);
         offerRepository.save(investmentOffer2);
@@ -236,6 +266,7 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(investmentOffer10);
         offerRepository.save(investmentOffer11);
         offerRepository.save(investmentOffer12);
+        offerRepository.save(investmentOffer13);
 
     }
 }

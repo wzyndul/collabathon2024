@@ -8,26 +8,23 @@ interface FlagStackProps {
 
 const FlagStack: React.FC<FlagStackProps> = ({ country1, country2 }: FlagStackProps) => {
   return (
-    <div style={{ position: "relative", width: "50px", height: "50px" }}>
-      {/* First flag positioned down and left */}
+    <div style={{ position: "relative", width: "24px", height: "24px" }}>
       <CircleFlag
         countryCode={country1}
-        height="33" 
+        height="24" 
         style={{
           position: "absolute",
-          bottom: "5px",
-          left: "5px",
           zIndex: 1,
         }}
       />
 
       <CircleFlag
         countryCode={country2}
-        height="29" 
+        height="20" 
         style={{
           position: "absolute",
-          top: "0",
-          right: "0",
+          top: "12px",
+          left: "12px",
           zIndex: 2,
         }}
       />
