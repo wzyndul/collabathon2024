@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Paper, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 interface ChartProps {
@@ -26,18 +26,18 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
     return [minPrice - buffer, maxPrice + buffer];
   }, [data]);
 
-  const getYAxisTicks = useMemo(() => {
-    const [min, max] = yAxisDomain;
-    const range = max - min;
-    const targetTickCount = 5;
-    const tickInterval = range / (targetTickCount - 1);
+  // const getYAxisTicks = useMemo(() => {
+  //   const [min, max] = yAxisDomain;
+  //   const range = max - min;
+  //   const targetTickCount = 5;
+  //   const tickInterval = range / (targetTickCount - 1);
 
-    const ticks: number[] = [];
-    for (let i = 0; i < targetTickCount; i++) {
-      ticks.push(Number((min + tickInterval * i).toFixed(2)));
-    }
-    return ticks;
-  }, [yAxisDomain]);  
+  //   const ticks: number[] = [];
+  //   for (let i = 0; i < targetTickCount; i++) {
+  //     ticks.push(Number((min + tickInterval * i).toFixed(2)));
+  //   }
+  //   return ticks;
+  // }, [yAxisDomain]);  
 
 
   const formatXAxis = (tickItem: number): string => {
@@ -54,14 +54,10 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
   return (
     <>
       {label}
-      <Box sx={{ width: 400, height: 200 }}>
+      <Box sx={{ width: '100%', height: 200 }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
-            margin={{
-              left: 10,
-              top: 10,
-            }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 0, 0, 0.1)" />
             <XAxis
@@ -69,7 +65,7 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
               ticks={getCustomXAxisTicks(data)}
               tickFormatter={formatXAxis}
               stroke="rgba(0, 0, 0, 0.54)"
-              padding={{ right: 20 }}
+              padding={{ right: 20, left: 20 }}
               tick={{
                 fontSize: 12,
                 textAnchor: 'middle',

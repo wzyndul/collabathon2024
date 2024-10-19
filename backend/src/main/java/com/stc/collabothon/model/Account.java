@@ -38,7 +38,7 @@ public class Account {
     @JsonManagedReference
     private NaturalPerson naturalPerson;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<BankTransaction> bankTransactions;
 

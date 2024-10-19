@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 import { WidgetContainer } from "../../components/WidgetContainer/WidgetContainer";
 import { Button } from "../../components/Button/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -10,14 +9,18 @@ import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from 
 import { useFetchProducts } from "../../hooks/useFetchProducts";
 import { GradientCircularProgress } from "../../components/CircularProgress/GradientCircularProgress";
 
-export const RecommendedProducts: React.FC = () => {
+type IProps = {
+	userId: number;
+}
+
+export const RecommendedProducts = ({ userId }: IProps) => {
 
 	const {
 		data,
 		isLoading,
         isFetched,
         isError,
-	} = useFetchProducts(true);
+	} = useFetchProducts(true, userId);
 
 
 	console.log(data, isLoading, isFetched, isError);
@@ -37,52 +40,26 @@ export const RecommendedProducts: React.FC = () => {
 					</Button>
 				</span>
 				<div css={productsCardsStyle}>
-					<Card
-						title={
-							<>
-								<Typography variant="h6">Service</Typography>
-								<Divider/>
-							</>
-						}
-						avatar={<AssuredWorkloadIcon />}
-						content={<p>content</p>}
-					>
-						<div>
-							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
-								Choose
-							</Button>
-						</div>
-					</Card>
-					<Card
-						title={
-							<Typography variant="h6" component="div">
-								Service
-							</Typography>
-						}
-						avatar={<AssuredWorkloadIcon />}
-						content={<p>content</p>}
-					>
-						<div>
-							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
-								Choose
-							</Button>
-						</div>
-					</Card>
-					<Card
-						title={
-							<Typography variant="h6" component="div">
-								Service
-							</Typography>
-						}
-						avatar={<AssuredWorkloadIcon />}
-						content={<p>content</p>}
-					>
-						<div>
-							<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
-								Choose
-							</Button>
-						</div>
-					</Card>
+					{data && data.map((product, i) => {
+						return (
+						<Card
+						    key={`${product.id + product.title + i}`}
+							title={
+								<>
+									<Typography variant="h6">{product.title}</Typography>
+									<Divider/>
+								</>
+							}
+							avatar={<AssuredWorkloadIcon />}
+							content={<p>{product.description}</p>}
+						>
+							<div>
+								<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
+									Choose
+								</Button>
+							</div>
+						</Card>)
+					})}
 				</div>
 			</div>
 		</WidgetContainer>

@@ -1,40 +1,40 @@
 import { Button } from "@mui/material";
 import { ButtonTooltip } from "../Tooltip/Tooltip";
-import "./Header.css";
+import { useFetchAccounts } from "../../hooks/useFetchAccounts";
 
-const users = [
-	{
-		id: "102938484",
-		name: "James",
-		age: 30,
-		gender: "male",
-		rating: "rich",
-	},
-	{
-		id: "102938495",
-		name: "Emma",
-		age: 28,
-		gender: "female",
-		rating: "poor",
-	},
-	{
-		id: "102938506",
-		name: "Olivia",
-		age: 29,
-		gender: "female",
-		rating: "rich",
-	},
-];
+import './Header.css'
+import { useCallback } from "react";
 
-export function Header(): React.ReactElement {
-	return (
-		<div className="header">
-			{users.map((user) => (
-				<Button size="large" key={user.name} className="user-button" style={{ color: '#eab607'}}>
-				    {user.name}
-				    <ButtonTooltip age={user.age} gender={user.gender} rating={user.rating}/>
-				</Button>
-			))}
-		</div>
-	);
+type IProps = {
+    onChangeAccount: (accountId: number) => void;
+}
+
+export function Header({ onChangeAccount }: IProps ): React.ReactNode {
+
+    const {
+        data,
+        isLoading,
+        isFetched,
+        isError,
+    } = useFetchAccounts();
+
+    console.log('app', data, isLoading, isFetched, isError);
+
+    const handleClick = useCallback((accountId: number) => onChangeAccount(accountId), [onChangeAccount])
+
+    if (!data) {
+            return null
+    };
+
+  return (
+    <div className="header">
+        {data.map((user) => {
+            const personalData = user.naturalPerson;
+            return <Button onClick={() => handleClick(user.id)} size="large" key={user.id} className="user-button" style={{ color: '#eab607'}}>
+                {personalData.salutation} {personalData.firstName}
+                <ButtonTooltip dateOfBirth={personalData.dateOfBirth} gender={personalData.salutation} accountStatus={user.balanceAmount}/>
+            </Button>
+})}
+    </div>
+  )
 }
