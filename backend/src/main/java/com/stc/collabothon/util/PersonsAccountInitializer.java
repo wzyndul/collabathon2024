@@ -81,17 +81,20 @@ public class PersonsAccountInitializer implements CommandLineRunner {
         person2.setAccount(account2);
         account2 = accountRepository.save(account2);
 
-        // Create non-individual user (business)
-        Client business = CorporateClient.builder()
-                .companyName("TechCorp")
-                .companySize(150)
+        // individual client
+        Client client3 = NaturalPerson.builder()
+                .firstName("John")
+                .lastName("Testy")
+                .dateOfBirth("01-01-1955")
+                .salutation("Mr.")
+                .title("Software Engineer")
                 .phoneNumber("111-222-3333")
                 .emailAddress("contact@techcorp.com")
                 .postalAddress("789 Corporate Blvd, City, Country")
                 .nationality("Polish")
                 .build();
 
-        business = clientRepository.save(business);
+        client3 = clientRepository.save(client3);
 
         Account account3 = Account.builder()
                 .iban("PL11122334455667788990001122")
@@ -99,11 +102,11 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .accountNumberInternal("5566778899")
                 .accountNumberDisplay("9988776655")
                 .currency("PLN")
-                .balanceAmount(1000000.00)
-                .client(business)
+                .balanceAmount(80000.00)
+                .client(client3)
                 .build();
 
-        business.setAccount(account3);
+        client3.setAccount(account3);
         account3 = accountRepository.save(account3);
 
         // Currency Exchange

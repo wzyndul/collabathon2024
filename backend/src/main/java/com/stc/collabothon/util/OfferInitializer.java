@@ -136,6 +136,13 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
         savingOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
 
+        SavingsOffer savingOffer12 = new SavingsOffer("Pension Plus Account", "A reliable savings account for retirees.",
+                "The Pension Plus Account offers a steady 1.8% interest rate and is tailored for retirees looking for a secure way to grow their savings with minimal risk. " +
+                        "With a low minimum balance of 5000.00 PLN, this account ensures accessibility while offering consistent returns. It's perfect for pensioners who want " +
+                        "a dependable savings vehicle to support their day-to-day financial needs during retirement without the pressure of high-income requirements.",
+                EligibilityCriteria.LOW_INCOME, 1.8, 5000);
+        savingOffer12.setAgeCriteria(AgeCriteria.PENSIONER);
+
         offerRepository.save(savingOffer1);
         offerRepository.save(savingOffer2);
         offerRepository.save(savingOffer3);
@@ -147,6 +154,7 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(savingOffer9);
         offerRepository.save(savingOffer10);
         offerRepository.save(savingOffer11);
+        offerRepository.save(savingOffer12);
 
         InvestmentOffer investmentOffer1 = new InvestmentOffer("Tech Stocks Fund", "Invest in top tech companies",
                 "The Tech Stocks Fund is a high-risk, high-reward investment vehicle designed for high-income individuals who are keen on capitalizing " +
