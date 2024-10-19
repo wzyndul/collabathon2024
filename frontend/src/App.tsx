@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useId, useState } from "react";
 import { Header } from "./components/Header/Header";
 import { RecommendedProducts } from "./widgets/RecommendedProducts/RecommendedProducts";
 import { Chatbot } from "./widgets/Chatbot/Chatbot";
@@ -34,14 +34,13 @@ function App() {
   }
 
 
-  console.log(data);
   return (
     <div className="container">
       <Header onChangeAccount={handleChangeAccount} data={userAccounts}/>
       <div className="page">
         <StockWidget />
         <HistoryWidget />
-        <AccountWidget userAccount={userAccounts ? userAccounts[userId] : undefined}/>
+        <AccountWidget userAccount={userAccounts ? userAccounts.find(element => element.id === userId) : undefined}/>
         <Box position="relative" width="30rem">
           <RecommendedProducts data={data} />
           <FloatingActionButton onClick={toggleChatbot}>
