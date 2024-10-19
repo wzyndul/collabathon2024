@@ -2,8 +2,10 @@ import React, { useCallback } from 'react';
 import { Header } from './components/Header/Header';
 import { RecommendedProducts } from './widgets/RecommendedProducts/RecommendedProducts';
 import './App.css';
-import { Chatbot } from './widgets/Chatbot/Chatbot';
+import AccountWidget from './widgets/AccountWidg';
 import StockWidget from './widgets/StockWidget';
+import HistoryWidget from './widgets/HistoryWidget';
+import { Chatbot } from './widgets/Chatbot/Chatbot';
 
 
 function App() {
@@ -14,6 +16,9 @@ function App() {
     <div className="container">
       <Header onChangeAccount={handleChangeAccount} />
       <div className='page'>
+        {/* <RecommendedProducts userId={userId}/> */}
+        <AccountWidget />
+        <HistoryWidget />
         <RecommendedProducts userId={userId}/>
         <StockWidget/>
         <Chatbot/>
