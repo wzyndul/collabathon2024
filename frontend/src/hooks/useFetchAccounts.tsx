@@ -5,8 +5,10 @@ interface IPersonalInfo {
     id: number;
     firstName: string;
     lastname: string;
+    companyName: string;
     salutation: string;
     age: string;
+    type: string;
 }
 
 export interface IAccount {
