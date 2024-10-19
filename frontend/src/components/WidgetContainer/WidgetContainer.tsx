@@ -6,8 +6,8 @@ import { widgetPaperStyle } from "./WidgetContainer.styles";
 interface WidgetContainerProps {
 	children: React.ReactNode;
 	elevation?: number;
-	width: number | string;
-	height: number | string;
+	width: string;
+	height: string;
 	bgColor?: string;
 }
 
@@ -18,10 +18,10 @@ export const WidgetContainer: React.FC<WidgetContainerProps> = ({
 	height,
 	bgColor = "#fbfbfe",
 }) => {
-	const style = widgetPaperStyle(width, height, bgColor);
+	const style = widgetPaperStyle(bgColor);
 
 	return (
-		<Paper variant="elevation" elevation={elevation} css={style}>
+		<Paper variant="elevation" elevation={elevation} css={style} sx={{ width: width, height: height }}>
 			{children}
 		</Paper>
 	);
