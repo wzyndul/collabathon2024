@@ -6,82 +6,89 @@ import { Button } from "../components/Button/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface AccountCardProps {
-  accountType: string;
-  accountNumber: string;
-  balance: number;
+	accountType: string;
+	accountNumber: string;
+	balance: number;
 }
 
 const generateAccountNumber = (length: number = 10): string => {
-  let accountNumber = "";
-  for (let i = 0; i < length; i++) {
-    accountNumber += Math.floor(Math.random() * 10).toString();
-  }
-  return accountNumber;
+	let accountNumber = "";
+	for (let i = 0; i < length; i++) {
+		accountNumber += Math.floor(Math.random() * 10).toString();
+	}
+	return accountNumber;
 };
 
 export const generateMockAccounts = (count: number): AccountCardProps[] => {
-  const accountTypes = ["Savings", "Checking", "Business", "Joint"];
-  const mockAccounts: AccountCardProps[] = [];
+	const accountTypes = ["Savings", "Checking", "Business", "Joint"];
+	const mockAccounts: AccountCardProps[] = [];
 
-  for (let i = 0; i < count; i++) {
-    const accountType = accountTypes[Math.floor(Math.random() * accountTypes.length)];
-    const accountNumber = generateAccountNumber();
-    const balance = parseFloat((Math.random() * 10000).toFixed(2));
+	for (let i = 0; i < count; i++) {
+		const accountType = accountTypes[Math.floor(Math.random() * accountTypes.length)];
+		const accountNumber = generateAccountNumber();
+		const balance = parseFloat((Math.random() * 10000).toFixed(2));
 
-    mockAccounts.push({ accountType, accountNumber, balance });
-  }
+		mockAccounts.push({ accountType, accountNumber, balance });
+	}
 
-  return mockAccounts;
+	return mockAccounts;
 };
 
 // const AccountWidget: React.FC<AccountCardProps> = ({ accountType, accountNumber, balance }: AccountCardProps) => {
 const AccountWidget: React.FC = () => {
-  const { accountType, accountNumber, balance } = generateMockAccounts(1)[0];
-  const firstDigit = accountNumber.slice(0, 2);
-  const lastDigit1 = accountNumber.slice(-4);
-  const lastDigit2 = accountNumber.slice(-8, -4);
+	const { accountType, accountNumber, balance } = generateMockAccounts(1)[0];
+	const firstDigit = accountNumber.slice(0, 2);
+	const lastDigit1 = accountNumber.slice(-4);
+	const lastDigit2 = accountNumber.slice(-8, -4);
 
-  return (
-    <Card
-      sx={{
-        width: 400,
-        height: 180,
-        padding: 2,
-        backgroundColor: "#002E3C",
-        color: "white",
-        position: "relative",
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: "1rem",
-      }}
-    >
-      <CardContent>
-        <Typography variant="h6" component="div" sx={{ position: "absolute", top: 12, left: 20 }}>
-          {accountType}
-        </Typography>
+	return (
+		<Card
+			sx={{
+				width: 400,
+				height: 180,
+				padding: 2,
+				backgroundColor: "#002E3C",
+				color: "white",
+				position: "relative",
+				display: "flex",
+				flexDirection: "column",
+				borderRadius: "1rem",
+			}}
+		>
+			<CardContent>
+				<Typography variant="h6" component="div" sx={{ position: "absolute", top: 12, left: 20 }}>
+					{accountType}
+				</Typography>
 
-        <Typography variant="body2" component="div" sx={{ position: "absolute", top: 45, left: 20 }}>
-          {firstDigit} (...) {lastDigit1} {lastDigit2}
-        </Typography>
+				<Typography variant="body2" component="div" sx={{ position: "absolute", top: 45, left: 20 }}>
+					{firstDigit} (...) {lastDigit1} {lastDigit2}
+				</Typography>
 
-        <Typography variant="h6" component="div" sx={{ textAlign: "right", marginTop: "10px" }}>
-          Balance
-        </Typography>
-        <Typography variant="h4" component="div" sx={{ textAlign: "right" }}>
-          ${balance.toFixed(2)}
-        </Typography>
-      </CardContent>
+				<Typography variant="h6" component="div" sx={{ textAlign: "right", marginTop: "10px" }}>
+					Balance
+				</Typography>
+				<Typography variant="h4" component="div" sx={{ textAlign: "right" }}>
+					${balance.toFixed(2)}
+				</Typography>
+			</CardContent>
 
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button bgColor={"none"} txtColor={"#FFD700"} bgHover={"#01394a"} startIcon={<HistoryIcon />} variant='outlined'>
-							HISTORY 
-						</Button>
-        <Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} startIcon={<TransferIcon />}>
-							TRANSFER 
-						</Button>
-      </div>
-    </Card>
-  );
+			<div style={{ display: "flex", justifyContent: "space-between" }}>
+				<Button
+					bgColor={"none"}
+					txtColor={"#FFD700"}
+					bgHover={"#01394a"}
+					startIcon={<HistoryIcon />}
+          hoverAnimation={true}
+					variant="outlined"
+				>
+					HISTORY
+				</Button>
+				<Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} startIcon={<TransferIcon />} hoverAnimation={true}>
+					TRANSFER
+				</Button>
+			</div>
+		</Card>
+	);
 };
 
 export default AccountWidget;
