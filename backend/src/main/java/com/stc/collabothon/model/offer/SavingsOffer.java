@@ -18,9 +18,9 @@ public class SavingsOffer extends Offer {
     private double minimumBalance;
 
 
-    public SavingsOffer(String title, String description, EligibilityCriteria criteria,
+    public SavingsOffer(String title, String description, String longDescription, EligibilityCriteria criteria,
                         double interestRate, double minimumBalance) {
-        super(title, description, criteria, OfferType.SAVINGS);
+        super(title, description, longDescription, criteria, OfferType.SAVINGS);
         this.interestRate = interestRate;
         this.minimumBalance = minimumBalance;
     }

@@ -23,7 +23,25 @@ interface HistoryListProps {
   data: HistoryDataElement[];
 }
 
+
+
 const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => {
+
+  const mapCurrencyToFlag = (currency: string) => {
+    switch (currency) {
+      case "USD":
+        return "us";
+      case "EUR":
+        return "eu";
+      case "PLN":
+        return "pl";
+      case "GPB":
+        return "gb";
+      default:
+        return "🏳️";
+    }
+  }
+
   const generateElement = (elem: AbstractListElement) => {
     const his = elem as HistoryDataElement;
     switch (his.transactionType) {
@@ -32,7 +50,7 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
         return (
           <>
             <ListItemIcon>
-              {/* <FlagStack country1={forex.country1} country2={forex.country2} /> */}
+              <FlagStack country1={mapCurrencyToFlag(forex.currency)} country2={mapCurrencyToFlag(forex.targetCurrency)} />
               TODO {/* TODO add function map CURENCY TO FLAG */}
             </ListItemIcon>
 

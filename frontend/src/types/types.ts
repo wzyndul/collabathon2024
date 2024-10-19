@@ -31,4 +31,21 @@ export interface MoneyTransferElement extends HistoryElement {
   description: string;
 }
 
+export interface StockDataPoint {
+  date: string;
+  price: number;
+  fullIndex: number;
+}
+
+
+export interface StockItem extends AbstractListElement {
+  symbol: string;
+  name: string;
+  price: number;
+  change: number;
+  changePercentage: string;
+  color: string;
+}
+
+
 export type HistoryDataElement = ForexElement | StockElement | LoanElement | MoneyTransferElement;

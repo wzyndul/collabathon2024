@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 interface ChartProps {
   data: StockDataPoint[];
-  label: React.ReactNode;
+  label?: React.ReactNode;
   yLabelGenerator: (value: number) => string;
   xLabelGenerator: (value: string) => string;
   getCustomXAxisTicks: (data: StockDataPoint[]) => number[];
