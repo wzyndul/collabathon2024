@@ -1,21 +1,22 @@
 import { css } from "@emotion/react";
 
-export const cardStyle = css`
-	border: 1px solid #DBE2E5;
-    background-color: #fbfbfe;
-    border-radius: 1rem;
+export const cardStyle = (backgroundColor: string, color: string) => css`
+	border: 1px solid #ffd700;
+	background-color: ${backgroundColor};
+	color: ${color};
+	border-radius: 1rem;
 	box-shadow: none;
 	height: 9rem;
 	padding: 0;
-    transition: transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
 
 	&:hover {
-		border-top: 1px solid #DBE2E5;
-		border-left: 1px solid #DBE2E5;
-		-webkit-box-shadow: 4px 4px 0px 0px #DBE2E5;
-		-moz-box-shadow: 4px 4px 0px 0px #DBE2E5;
-		box-shadow: 4px 4px 0px 0px #DBE2E5;
-         transform: translate(-4px, -4px);
+		border-top: 1px solid #ffd700;
+		border-left: 1px solid #ffd700;
+		-webkit-box-shadow: 4px 4px 0px 0px #ffd700;
+		-moz-box-shadow: 4px 4px 0px 0px #ffd700;
+		box-shadow: 4px 4px 0px 0px #ffd700;
+		transform: translate(-4px, -4px);
 	}
 `;
 

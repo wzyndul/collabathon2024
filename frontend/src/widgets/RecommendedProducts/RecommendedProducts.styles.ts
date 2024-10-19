@@ -11,14 +11,14 @@ export const productsContainerStyle = css`
 export const productsHeaderStyle = css`
 	display: flex;
 	flex-wrap: wrap;
-    gap: 2rem;
+	gap: 2rem;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	margin-bottom: 1rem;
-    @media (max-width: 510px) {
-        gap: 0.8rem; 
-    }
+	@media (max-width: 510px) {
+		gap: 0.8rem;
+	}
 `;
 
 export const productsCardsStyle = css`
