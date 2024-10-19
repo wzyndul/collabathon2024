@@ -88,9 +88,10 @@ public class OfferRecommendationsAlgorithm {
                     } else {
                         numberOfOffersFromCriteria++;
                     }
-                    // todo dont take corporate offers
-                } else {
+                } else if (offer.getCompanySizeCriteria() == null){
                     offers.add(offer);
+                } else {
+                    numberOfOffersFromCriteria++;
                 }
             }
 

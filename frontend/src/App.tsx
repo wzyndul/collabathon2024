@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useId, useState } from "react";
 import { Header } from "./components/Header/Header";
 import { RecommendedProducts } from "./widgets/RecommendedProducts/RecommendedProducts";
 import { Chatbot } from "./widgets/Chatbot/Chatbot";
@@ -29,28 +29,27 @@ function App() {
 		return <Loading />;
 	}
 
-	console.log(data);
-	return (
-		<div className="container">
-			<Header onChangeAccount={handleChangeAccount} data={userAccounts} />
-			<div className="page">
-				<AccountWidget userAccount={userAccounts ? userAccounts[userId] : undefined} />
-				<HistoryWidget />
-				<StockWidget />
-				<Box position="relative" width="30rem">
-					<RecommendedProducts data={data} />
-					<FloatingActionButton onClick={toggleChatbot}>
-						<TextsmsIcon />
-					</FloatingActionButton>
-				</Box>
-				<Grow in={isChatbotVisible} timeout={300}>
-					<Box>
-						<Chatbot data={data} />
-					</Box>
-				</Grow>
-			</div>
-		</div>
-	);
+  return (
+    <div className="container">
+      <Header onChangeAccount={handleChangeAccount} data={userAccounts}/>
+      <div className="page">
+      <StockWidget userId={userId}/>
+      <HistoryWidget userId={userId} />
+        <AccountWidget userAccount={userAccounts ? userAccounts.find(element => element.id === userId) : undefined}/>
+        <Box position="relative" width="30rem">
+          <RecommendedProducts data={data} />
+          <FloatingActionButton onClick={toggleChatbot}>
+            <TextsmsIcon />
+          </FloatingActionButton>
+        </Box>
+        <Grow in={isChatbotVisible} timeout={300}>
+          <Box>
+            <Chatbot data={data} />
+          </Box>
+        </Grow> 
+      </div>
+    </div>
+  );
 }
 
 export default App;

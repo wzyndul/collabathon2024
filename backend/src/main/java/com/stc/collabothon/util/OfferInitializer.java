@@ -18,24 +18,55 @@ public class OfferInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        LoanOffer loanOffer1 = new LoanOffer("Home Loan", "Low-interest home loan", "long description", EligibilityCriteria.MIDDLE_INCOME, 3.5, 250000, 240);
+        LoanOffer loanOffer1 = new LoanOffer("Home Loan", "Low-interest home loan",
+                "The Home Loan is crafted for middle-aged individuals in the middle-income category, offering a highly competitive interest rate of 3.5%. It allows borrowers to finance up to 250,000, spread over a long-term period of 240 months (20 years), making homeownership achievable without overstretching budgets. This loan is ideal for those looking to settle into a permanent home or upgrade their current residence. The loan provides flexibility in repayment, with terms that are manageable for those in their prime earning years, making it an excellent option for family-oriented individuals.",
+                EligibilityCriteria.MIDDLE_INCOME, 3.5, 250000, 240);
         loanOffer1.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
-        LoanOffer loanOffer2 = new LoanOffer("Business Car Loan", "Affordable car loan", "long description", EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
+
+        LoanOffer loanOffer2 = new LoanOffer("Business Car Loan", "Affordable car loan",
+                "The Business Car Loan is tailored for medium-sized businesses, especially those in the low-income bracket, needing affordable vehicle financing. With an interest rate of 4.0%, this loan provides up to 20,000 for the purchase of vehicles essential for business operations, such as delivery vans or company cars. The repayment term of 60 months offers flexibility, allowing businesses to manage vehicle costs without putting strain on their cash flow. This loan is perfect for companies looking to grow their fleet while keeping monthly payments reasonable.",
+                EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
         loanOffer2.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
-        LoanOffer loanOffer3 = new LoanOffer("Business Loan", "Loan for small businesses", "long description", EligibilityCriteria.UPPER_MIDDLE_INCOME, 5.5, 100000, 120);
+
+        LoanOffer loanOffer3 = new LoanOffer("Business Loan", "Loan for small businesses",
+                "This Business Loan is ideal for upper-middle-income entrepreneurs operating small businesses. Offering up to 100,000 at a competitive interest rate of 5.5%, this loan helps cover operational costs, expansion, or new ventures. The 120-month repayment period provides businesses the flexibility to grow at a steady pace without being weighed down by high monthly payments. Small business owners can use this loan to fuel growth, acquire new equipment, or expand into new markets, making it an essential tool for companies in the early stages of expansion.",
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 5.5, 100000, 120);
         loanOffer3.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
-        LoanOffer loanOffer4 = new LoanOffer("Student Loan", "Loan for higher education", "long description", EligibilityCriteria.LOW_INCOME, 2.0, 15000, 84);
+
+        LoanOffer loanOffer4 = new LoanOffer("Student Loan", "Loan for higher education",
+                "The Student Loan offers low-income students the financial support needed to pursue higher education without overwhelming debt. With an extremely low interest rate of 2.0%, students can borrow up to 15,000 for tuition, books, and living expenses. The 84-month repayment term allows graduates to repay the loan comfortably after completing their studies. This loan is designed to remove financial barriers to education, helping young people invest in their future and obtain the qualifications they need for a successful career.",
+                EligibilityCriteria.LOW_INCOME, 2.0, 15000, 84);
         loanOffer4.setAgeCriteria(AgeCriteria.STUDENT);
-        LoanOffer loanOffer5 = new LoanOffer("Personal Loan", "Unsecured personal loan", "long description", EligibilityCriteria.LOW_INCOME, 7.5, 10000, 36);
-        LoanOffer loanOffer6 = new LoanOffer("Vacation Loan", "Loan for holiday expenses", "long description", EligibilityCriteria.MIDDLE_INCOME, 4.5, 5000, 24);
-        LoanOffer loanOffer7 = new LoanOffer("Home Renovation Loan", "Loan for home improvement projects", "long description", EligibilityCriteria.MIDDLE_INCOME, 4.5, 50000, 180);
+
+        LoanOffer loanOffer5 = new LoanOffer("Personal Loan", "Unsecured personal loan",
+                "The Personal Loan is an unsecured financial solution designed for low-income individuals who need quick access to funds. With an interest rate of 7.5%, borrowers can secure up to 10,000, with a 36-month repayment period. This loan is perfect for unexpected expenses such as medical bills, home repairs, or personal projects. Since no collateral is required, the approval process is quick and straightforward, making it ideal for individuals facing short-term financial difficulties.",
+                EligibilityCriteria.LOW_INCOME, 7.5, 10000, 36);
+
+        LoanOffer loanOffer6 = new LoanOffer("Vacation Loan", "Loan for holiday expenses",
+                "The Vacation Loan is designed for middle-income earners who want to enjoy a well-deserved holiday without tapping into their savings. Offering a 4.5% interest rate, borrowers can take out up to 5,000 for travel, accommodation, and leisure activities. The repayment term is 24 months, ensuring that the financial burden of a vacation doesn't extend long after the holiday is over. This loan is a perfect option for those planning family vacations, romantic getaways, or even solo adventures, with easy repayments spread out over a manageable period.",
+                EligibilityCriteria.MIDDLE_INCOME, 4.5, 5000, 24);
+        loanOffer6.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
+
+        LoanOffer loanOffer7 = new LoanOffer("Home Renovation Loan", "Loan for home improvement projects",
+                "The Home Renovation Loan helps middle-aged, middle-income homeowners improve their living spaces without financial stress. With an interest rate of 4.5%, this loan allows up to 50,000 for various home renovation projects, including energy-efficient upgrades or structural improvements. Spread over 180 months, the loan offers a long repayment period to make monthly payments affordable. It’s ideal for homeowners looking to increase their property’s value or enhance their living conditions without needing a significant upfront investment.",
+                EligibilityCriteria.MIDDLE_INCOME, 4.5, 50000, 180);
         loanOffer7.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
-        LoanOffer loanOffer8 = new LoanOffer("Startup Business Loan", "Loan to help launch new businesses", "long description", EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
+
+        LoanOffer loanOffer8 = new LoanOffer("Startup Business Loan", "Loan to help launch new businesses",
+                "This Startup Business Loan is crafted for high-income entrepreneurs who are eager to start a new venture. Offering a loan amount of up to 200,000 with a 6.0% interest rate, this loan helps cover startup costs such as initial inventory, business licenses, or marketing campaigns. The repayment period of 120 months gives new businesses ample time to establish themselves before large repayments become due. This loan specifically targets small businesses, providing the financial support needed to turn innovative ideas into reality.",
+                EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
         loanOffer8.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
-        LoanOffer loanOffer9 = new LoanOffer("Luxury Car Loan", "Loan for luxury car purchases", "long description", EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 3.0, 150000, 60);
+
+        LoanOffer loanOffer9 = new LoanOffer("Luxury Car Loan", "Loan for luxury car purchases",
+                "The Luxury Car Loan caters to ultra-high-net-worth individuals who wish to purchase high-end or exotic vehicles. With an interest rate of 3.0%, borrowers can finance up to 150,000 for luxury car purchases, with repayment spread over 60 months. This loan is ideal for middle-aged individuals looking to invest in a prestigious vehicle without liquidating other assets. It offers flexible terms, allowing for manageable monthly payments while still enjoying the benefits of driving a luxury car.",
+                EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 3.0, 150000, 60);
         loanOffer9.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
-        LoanOffer loanOffer10 = new LoanOffer("Corporate Business Loan", "Loan to help big business thrive", "long description", EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
+
+        LoanOffer loanOffer10 = new LoanOffer("Corporate Business Loan", "Loan to help big business thrive",
+                "The Corporate Business Loan is tailored for high-income, large enterprises looking for significant financial backing. Offering a loan of up to 200,000 at a 6.0% interest rate, this product is perfect for established businesses looking to expand their operations, invest in new markets, or upgrade their infrastructure. With a 120-month repayment period, the loan provides flexibility for large-scale investments, ensuring that businesses can grow without putting immediate pressure on their cash flow. This loan specifically targets big companies with a need for high capital to achieve their long-term goals.",
+                EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
         loanOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+
         offerRepository.save(loanOffer1);
         offerRepository.save(loanOffer2);
         offerRepository.save(loanOffer3);
@@ -55,13 +86,14 @@ public class OfferInitializer implements CommandLineRunner {
                         "With no complicated features, it serves as a foundation for those wanting to build a reliable financial cushion.",
                 EligibilityCriteria.MIDDLE_INCOME, 1.5, 500);
 
-        SavingsOffer savingOffer2 = new SavingsOffer("Premium Savings", "Savings account with premium benefits",
+        SavingsOffer savingOffer2 = new SavingsOffer("Premium Savings for corporations", "Savings account with premium benefits",
                 "Premium Savings is tailored for high-income individuals looking for enhanced benefits and a higher return on their savings. " +
                         "With an interest rate of 2.0%, it is among the best offerings for wealthier clients who can maintain a minimum balance of 5000.00 pln. " +
                         "The account comes with additional perks, such as personalized financial advice and preferential customer service, to cater to affluent customers. " +
                         "It is ideal for those who want their savings to work harder for them, combining flexibility with premium-level rewards. " +
                         "This account is particularly suited for professionals and executives seeking both security and exclusivity in their banking experience.",
                 EligibilityCriteria.HIGH_INCOME, 2.0, 5000);
+        savingOffer2.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         SavingsOffer savingOffer3 = new SavingsOffer("Youth Savings", "Special savings account for young people",
                 "Youth Savings is a savings account crafted specifically for students and young adults at the start of their financial journey. " +
@@ -87,8 +119,8 @@ public class OfferInitializer implements CommandLineRunner {
                         "their savings continue to grow. The minimum balance requirement is 1000.00 pln, making it accessible while still encouraging steady saving. " +
                         "It provides flexible access to funds, enabling retirees to meet their living expenses without compromising on the growth of their savings. " +
                         "This account is perfect for retirees looking for both security and competitive interest rates to preserve and grow their nest egg.",
-                EligibilityCriteria.MIDDLE_INCOME, 2.5, 1000);
-        savingOffer4.setAgeCriteria(AgeCriteria.OLD);
+                EligibilityCriteria.HIGH_INCOME, 2.5, 1000);
+        savingOffer5.setAgeCriteria(AgeCriteria.OLD);
 
         SavingsOffer savingOffer6 = new SavingsOffer("Vacation Savings", "Save for holidays",
                 "Vacation Savings is designed for individuals who wish to save specifically for travel and holiday expenses. " +
@@ -117,7 +149,7 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.HIGH_INCOME, 2.5, 20000);
         savingOffer8.setAgeCriteria(AgeCriteria.PENSIONER);
 
-        SavingsOffer savingOffer9 = new SavingsOffer("Corporate Savings Plan", "Savings plan for small businesses",
+        SavingsOffer savingOffer9 = new SavingsOffer("Corporate Savings Plan", "Savings plan for big businesses",
                 "Corporate Savings Plan is designed for medium-sized businesses looking for a stable way to manage surplus cash flow. " +
                         "With an interest rate of 1.8% and a minimum balance of 5000.00 pln, this plan helps businesses grow their reserves while maintaining liquidity. " +
                         "It is specifically tailored for businesses in the upper-middle-income bracket, offering competitive returns with flexibility in accessing funds. " +
@@ -128,13 +160,20 @@ public class OfferInitializer implements CommandLineRunner {
 
         SavingsOffer savingOffer10 = new SavingsOffer("Big Corporation Savings Plan", "Savings plan for big businesses",
                 "longDescription",
-                EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
-        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 2.8, 50000);
+        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         SavingsOffer savingOffer11 = new SavingsOffer("Startup Savings Plan", "Savings plan for small businesses",
                 "longDescription",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
         savingOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
+
+        SavingsOffer savingOffer12 = new SavingsOffer("Pension Plus Account", "A reliable savings account for retirees.",
+                "The Pension Plus Account offers a steady 1.8% interest rate and is tailored for retirees looking for a secure way to grow their savings with minimal risk. " +
+                        "With a low minimum balance of 5000.00 PLN, this account ensures accessibility while offering consistent returns. It's perfect for pensioners who want " +
+                        "a dependable savings vehicle to support their day-to-day financial needs during retirement without the pressure of high-income requirements.",
+                EligibilityCriteria.LOW_INCOME, 1.8, 5000);
+        savingOffer12.setAgeCriteria(AgeCriteria.PENSIONER);
 
         offerRepository.save(savingOffer1);
         offerRepository.save(savingOffer2);
@@ -147,6 +186,7 @@ public class OfferInitializer implements CommandLineRunner {
         offerRepository.save(savingOffer9);
         offerRepository.save(savingOffer10);
         offerRepository.save(savingOffer11);
+        offerRepository.save(savingOffer12);
 
         InvestmentOffer investmentOffer1 = new InvestmentOffer("Tech Stocks Fund", "Invest in top tech companies",
                 "The Tech Stocks Fund is a high-risk, high-reward investment vehicle designed for high-income individuals who are keen on capitalizing " +
@@ -175,7 +215,7 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 6.5, InvestmentType.EQUITY, 15000, 1.2, 6, "Green Energy Fund");
         investmentOffer3.setAgeCriteria(AgeCriteria.OLD);
 
-        InvestmentOffer investmentOffer4 = new InvestmentOffer("Healthcare Fund", "Invest in healthcare sector",
+        InvestmentOffer investmentOffer4 = new InvestmentOffer("Healthcare Fund for Startups", "Invest in healthcare sector",
                 "The Healthcare Fund provides exposure to one of the most resilient and essential sectors—healthcare. " +
                         "Targeted at high-income investors, this equity fund offers a 7.0% return, with a minimum investment of 20,000.00 pln, focusing on both established and innovative healthcare companies. " +
                         "With a 1.3% management fee, it is a moderate-risk investment that capitalizes on the aging global population and increased demand for medical products and services. " +
