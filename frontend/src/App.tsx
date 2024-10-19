@@ -52,7 +52,7 @@ function App() {
           <Box>
             <Chatbot data={data} />
           </Box>
-        </Grow> */}
+        </Grow> 
       </div>
     </div>
   );
