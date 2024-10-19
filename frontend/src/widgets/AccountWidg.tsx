@@ -1,7 +1,9 @@
 import React from "react";
 import TransferIcon from "@mui/icons-material/SwapHoriz";
 import HistoryIcon from "@mui/icons-material/History";
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
+import { Button } from "../components/Button/Button";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface AccountCardProps {
   accountType: string;
@@ -45,6 +47,8 @@ const AccountWidget: React.FC = () => {
         width: 400,
         height: 180,
         padding: 2,
+        backgroundColor: "#002E3C",
+        color: "white",
         position: "relative",
         display: "flex",
         flexDirection: "column",
@@ -56,7 +60,7 @@ const AccountWidget: React.FC = () => {
           {accountType}
         </Typography>
 
-        <Typography variant="body2" component="div" sx={{ position: "absolute", top: 35, left: 20 }}>
+        <Typography variant="body2" component="div" sx={{ position: "absolute", top: 45, left: 20 }}>
           {firstDigit} (...) {lastDigit1} {lastDigit2}
         </Typography>
 
@@ -69,20 +73,12 @@ const AccountWidget: React.FC = () => {
       </CardContent>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button
-          variant="outlined"
-          sx={{ flex: 1, marginRight: 3, padding: "5px", fontSize: "0.8rem", minWidth: "auto" }}
-          startIcon={<HistoryIcon />}
-        >
-          History
-        </Button>
-        <Button
-          variant="contained"
-          sx={{ flex: 1, padding: "5px", fontSize: "0.8rem", minWidth: "auto" }}
-          startIcon={<TransferIcon />}
-        >
-          Transfer
-        </Button>
+        <Button bgColor={"none"} txtColor={"#FFD700"} bgHover={"#01394a"} startIcon={<HistoryIcon />} variant='outlined'>
+							HISTORY 
+						</Button>
+        <Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} startIcon={<TransferIcon />}>
+							TRANSFER 
+						</Button>
       </div>
     </Card>
   );

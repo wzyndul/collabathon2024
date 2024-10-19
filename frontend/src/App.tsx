@@ -34,10 +34,10 @@ function App() {
     <div className="container">
       <Header onChangeAccount={handleChangeAccount} />
       <div className="page">
-        <StockWidget/>
-        <HistoryWidget/>
+        {/* <StockWidget/> */}
+        {/* <HistoryWidget/> */}
         <AccountWidget/>
-        <Box position="relative" width="30rem">
+        {/* <Box position="relative" width="30rem">
           <RecommendedProducts data={data} />
           <FloatingActionButton onClick={toggleChatbot}>
             <TextsmsIcon />
@@ -47,7 +47,7 @@ function App() {
           <Box>
             <Chatbot />
           </Box>
-        </Grow>
+        </Grow> */}
       </div>
     </div>
   );
