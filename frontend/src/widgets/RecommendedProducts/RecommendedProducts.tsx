@@ -7,27 +7,20 @@ import { Card } from "../../components/Card/Card";
 import { Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
+import { GradientCircularProgress } from "../../components/CircularProgress/GradientCircularProgress";
 
 type IProps = {
 	userId: number;
-}
+};
 
 export const RecommendedProducts = ({ userId }: IProps) => {
-
-	const {
-		data,
-		isLoading,
-        isFetched,
-        isError,
-	} = useFetchProducts(true, userId);
-
+	const { data, isLoading, isFetched, isError } = useFetchProducts(true, userId);
 
 	console.log(data, isLoading, isFetched, isError);
 
-
 	if (isLoading) {
-        return <p>Loading...</p>;
-    }
+		return <GradientCircularProgress />;
+	}
 
 	return (
 		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
@@ -39,26 +32,30 @@ export const RecommendedProducts = ({ userId }: IProps) => {
 					</Button>
 				</span>
 				<div css={productsCardsStyle}>
-					{data && data.map((product, i) => {
-						return (
-						<Card
-						    key={`${product.id + product.title + i}`}
-							title={
-								<>
-									<Typography variant="h6">{product.title}</Typography>
-									<Divider/>
-								</>
-							}
-							avatar={<AssuredWorkloadIcon />}
-							content={<p>{product.description}</p>}
-						>
-							<div>
-								<Button variant="outlined" bgColor={"white"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
-									Choose
-								</Button>
-							</div>
-						</Card>)
-					})}
+					{data &&
+						data.map((product, i) => {
+							return (
+								<Card
+									key={`${product.id + product.title + i}`}
+									title={
+										<>
+											<Typography variant="h6">{product.title}</Typography>
+											<Divider />
+										</>
+									}
+									avatar={<AssuredWorkloadIcon />}
+									bgColor="#002E3C"
+									txtColor="white"
+									content={<p>{product.description}</p>}
+								>
+									<div>
+										<Button bgColor={"#FFD700"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
+											Choose
+										</Button>
+									</div>
+								</Card>
+							);
+						})}
 				</div>
 			</div>
 		</WidgetContainer>
