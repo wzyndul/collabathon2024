@@ -2,40 +2,32 @@
 import { WidgetContainer } from "../../components/WidgetContainer/WidgetContainer";
 import { Button } from "../../components/Button/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import AccountBalanceWalletTwoToneIcon from '@mui/icons-material/AccountBalanceWalletTwoTone';
-import AttachMoneyTwoToneIcon from '@mui/icons-material/AttachMoneyTwoTone';
-import HouseTwoToneIcon from '@mui/icons-material/HouseTwoTone';
+import AccountBalanceWalletTwoToneIcon from "@mui/icons-material/AccountBalanceWalletTwoTone";
+import AttachMoneyTwoToneIcon from "@mui/icons-material/AttachMoneyTwoTone";
+import HouseTwoToneIcon from "@mui/icons-material/HouseTwoTone";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
 import { Box, Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
-import { useFetchProducts } from "../../hooks/useFetchProducts";
-import { Loading } from "../../components/Loading/Loading";
+import { IRecommendedProduct } from "../../hooks/useFetchProducts";
 
 type IProps = {
-	userId: number;
+	data: IRecommendedProduct[] | undefined;
 };
 
-export const RecommendedProducts = ({ userId }: IProps) => {
-	const { data, isLoading, isFetched } = useFetchProducts(true, userId);
-
+export const RecommendedProducts = ({ data }: IProps) => {
 	const showIcon = (offerType: string): React.ReactNode => {
 		switch (offerType) {
-			case 'LOAN':
-				return <HouseTwoToneIcon style={{color: '#e0a200'}} />;
-			case 'INVESTMENT':
-				return <AttachMoneyTwoToneIcon style={{color: '#e0a200'}} />;
-			case 'SAVINGS"':
-				return <AccountBalanceWalletTwoToneIcon style={{color: '#e0a200'}} />;
+			case "LOAN":
+				return <HouseTwoToneIcon style={{ color: "#e0a200" }} />;
+			case "INVESTMENT":
+				return <AttachMoneyTwoToneIcon style={{ color: "#e0a200" }} />;
+			case "SAVINGS":
+				return <AccountBalanceWalletTwoToneIcon style={{ color: "#e0a200" }} />;
 			default:
-				return <AssuredWorkloadIcon style={{color: '#e0a200'}}/>;
+				return <AssuredWorkloadIcon style={{ color: "#e0a200" }} />;
 		}
 	};
-
-
-	if (isLoading || !isFetched) {
-		return <Loading/>;
-	}
 
 	return (
 		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">

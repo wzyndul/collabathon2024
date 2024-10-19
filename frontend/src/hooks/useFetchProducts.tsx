@@ -1,14 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-interface IRecommendedProduct {
+export interface IRecommendedProduct {
     id: number;
     offerType: string;
     title: string;
     description: string;
 }
 
-interface IProducts {
+export interface IProducts {
     isLoading: boolean;
     isFetched: boolean;
     isError: boolean;
