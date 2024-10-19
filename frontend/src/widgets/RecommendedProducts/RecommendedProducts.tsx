@@ -7,9 +7,11 @@ import AttachMoneyTwoToneIcon from "@mui/icons-material/AttachMoneyTwoTone";
 import HouseTwoToneIcon from "@mui/icons-material/HouseTwoTone";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, Fab, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 import { IRecommendedProduct } from "../../hooks/useFetchProducts";
+import { FloatingActionButton } from "../../components/FloatingActionButton/FloatingActionButton";
+import TextsmsIcon from "@mui/icons-material/Textsms";
 
 type IProps = {
 	data: IRecommendedProduct[] | undefined;
@@ -30,43 +32,48 @@ export const RecommendedProducts = ({ data }: IProps) => {
 	};
 
 	return (
-		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
-			<div css={productsContainerStyle}>
-				<Box css={productsHeaderStyle}>
-					<Typography variant="h5" css={{ fontWeight: "bold" }}>
-						Recommended Products
-					</Typography>
-					<Button bgColor={"#FFD700"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
-						READ MORE
-					</Button>
-				</Box>
-				<div css={productsCardsStyle}>
-					{data &&
-						data.map((product, i) => {
-							return (
-								<Card
-									key={`${product.id}-${i}`}
-									title={
-										<>
-											<Typography variant="h6">{product.title}</Typography>
-											<Divider />
-										</>
-									}
-									avatar={showIcon(product.offerType)}
-									bgColor="#002E3C"
-									txtColor="white"
-									content={<p>{product.description}</p>}
-								>
-									<div>
-										<Button bgColor={"#FFD700"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
-											Choose
-										</Button>
-									</div>
-								</Card>
-							);
-						})}
+		<Box position="relative" width="30rem">
+			<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
+				<div css={productsContainerStyle}>
+					<Box css={productsHeaderStyle}>
+						<Typography variant="h5" css={{ fontWeight: "bold" }}>
+							Recommended Products
+						</Typography>
+						<Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} endIcon={<ArrowForwardIcon />}>
+							READ MORE
+						</Button>
+					</Box>
+					<div css={productsCardsStyle}>
+						{data &&
+							data.map((product, i) => {
+								return (
+									<Card
+										key={`${product.id}-${i}`}
+										title={
+											<>
+												<Typography variant="h6">{product.title}</Typography>
+												<Divider />
+											</>
+										}
+										avatar={showIcon(product.offerType)}
+										bgColor="#002E3C"
+										txtColor="white"
+										content={<p>{product.description}</p>}
+									>
+										<div>
+											<Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} endIcon={<ArrowForwardIcon />}>
+												Choose
+											</Button>
+										</div>
+									</Card>
+								);
+							})}
+					</div>
 				</div>
-			</div>
-		</WidgetContainer>
+			</WidgetContainer>
+			<FloatingActionButton>
+				<TextsmsIcon />
+			</FloatingActionButton>
+		</Box>
 	);
 };

@@ -8,6 +8,7 @@ interface ButtonProps {
     size?: "small" | "medium" | "large" | undefined;
 	bgColor?: string;
     txtColor?: string;
+	bgHover?: string;
 	startIcon?: React.ReactNode;
 	endIcon?: React.ReactNode;
 	children: React.ReactNode;
@@ -18,15 +19,15 @@ export const Button: React.FC<ButtonProps> = ({
     size,
 	bgColor,
     txtColor,
+	bgHover,
 	startIcon,
 	endIcon,
 	children,
 }) => {
-	const style = buttonStyle(bgColor, txtColor);
 
 	return (
 		<MUIButton
-			css={style}
+			css={buttonStyle(bgColor, txtColor, bgHover)}
 			variant={variant}
             size={size}
 			startIcon={startIcon}
