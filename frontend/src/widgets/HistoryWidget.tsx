@@ -76,7 +76,7 @@ const HistoryWidget: React.FC = () => {
   });
   console.log('filteredData', filteredData)
   return (
-    <WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
+    <WidgetContainer width={"30rem"} height={"40rem"} bgColor="#fbfbfe">
       <h2>Transaction History</h2>
       <div>
         {filterOptions.map((option) => (
