@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1//chatbot")
+@RequestMapping("/api/v1/chatbot")
 public class ChatBotController {
 
     @Autowired
