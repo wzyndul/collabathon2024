@@ -59,12 +59,12 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
           <LineChart
             data={data}
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(0, 0, 0, 0.1)" />
+            <CartesianGrid strokeDasharray="3 3" stroke="white" />
             <XAxis
               dataKey="fullIndex"
               ticks={getCustomXAxisTicks(data)}
               tickFormatter={formatXAxis}
-              stroke="rgba(0, 0, 0, 0.54)"
+              stroke="white"
               padding={{ right: 20, left: 20 }}
               tick={{
                 fontSize: 12,
@@ -81,15 +81,16 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
             <Tooltip
               contentStyle={{
                 backgroundColor: "white",
+                color: "black",
                 border: "1px solid rgba(0, 0, 0, 0.12)",
                 borderRadius: "4px",
                 boxShadow:
                   "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
               }}
               labelFormatter={formatTooltipLabel}
-              formatter={(value: number) => [`$${value.toFixed(2)}`, "Price"]}
+              formatter={(value: number) => [<span style={{color: "#002E3C"}}>`$${value.toFixed(2)}`, "Price"</span>]}
             />
-            <Line type="monotone" dataKey="price" stroke="#1976d2" strokeWidth={2} dot={false} activeDot={{ r: 6 }} />
+            <Line type="monotone" dataKey="price" stroke="#FFD700" strokeWidth={2} dot={false} activeDot={{ r: 6 }} />
           </LineChart>
         </ResponsiveContainer>
       </Box>

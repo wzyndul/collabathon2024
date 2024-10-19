@@ -1,96 +1,100 @@
 import React from "react";
-import { List, ListItem, Button, Box } from "@mui/material";
+import { List, ListItem, Box } from "@mui/material";
+import { Button } from "./Button/Button";
 import { styled } from "@mui/material/styles";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 interface AbstractListElement {
-  id: number;
+	id: number;
 }
 
 interface AbstractListProps {
-  elements: AbstractListElement[];
-  generateElement: (elem: AbstractListElement) => React.ReactNode;
-  onClick?: (index: number) => void;
-  selectedSymbol?: number;
-  onShowMore?: () => void;
-  hasMore?: boolean;
+	elements: AbstractListElement[];
+	generateElement: (elem: AbstractListElement) => React.ReactNode;
+	onClick?: (index: number) => void;
+	selectedSymbol?: number;
+	onShowMore?: () => void;
+	hasMore?: boolean;
+	isHistory?: boolean;
 }
 
 // Styled components
 const GradientOverlay = styled(Box)({
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  right: 0,
-  height: "80px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.1) 60%, rgba(255,255,255,0.3) 75%, rgba(255,255,255,1) 100%)",
+	position: "absolute",
+	bottom: 0,
+	left: 0,
+	right: 0,
+	height: "80px",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	borderRadius: "1rem",
+	background:
+		"linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.1) 60%, rgba(255,255,255,0.3) 75%, rgba(255,255,255,1) 100%)",
 });
 
 const ListContainer = styled(Box)({
-  position: "relative",
+	position: "relative",
 });
 
 const AbstractList: React.FC<AbstractListProps> = ({
-  elements,
-  generateElement,
-  onClick,
-  selectedSymbol,
-  onShowMore,
-  hasMore = true,
+	elements,
+	generateElement,
+	onClick,
+	selectedSymbol,
+	onShowMore,
+	hasMore = true,
+	isHistory = false
 }) => {
-  return (
-    <ListContainer>
-      <List>
-        {elements.map((item, index) => {
-          const isLastItem = index === elements.length - 1;
-          
-          return (
-            <ListItem
-              key={item.id}
-              onClick={onClick ? () => onClick(index) : undefined}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                borderRadius: "12px",
-                padding: "10px",
-                transition: "background-color 0.3s ease",
-                "&:hover": {
-                  backgroundColor: "#f0f0f0",
-                },
-                cursor: onClick ? "pointer" : "default",
-                backgroundColor: selectedSymbol === index ? "#f0f0f0" : "inherit",
-                opacity: isLastItem && hasMore ? 0.3 : 1,
-              }}
-            >
-              {generateElement(item)}
-            </ListItem>
-          );
-        })}
-      </List>
-      
-      {hasMore && (
-        <GradientOverlay>
-          <Button 
-            variant="contained"
-            onClick={onShowMore}
-            sx={{
-              backgroundColor: "white",
-              color: "black",
-              boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
-              "&:hover": {
-                backgroundColor: "#f5f5f5",
-              },
-            }}
-          >
-            Show More
-          </Button>
-        </GradientOverlay>
-      )}
-    </ListContainer>
-  );
+	return (
+		<ListContainer>
+			<List
+				sx={{
+					backgroundColor: "#F1EFED",
+					borderRadius: isHistory ? "0 0 1rem 1rem" : "1rem",
+					padding: "0.5rem",
+				}}
+			>
+				{elements.map((item, index) => {
+					const isLastItem = index === elements.length - 1;
+
+					return (
+						<ListItem
+							key={item.id}
+							onClick={onClick ? () => onClick(index) : undefined}
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "space-between",
+								borderRadius: "1rem",
+								padding: "1rem",
+								cursor: onClick ? "pointer" : "default",
+								backgroundColor: selectedSymbol === index ? "white" : "inherit",
+								border: selectedSymbol === index ? "1px solid black" : "1px solid #F1EFED",
+								opacity: isLastItem && hasMore ? 0.3 : 1,
+								transition: "transform 0.3s ease-in-out, background-color 0.3s ease-in-out, border 0.3s ease-in-out",
+								"&:hover": {
+									backgroundColor: "white",
+									border: "1px solid black",
+								},
+                marginBottom: "1rem",
+							}}
+						>
+							{generateElement(item)}
+						</ListItem>
+					);
+				})}
+			</List>
+
+			{hasMore && (
+				<GradientOverlay>
+					<Button bgColor={"#002E3C"} txtColor={"white"} bgHover={"#01394a"} endIcon={<ArrowForwardIcon />}>
+						SHOW MORE
+					</Button>
+				</GradientOverlay>
+			)}
+		</ListContainer>
+	);
 };
 
 export default AbstractList;

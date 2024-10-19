@@ -8,7 +8,7 @@ import { useFetchProducts } from "./hooks/useFetchProducts";
 import { Box, Grow } from "@mui/material";
 import { FloatingActionButton } from "./components/FloatingActionButton/FloatingActionButton";
 import TextsmsIcon from "@mui/icons-material/Textsms";
-import HistoryWidget from "./widgets/HistoryWidget";
+import HistoryWidget from "./widgets/HistoryWidget/HistoryWidget";
 import AccountWidget from "./widgets/AccountWidg";
 import { useFetchAccounts } from "../src/hooks/useFetchAccounts";
 
@@ -52,7 +52,7 @@ function App() {
           <Box>
             <Chatbot data={data} />
           </Box>
-        </Grow>
+        </Grow> 
       </div>
     </div>
   );

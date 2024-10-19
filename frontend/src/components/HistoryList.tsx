@@ -165,21 +165,9 @@ const HistoryList: React.FC<HistoryListProps> = ({ data }: HistoryListProps) => 
   };
 
   return (
-    // <Card
-    //   sx={{
-    //     width: 400,
-    //     height: "auto",
-    //     padding: 2,
-    //     position: "relative",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     borderRadius: "1rem",
-    //   }}
-    // >
     <>
-      <AbstractList generateElement={generateElement} elements={data} />
+      <AbstractList generateElement={generateElement} elements={data} isHistory={true}/>
     </>
-    // </Card>
   );
 };
 

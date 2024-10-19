@@ -11,6 +11,7 @@ interface ButtonProps {
 	bgHover?: string;
 	startIcon?: React.ReactNode;
 	endIcon?: React.ReactNode;
+	hoverAnimation?: boolean;
 	children: React.ReactNode;
 }
 
@@ -22,12 +23,13 @@ export const Button: React.FC<ButtonProps> = ({
 	bgHover,
 	startIcon,
 	endIcon,
+	hoverAnimation,
 	children,
 }) => {
 
 	return (
 		<MUIButton
-			css={buttonStyle(bgColor, txtColor, bgHover)}
+			css={buttonStyle(bgColor, txtColor, bgHover, variant, hoverAnimation)}
 			variant={variant}
             size={size}
 			startIcon={startIcon}

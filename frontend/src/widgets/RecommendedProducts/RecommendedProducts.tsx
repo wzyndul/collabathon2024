@@ -59,7 +59,7 @@ export const RecommendedProducts = ({ data }: IProps) => {
 									>
 										<div>
 											<Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} endIcon={<ArrowForwardIcon />}>
-												Choose
+												CHOOSE
 											</Button>
 										</div>
 									</Card>
