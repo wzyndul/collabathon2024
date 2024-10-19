@@ -3,14 +3,44 @@
 }
 
 .page {
+  margin-top: 50rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  gap: 30px;
+  height: 80vh;
+  width: 100%;
+  padding: 50px;
+}
+
+.one {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 60px;
+  gap: 30px;
   height: 100vh;
   width: 100%;
   padding: 50px;
+}
+
+.two {
+
+}
+
+.three {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* gap: 30px; */
+  height: 100vh;
+  width: 55%;
+  padding: 80px;
 }
 
 ::-webkit-scrollbar {

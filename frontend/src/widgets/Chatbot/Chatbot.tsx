@@ -15,11 +15,11 @@ import {
 import { IRecommendedProduct } from "../../hooks/useFetchProducts";
 import Dots from "../../components/Dots/Dots";
 
-type IProps = {
+type ChatbotProps = {
 	data: IRecommendedProduct[] | undefined;
 };
 
-export const Chatbot = ({data}: IProps) => {
+export const Chatbot: React.FC<ChatbotProps> = ({data}) => {
 	const [isChatActive, setIsChatActive] = useState(false);
 	const [inputValue, setInputValue] = useState("");
 	const [isLoading, setLoading] = useState(false);
@@ -75,13 +75,13 @@ export const Chatbot = ({data}: IProps) => {
 				{messages.map((message, index) => (
 					<Box key={index} css={dialogLineContainerStyle(message.isUser)}>
 						<Paper elevation={0} css={dialogBubbleStyle(message.isUser)}>
-							{message.text}
+						{isLoading ? <Dots /> : message.text}
 						</Paper>
 
 					</Box>
 				))}
 
-				{isLoading?  <Dots/> : null}
+				{/* {isLoading?  <Dots/> : null} */}
 			</Box>
 			<Box css={userInputStyle}>
 				<InputBase
