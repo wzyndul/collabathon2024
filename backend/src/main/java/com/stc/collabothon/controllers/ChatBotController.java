@@ -32,8 +32,8 @@ public class ChatBotController {
 
     @PostMapping("/send-message")
     public Map<String, String> sendMessage(@RequestBody Map<String, String> request) throws IOException {
-        String message = request.get("message");
-        String response = chatBotService.sendMessage(message);
-        return Map.of("response", response);
+//        String message = request.get("message");
+//        String response = chatBotService.sendMessage(message);
+        return Map.of("response", "dummy data for now");
     }
 }

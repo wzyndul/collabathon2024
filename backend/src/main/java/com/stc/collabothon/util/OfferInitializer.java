@@ -65,6 +65,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "This product is perfect for young individuals in the low-income bracket who are looking to develop strong financial habits. " +
                         "It offers a simple yet effective tool for saving towards educational expenses, travel plans, or even a first car.",
                 EligibilityCriteria.LOW_INCOME, 1.0, 100);
+        savingOffer3.setAgeCriteria(AgeCriteria.YOUNG);
 
         SavingsOffer savingOffer4 = new SavingsOffer("Family Savings", "Savings account for families",
                 "The Family Savings account is designed for upper-middle-income families who want to jointly save for future needs and goals. " +
@@ -73,6 +74,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "The account offers flexible withdrawal options while incentivizing families to save regularly. It is an excellent tool for managing and growing family wealth " +
                         "in a structured, reliable manner, ensuring financial stability over the long term.",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 2000);
+        savingOffer4.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
 
         SavingsOffer savingOffer5 = new SavingsOffer("Senior Savings", "Savings for retirees",
                 "Senior Savings is specifically crafted for retirees who want to maximize the returns on their savings while minimizing financial risks. " +
@@ -81,6 +83,7 @@ public class OfferInitializer implements CommandLineRunner {
                         "It provides flexible access to funds, enabling retirees to meet their living expenses without compromising on the growth of their savings. " +
                         "This account is perfect for retirees looking for both security and competitive interest rates to preserve and grow their nest egg.",
                 EligibilityCriteria.MIDDLE_INCOME, 2.5, 1000);
+        savingOffer4.setAgeCriteria(AgeCriteria.OLD);
 
         SavingsOffer savingOffer6 = new SavingsOffer("Vacation Savings", "Save for holidays",
                 "Vacation Savings is designed for individuals who wish to save specifically for travel and holiday expenses. " +
