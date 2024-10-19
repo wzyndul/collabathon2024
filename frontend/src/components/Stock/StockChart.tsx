@@ -32,7 +32,6 @@ const generateMockStockData = (days: number, selectedSymbol: number): StockDataP
   
 
   for (let i = days; i >= 0; i--) {
-    // console.log(mulberry32(i))
     const date = new Date(today);
     date.setDate(today.getDate() - i);
     const change: number = price * (mulberry32(i | selectedSymbol) * 0.06 - 0.03);
