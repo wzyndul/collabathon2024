@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ChatBotService {
@@ -27,9 +28,38 @@ public class ChatBotService {
         chatSession = model.startChat();
 
 
+        List<Offer> selectedOffers = offers.stream()
+                .filter(offer -> ids.contains(offer.getId()))
+                .toList();
+
+        List<Offer> otherOffers = offers.stream()
+                .filter(offer -> !ids.contains(offer.getId()))
+                .toList();
+
+        StringBuilder promptBuilder = new StringBuilder("These are offers provided by the bank.\n");
+        promptBuilder.append("The first three 'Selected Offers' are those recommended by the bank's algorithm to the user.\n");
+        promptBuilder.append("If the user asks for other recommendations during the conversation, you can use the offers in 'Other Offers'.\n");
+        promptBuilder.append("You cannot invent offers; you can only use the offers available from the bank.\n\n");
+        promptBuilder.append("In response don't use special characters, be aware that your response will be displayed to the user.\n\n");
+
+        promptBuilder.append("Selected Offers:\n");
+        for (Offer offer : selectedOffers) {
+            promptBuilder.append("Title: ").append(offer.getTitle()).append("\n")
+                    .append("Long Description: ").append(offer.getLongDescription()).append("\n\n");
+        }
+
+        promptBuilder.append("Other Offers:\n");
+        for (Offer offer : otherOffers) {
+            promptBuilder.append("Title: ").append(offer.getTitle()).append("\n")
+                    .append("Long Description: ").append(offer.getLongDescription()).append("\n\n");
+        }
+
+        String prompt = promptBuilder.toString();
+
+
         Content initialContext = Content.newBuilder()
                 .setRole("user")
-                .addParts(Part.newBuilder().setText("test").build())
+                .addParts(Part.newBuilder().setText(prompt).build())
                 .build();
         chatSession.setHistory(List.of(initialContext));
     }
