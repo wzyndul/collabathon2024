@@ -1,6 +1,5 @@
 import { Tooltip } from "@mui/material";
 import InfoIcon from '@mui/icons-material/Info';
-import './Tooltip.css'
 
 interface IProps {
     age: string;

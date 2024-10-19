@@ -12,17 +12,23 @@ import {
 	iconButtonStyle,
 	userInputStyle,
 } from "./Chatbot.style";
+import { IRecommendedProduct } from "../../hooks/useFetchProducts";
 
-export const Chatbot = () => {
+type IProps = {
+	data: IRecommendedProduct[] | undefined;
+};
+
+export const Chatbot = ({data}: IProps) => {
 	const [isChatActive, setIsChatActive] = useState(false);
 	const [inputValue, setInputValue] = useState("");
 	const [isLoading, setLoading] = useState(false);
-
+	
 	useEffect(() => {
 		if (!isChatActive) {
 		const fetchData = async () => {
+		const ids = Array.isArray(data) && data.length > 0 ? data.map(product => product.id) : [];
 		  try {
-			await axios.post(`http://localhost:8080/api/v1/chatbot/start-chat`, {ids: [1, 2, 3]});
+			await axios.post(`http://localhost:8080/api/v1/chatbot/start-chat`, {ids});
 			setIsChatActive(true);
 		  } catch (error) {
 			console.error('Error fetching data:', error);
@@ -30,7 +36,7 @@ export const Chatbot = () => {
 		};
 		fetchData();
 	};
-	  }, [isChatActive]);
+	  }, [data, isChatActive]);
 
 	
 	const [messages, setMessages] = useState([
@@ -50,7 +56,7 @@ export const Chatbot = () => {
 	  
 			setMessages(prevMessages => [...prevMessages, { text: inputValue, isUser: true }]);
 	  
-			setMessages(prevMessages => [...prevMessages, { text: response.data, isUser: false }]);
+			setMessages(prevMessages => [...prevMessages, { text: response.data.response, isUser: false }]);
 	  
 			setInputValue("");
 		  } catch (error) {

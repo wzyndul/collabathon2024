@@ -46,7 +46,7 @@ function App() {
         </Box>
         <Grow in={isChatbotVisible} timeout={300}>
           <Box>
-            <Chatbot />
+            <Chatbot data={data} />
           </Box>
         </Grow>
       </div>
