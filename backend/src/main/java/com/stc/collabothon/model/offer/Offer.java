@@ -28,6 +28,8 @@ public abstract class Offer {
 
     @Enumerated(EnumType.STRING)
     private OfferType offerType;
+    @Column(columnDefinition = "TEXT")
+    private String longDescription;
 
     public Offer(String title, String description, EligibilityCriteria eligibilityCriteria, OfferType offerType) {
         this.title = title;
