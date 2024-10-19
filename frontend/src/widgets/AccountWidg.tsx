@@ -44,7 +44,7 @@ const AccountWidget: React.FC = () => {
 	return (
 		<Card
 			sx={{
-				width: 400,
+				width: '30rem',
 				height: 180,
 				padding: 2,
 				backgroundColor: "#002E3C",

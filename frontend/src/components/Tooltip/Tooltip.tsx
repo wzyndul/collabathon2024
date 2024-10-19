@@ -11,11 +11,11 @@ interface IProps {
 export function ButtonTooltip({age, gender, accountStatus}: IProps) {
   return (
     <Tooltip title={
-        <ul className="list">
-            <li className="list-element">Age: {age}</li>
-            <li className="list-element">Gender: {gender}</li>
-            <li className="list-element">Amount: {accountStatus}</li>
-        </ul>
+      <>
+            <div>Age: {age}</div>
+            <div>Gender: {gender}</div>
+            <div>Amount: {accountStatus}</div>
+      </>
     }>
         <InfoIcon className="info-icon" fontSize="small" />
     </Tooltip>

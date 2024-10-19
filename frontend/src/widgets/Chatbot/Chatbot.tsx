@@ -62,7 +62,7 @@ export const Chatbot = () => {
 	  }, [inputValue, setMessages, setInputValue]);
 		
 	return (
-		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
+		<WidgetContainer width={"30rem"} height={"40rem"} bgColor="#fbfbfe">
 			<Box css={chatbotHeaderStyle}>
 				<Typography variant="h5" css={{ fontWeight: "bold" }}>
 					Chatbot

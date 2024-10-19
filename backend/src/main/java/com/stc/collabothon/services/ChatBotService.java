@@ -40,7 +40,7 @@ public class ChatBotService {
         promptBuilder.append("The first three 'Selected Offers' are those recommended by the bank's algorithm to the user.\n");
         promptBuilder.append("If the user asks for other recommendations during the conversation, you can use the offers in 'Other Offers'.\n");
         promptBuilder.append("You cannot invent offers; you can only use the offers available from the bank.\n\n");
-        promptBuilder.append("In response don't use special characters, be aware that your response will be displayed to the user.\n\n");
+        promptBuilder.append("In response don't use special characters and markdown syntax, be aware that your response will be displayed to the user.\n\n");
 
         promptBuilder.append("Selected Offers:\n");
         for (Offer offer : selectedOffers) {
@@ -55,6 +55,7 @@ public class ChatBotService {
         }
 
         String prompt = promptBuilder.toString();
+        System.out.println("PROMPT: " + prompt); //TODO delete
 
 
         Content initialContext = Content.newBuilder()

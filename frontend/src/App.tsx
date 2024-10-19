@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { Header } from "./components/Header/Header";
 import { RecommendedProducts } from "./widgets/RecommendedProducts/RecommendedProducts";
-import "./App.css";
 import { Chatbot } from "./widgets/Chatbot/Chatbot";
 import StockWidget from "./widgets/StockWidget";
 import { Loading } from "./components/Loading/Loading";
@@ -11,6 +10,8 @@ import { FloatingActionButton } from "./components/FloatingActionButton/Floating
 import TextsmsIcon from "@mui/icons-material/Textsms";
 import HistoryWidget from "./widgets/HistoryWidget";
 import AccountWidget from "./widgets/AccountWidg";
+
+import "./App.css";
 
 
 function App() {
