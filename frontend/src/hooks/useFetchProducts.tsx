@@ -16,7 +16,6 @@ interface IProducts {
 }
 
 const fetchProducts = async (accountId: number): Promise<IRecommendedProduct[]> => {
-    console.log(accountId);
     const response = await axios.get(`http://localhost:8080/api/v1/offers/recommendations/${accountId}`);
     return response.data.response;
 };
