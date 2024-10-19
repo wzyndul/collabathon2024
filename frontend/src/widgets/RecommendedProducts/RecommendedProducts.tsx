@@ -4,7 +4,7 @@ import { Button } from "../../components/Button/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AssuredWorkloadIcon from "@mui/icons-material/AssuredWorkload";
 import { Card } from "../../components/Card/Card";
-import { Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
 import { GradientCircularProgress } from "../../components/CircularProgress/GradientCircularProgress";
@@ -25,12 +25,14 @@ export const RecommendedProducts = ({ userId }: IProps) => {
 	return (
 		<WidgetContainer width={"30rem"} height={"37rem"} bgColor="#fbfbfe">
 			<div css={productsContainerStyle}>
-				<span css={productsHeaderStyle}>
-					<h2>Recommended Products</h2>
+				<Box css={productsHeaderStyle}>
+					<Typography variant="h5" css={{ fontWeight: "bold" }}>
+						Recommended Products
+					</Typography>
 					<Button bgColor={"#FFD700"} txtColor={"black"} endIcon={<ArrowForwardIcon />}>
 						READ MORE
 					</Button>
-				</span>
+				</Box>
 				<div css={productsCardsStyle}>
 					{data &&
 						data.map((product, i) => {
