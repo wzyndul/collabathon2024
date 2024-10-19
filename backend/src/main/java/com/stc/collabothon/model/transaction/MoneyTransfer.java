@@ -19,13 +19,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 public class MoneyTransfer extends BankTransaction {
-
-    @ManyToOne
-    @JoinColumn(name = "recipient_account_id", referencedColumnName = "id")
-    private Account recipientAccount;
+    private Long recipientAccountId;
 
     public MoneyTransfer(LocalDateTime transactionDate, double amount, String description, Currency currency, Status status, Account account, Account recipientAccount) {
         super(transactionDate, amount, description, currency, status, account, TransactionType.MONEY_TRANSFER);
-        this.recipientAccount = recipientAccount;
+        this.recipientAccountId = recipientAccount.getId();
     }
 }
