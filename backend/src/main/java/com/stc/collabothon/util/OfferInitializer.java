@@ -18,24 +18,55 @@ public class OfferInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        LoanOffer loanOffer1 = new LoanOffer("Home Loan", "Low-interest home loan", "long description", EligibilityCriteria.MIDDLE_INCOME, 3.5, 250000, 240);
+        LoanOffer loanOffer1 = new LoanOffer("Home Loan", "Low-interest home loan",
+                "The Home Loan is crafted for middle-aged individuals in the middle-income category, offering a highly competitive interest rate of 3.5%. It allows borrowers to finance up to 250,000, spread over a long-term period of 240 months (20 years), making homeownership achievable without overstretching budgets. This loan is ideal for those looking to settle into a permanent home or upgrade their current residence. The loan provides flexibility in repayment, with terms that are manageable for those in their prime earning years, making it an excellent option for family-oriented individuals.",
+                EligibilityCriteria.MIDDLE_INCOME, 3.5, 250000, 240);
         loanOffer1.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
-        LoanOffer loanOffer2 = new LoanOffer("Business Car Loan", "Affordable car loan", "long description", EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
+
+        LoanOffer loanOffer2 = new LoanOffer("Business Car Loan", "Affordable car loan",
+                "The Business Car Loan is tailored for medium-sized businesses, especially those in the low-income bracket, needing affordable vehicle financing. With an interest rate of 4.0%, this loan provides up to 20,000 for the purchase of vehicles essential for business operations, such as delivery vans or company cars. The repayment term of 60 months offers flexibility, allowing businesses to manage vehicle costs without putting strain on their cash flow. This loan is perfect for companies looking to grow their fleet while keeping monthly payments reasonable.",
+                EligibilityCriteria.LOW_INCOME, 4.0, 20000, 60);
         loanOffer2.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
-        LoanOffer loanOffer3 = new LoanOffer("Business Loan", "Loan for small businesses", "long description", EligibilityCriteria.UPPER_MIDDLE_INCOME, 5.5, 100000, 120);
+
+        LoanOffer loanOffer3 = new LoanOffer("Business Loan", "Loan for small businesses",
+                "This Business Loan is ideal for upper-middle-income entrepreneurs operating small businesses. Offering up to 100,000 at a competitive interest rate of 5.5%, this loan helps cover operational costs, expansion, or new ventures. The 120-month repayment period provides businesses the flexibility to grow at a steady pace without being weighed down by high monthly payments. Small business owners can use this loan to fuel growth, acquire new equipment, or expand into new markets, making it an essential tool for companies in the early stages of expansion.",
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 5.5, 100000, 120);
         loanOffer3.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
-        LoanOffer loanOffer4 = new LoanOffer("Student Loan", "Loan for higher education", "long description", EligibilityCriteria.LOW_INCOME, 2.0, 15000, 84);
+
+        LoanOffer loanOffer4 = new LoanOffer("Student Loan", "Loan for higher education",
+                "The Student Loan offers low-income students the financial support needed to pursue higher education without overwhelming debt. With an extremely low interest rate of 2.0%, students can borrow up to 15,000 for tuition, books, and living expenses. The 84-month repayment term allows graduates to repay the loan comfortably after completing their studies. This loan is designed to remove financial barriers to education, helping young people invest in their future and obtain the qualifications they need for a successful career.",
+                EligibilityCriteria.LOW_INCOME, 2.0, 15000, 84);
         loanOffer4.setAgeCriteria(AgeCriteria.STUDENT);
-        LoanOffer loanOffer5 = new LoanOffer("Personal Loan", "Unsecured personal loan", "long description", EligibilityCriteria.LOW_INCOME, 7.5, 10000, 36);
-        LoanOffer loanOffer6 = new LoanOffer("Vacation Loan", "Loan for holiday expenses", "long description", EligibilityCriteria.MIDDLE_INCOME, 4.5, 5000, 24);
-        LoanOffer loanOffer7 = new LoanOffer("Home Renovation Loan", "Loan for home improvement projects", "long description", EligibilityCriteria.MIDDLE_INCOME, 4.5, 50000, 180);
+
+        LoanOffer loanOffer5 = new LoanOffer("Personal Loan", "Unsecured personal loan",
+                "The Personal Loan is an unsecured financial solution designed for low-income individuals who need quick access to funds. With an interest rate of 7.5%, borrowers can secure up to 10,000, with a 36-month repayment period. This loan is perfect for unexpected expenses such as medical bills, home repairs, or personal projects. Since no collateral is required, the approval process is quick and straightforward, making it ideal for individuals facing short-term financial difficulties.",
+                EligibilityCriteria.LOW_INCOME, 7.5, 10000, 36);
+
+        LoanOffer loanOffer6 = new LoanOffer("Vacation Loan", "Loan for holiday expenses",
+                "The Vacation Loan is designed for middle-income earners who want to enjoy a well-deserved holiday without tapping into their savings. Offering a 4.5% interest rate, borrowers can take out up to 5,000 for travel, accommodation, and leisure activities. The repayment term is 24 months, ensuring that the financial burden of a vacation doesn't extend long after the holiday is over. This loan is a perfect option for those planning family vacations, romantic getaways, or even solo adventures, with easy repayments spread out over a manageable period.",
+                EligibilityCriteria.MIDDLE_INCOME, 4.5, 5000, 24);
+        loanOffer6.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
+
+        LoanOffer loanOffer7 = new LoanOffer("Home Renovation Loan", "Loan for home improvement projects",
+                "The Home Renovation Loan helps middle-aged, middle-income homeowners improve their living spaces without financial stress. With an interest rate of 4.5%, this loan allows up to 50,000 for various home renovation projects, including energy-efficient upgrades or structural improvements. Spread over 180 months, the loan offers a long repayment period to make monthly payments affordable. It’s ideal for homeowners looking to increase their property’s value or enhance their living conditions without needing a significant upfront investment.",
+                EligibilityCriteria.MIDDLE_INCOME, 4.5, 50000, 180);
         loanOffer7.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
-        LoanOffer loanOffer8 = new LoanOffer("Startup Business Loan", "Loan to help launch new businesses", "long description", EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
+
+        LoanOffer loanOffer8 = new LoanOffer("Startup Business Loan", "Loan to help launch new businesses",
+                "This Startup Business Loan is crafted for high-income entrepreneurs who are eager to start a new venture. Offering a loan amount of up to 200,000 with a 6.0% interest rate, this loan helps cover startup costs such as initial inventory, business licenses, or marketing campaigns. The repayment period of 120 months gives new businesses ample time to establish themselves before large repayments become due. This loan specifically targets small businesses, providing the financial support needed to turn innovative ideas into reality.",
+                EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
         loanOffer8.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
-        LoanOffer loanOffer9 = new LoanOffer("Luxury Car Loan", "Loan for luxury car purchases", "long description", EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 3.0, 150000, 60);
+
+        LoanOffer loanOffer9 = new LoanOffer("Luxury Car Loan", "Loan for luxury car purchases",
+                "The Luxury Car Loan caters to ultra-high-net-worth individuals who wish to purchase high-end or exotic vehicles. With an interest rate of 3.0%, borrowers can finance up to 150,000 for luxury car purchases, with repayment spread over 60 months. This loan is ideal for middle-aged individuals looking to invest in a prestigious vehicle without liquidating other assets. It offers flexible terms, allowing for manageable monthly payments while still enjoying the benefits of driving a luxury car.",
+                EligibilityCriteria.ULTRA_HIGH_NET_WORTH, 3.0, 150000, 60);
         loanOffer9.setAgeCriteria(AgeCriteria.MIDDLE_AGED);
-        LoanOffer loanOffer10 = new LoanOffer("Corporate Business Loan", "Loan to help big business thrive", "long description", EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
+
+        LoanOffer loanOffer10 = new LoanOffer("Corporate Business Loan", "Loan to help big business thrive",
+                "The Corporate Business Loan is tailored for high-income, large enterprises looking for significant financial backing. Offering a loan of up to 200,000 at a 6.0% interest rate, this product is perfect for established businesses looking to expand their operations, invest in new markets, or upgrade their infrastructure. With a 120-month repayment period, the loan provides flexibility for large-scale investments, ensuring that businesses can grow without putting immediate pressure on their cash flow. This loan specifically targets big companies with a need for high capital to achieve their long-term goals.",
+                EligibilityCriteria.HIGH_INCOME, 6.0, 200000, 120);
         loanOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+
         offerRepository.save(loanOffer1);
         offerRepository.save(loanOffer2);
         offerRepository.save(loanOffer3);
