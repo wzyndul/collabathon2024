@@ -1,15 +1,15 @@
 import React from "react";
 import { List, ListItem } from "@mui/material";
-
-interface AbstractListElement {
-  id: number;
-}
+import { AbstractListElement } from "../types/types"; 
+// interface AbstractListElement {
+//   id: number;
+// }
 
 interface AbstractListProps {
   elements: AbstractListElement[];
   generateElement: (elem: AbstractListElement) => React.ReactNode;
-  onClick: (index: number) => void;
-  selectedSymbol: number;
+  onClick?: (index: number) => void;
+  selectedSymbol?: number;
 }
 
 const AbstractList: React.FC<AbstractListProps> = ({
@@ -23,14 +23,14 @@ const AbstractList: React.FC<AbstractListProps> = ({
       {elements.map((item, index) => (
         <ListItem
           key={item.id}
-          onClick={() => onClick(index)}
+          onClick={onClick ? () => onClick(index): () => {}}
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             borderRadius: "12px",
             padding: "10px",
-            marginBottom: "10px",
+            // width: "100%",
             transition: "background-color 0.3s ease",
             "&:hover": {
               backgroundColor: "#f0f0f0",

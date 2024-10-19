@@ -3,14 +3,12 @@ import TransferIcon from "@mui/icons-material/SwapHoriz";
 import HistoryIcon from "@mui/icons-material/History";
 import { Card, CardContent, Typography, Button } from "@mui/material";
 
-// Define the props type
 interface AccountCardProps {
-  accountType: string; // Account type (e.g., "Savings", "Checking")
-  accountNumber: string; // Full account number (e.g., "1234567890")
-  balance: number; // Account balance (e.g., 1000.00)
+  accountType: string;
+  accountNumber: string;
+  balance: number;
 }
 
-// Function to generate a random account number
 const generateAccountNumber = (length: number = 10): string => {
   let accountNumber = "";
   for (let i = 0; i < length; i++) {
@@ -19,7 +17,6 @@ const generateAccountNumber = (length: number = 10): string => {
   return accountNumber;
 };
 
-// Function to generate random account data
 export const generateMockAccounts = (count: number): AccountCardProps[] => {
   const accountTypes = ["Savings", "Checking", "Business", "Joint"];
   const mockAccounts: AccountCardProps[] = [];
@@ -27,7 +24,7 @@ export const generateMockAccounts = (count: number): AccountCardProps[] => {
   for (let i = 0; i < count; i++) {
     const accountType = accountTypes[Math.floor(Math.random() * accountTypes.length)];
     const accountNumber = generateAccountNumber();
-    const balance = parseFloat((Math.random() * 10000).toFixed(2)); // Random balance between 0 and 10000
+    const balance = parseFloat((Math.random() * 10000).toFixed(2));
 
     mockAccounts.push({ accountType, accountNumber, balance });
   }
@@ -36,7 +33,7 @@ export const generateMockAccounts = (count: number): AccountCardProps[] => {
 };
 
 // const AccountWidget: React.FC<AccountCardProps> = ({ accountType, accountNumber, balance }: AccountCardProps) => {
-    const AccountWidget: React.FC = () => {
+const AccountWidget: React.FC = () => {
   const { accountType, accountNumber, balance } = generateMockAccounts(1)[0];
   const firstDigit = accountNumber.slice(0, 2);
   const lastDigit1 = accountNumber.slice(-4);
@@ -51,16 +48,14 @@ export const generateMockAccounts = (count: number): AccountCardProps[] => {
         position: "relative",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        borderRadius: "1rem",
       }}
     >
-      <CardContent sx={{ flex: 1 }}>
-        {/* Account Type */}
+      <CardContent>
         <Typography variant="h6" component="div" sx={{ position: "absolute", top: 12, left: 20 }}>
           {accountType}
         </Typography>
 
-        {/* First and Last Digits */}
         <Typography variant="body2" component="div" sx={{ position: "absolute", top: 35, left: 20 }}>
           {firstDigit} (...) {lastDigit1} {lastDigit2}
         </Typography>
@@ -73,7 +68,6 @@ export const generateMockAccounts = (count: number): AccountCardProps[] => {
         </Typography>
       </CardContent>
 
-      {/* Action Buttons */}
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Button
           variant="outlined"
