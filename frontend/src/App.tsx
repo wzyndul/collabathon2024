@@ -15,7 +15,7 @@ function App() {
       <Header onChangeAccount={handleChangeAccount} />
       <div className='page'>
         <RecommendedProducts userId={userId}/>
-        <StockWidget/>
+        {/* <StockWidget/> */}
         <Chatbot/>
       </div>
     </div>

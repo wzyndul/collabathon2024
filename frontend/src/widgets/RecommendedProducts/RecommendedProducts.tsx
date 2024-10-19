@@ -10,7 +10,7 @@ import { Card } from "../../components/Card/Card";
 import { Box, Divider, Typography } from "@mui/material";
 import { productsCardsStyle, productsContainerStyle, productsHeaderStyle } from "./RecommendedProducts.styles";
 import { useFetchProducts } from "../../hooks/useFetchProducts";
-import { GradientCircularProgress } from "../../components/CircularProgress/GradientCircularProgress";
+import { Loading } from "../../components/Loading/Loading";
 
 type IProps = {
 	userId: number;
@@ -34,7 +34,7 @@ export const RecommendedProducts = ({ userId }: IProps) => {
 
 
 	if (isLoading || !isFetched) {
-		return <GradientCircularProgress />;
+		return <Loading/>;
 	}
 
 	return (
