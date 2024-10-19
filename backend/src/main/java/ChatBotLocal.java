@@ -16,7 +16,7 @@ public class ChatBotLocal {
     public static void main(String[] args) throws IOException {
         String projectId = "collabothon2024-439013";
         String location = "europe-west3";
-        String modelName = "gemini-1.5-flash-001";
+        String modelName = "gemini-1.5-pro";
         chatDiscussion(projectId, location, modelName);
     }
 
@@ -89,7 +89,8 @@ public class ChatBotLocal {
                     "- Ograniczona płynność - środki są zazwyczaj zamrożone do czasu emerytury\n" +
                     "- Oczekiwana stopa zwrotu może nie być gwarantowana i może się zmieniać w zależności od warunków rynkowych\n" +
                     "- Poziom ryzyka (4) może być zbyt wysoki dla bardziej konserwatywnych inwestorów zbliżających się do emerytury\n" +
-                    "- Potencjalne kary za wcześniejsze wycofanie środków";
+                    "- Potencjalne kary za wcześniejsze wycofanie środków" +
+                    "UŻYTKOWNIKOWI MOŻESZ POLECAĆ TYLKO POWYZSZE OFERTY< BO TYLKO TAKEI BANK POSIADA< NIE MOZESZ WYMYSLAC SWOICH";
 
             List<Content> chatHistory = new ArrayList<>();
             Content initialContext = Content.newBuilder()
