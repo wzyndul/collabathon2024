@@ -19,7 +19,11 @@ const AbstractList: React.FC<AbstractListProps> = ({
   selectedSymbol,
 }: AbstractListProps) => {
   return (
-    <List>
+    <List
+    sx={{
+      backgroundColor: "#F1EFED",
+      borderRadius: "1rem"
+    }}>
       {elements.map((item, index) => (
         <ListItem
           key={item.id}
@@ -28,8 +32,8 @@ const AbstractList: React.FC<AbstractListProps> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderRadius: "12px",
-            padding: "10px",
+            borderRadius: "1rem",
+            padding: "1rem",
             // width: "100%",
             transition: "background-color 0.3s ease",
             "&:hover": {

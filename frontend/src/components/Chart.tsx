@@ -64,7 +64,7 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
               dataKey="fullIndex"
               ticks={getCustomXAxisTicks(data)}
               tickFormatter={formatXAxis}
-              stroke="rgba(0, 0, 0, 0.54)"
+              stroke="white"
               padding={{ right: 20, left: 20 }}
               tick={{
                 fontSize: 12,
@@ -89,7 +89,7 @@ const Chart: React.FC<ChartProps> = ({ data, label, yLabelGenerator, xLabelGener
               labelFormatter={formatTooltipLabel}
               formatter={(value: number) => [`$${value.toFixed(2)}`, "Price"]}
             />
-            <Line type="monotone" dataKey="price" stroke="#1976d2" strokeWidth={2} dot={false} activeDot={{ r: 6 }} />
+            <Line type="monotone" dataKey="price" stroke="#FFD700" strokeWidth={2} dot={false} activeDot={{ r: 6 }} />
           </LineChart>
         </ResponsiveContainer>
       </Box>

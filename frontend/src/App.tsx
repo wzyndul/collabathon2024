@@ -34,9 +34,9 @@ function App() {
     <div className="container">
       <Header onChangeAccount={handleChangeAccount} />
       <div className="page">
-        {/* <StockWidget/> */}
+        <StockWidget/>
         {/* <HistoryWidget/> */}
-        <AccountWidget/>
+        {/* <AccountWidget/> */}
         {/* <Box position="relative" width="30rem">
           <RecommendedProducts data={data} />
           <FloatingActionButton onClick={toggleChatbot}>

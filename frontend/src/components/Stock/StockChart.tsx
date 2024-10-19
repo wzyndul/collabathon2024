@@ -3,6 +3,7 @@ import Chart from "../Chart";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import { StockDataPoint } from "../../types/types";
+import { Box } from "@mui/material";
 
 
 
@@ -22,7 +23,7 @@ const periods: Record<string, number> = {
 };
 
 const StyledButton = styled(Button)<{ selected: boolean }>(({ theme, selected }) => ({
-  color: "black",
+  color: "white",
   borderRadius: "20px",
   margin: "0 5px",
   backgroundColor: selected ? theme.palette.action.selected : "transparent",
@@ -135,7 +136,7 @@ const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", 
   }
 
   return (
-    <>
+    <Box>
       <Chart
         data={getFilteredData()}
         // label={title}
@@ -150,7 +151,7 @@ const StockChart: React.FC<StockChartProps> = ({ title = "Stock Price History", 
           </StyledButton>
         ))}
       </ButtonContainer>
-    </>
+    </Box>
   );
 };
 
