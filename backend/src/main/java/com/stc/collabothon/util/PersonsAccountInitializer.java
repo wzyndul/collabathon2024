@@ -32,19 +32,16 @@ public class PersonsAccountInitializer implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         // Create first individual user
-        Client person1 = NaturalPerson.builder()
-                .firstName("Wojti")
-                .lastName("TEST")
-                .dateOfBirth("01-01-2000")
-                .salutation("Mr.")
-                .title("Software Engineer")
-                .phoneNumber("123-456-7890")
-                .emailAddress("wojti@example.com")
-                .postalAddress("123 Main St, City, Country")
+        Client client1 = CorporateClient.builder()
+                .companyName("TechCorp")
+                .companySize(80)
+                .phoneNumber("111-222-3333")
+                .emailAddress("contact@techcorp.com")
+                .postalAddress("789 Corporate Blvd, City, Country")
                 .nationality("Polish")
                 .build();
 
-        person1 = clientRepository.save(person1);
+        client1 = clientRepository.save(client1);
 
         Account account1 = Account.builder()
                 .iban("PL12345678901234567890123456")
@@ -52,23 +49,20 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .accountNumberInternal("1234567890")
                 .accountNumberDisplay("9876543210")
                 .currency("PLN")
-                .balanceAmount(50000.99)
-                .client(person1)
+                .balanceAmount(800000.0)
+                .client(client1)
                 .build();
 
-        person1.setAccount(account1);
+        client1.setAccount(account1);
         account1 = accountRepository.save(account1);
 
         // Create second individual user
-        Client person2 = NaturalPerson.builder()
-                .firstName("Anna")
-                .lastName("KOWALSKA")
-                .dateOfBirth("15-05-1977")
-                .salutation("Ms.")
-                .title("Marketing Specialist")
-                .phoneNumber("987-654-3210")
-                .emailAddress("anna@example.com")
-                .postalAddress("456 Side St, City, Country")
+        Client person2 = CorporateClient.builder()
+                .companyName("NewIdeas Startup")
+                .companySize(25)
+                .phoneNumber("111-222-3333")
+                .emailAddress("contact@newideas.com")
+                .postalAddress("123 Corporate Blvd, City, Country")
                 .nationality("Polish")
                 .build();
 
@@ -80,7 +74,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .accountNumberInternal("0987654321")
                 .accountNumberDisplay("1234567890")
                 .currency("PLN")
-                .balanceAmount(75000.50)
+                .balanceAmount(750000.50)
                 .client(person2)
                 .build();
 

@@ -10,6 +10,7 @@ import { FloatingActionButton } from "./components/FloatingActionButton/Floating
 import TextsmsIcon from "@mui/icons-material/Textsms";
 import HistoryWidget from "./widgets/HistoryWidget/HistoryWidget";
 import AccountWidget from "./widgets/AccountWidg";
+import { useFetchAccounts } from "../src/hooks/useFetchAccounts";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
     []
   );
   const { data, isLoading, isFetched } = useFetchProducts(true, userId);
+  const { data: userAccounts } = useFetchAccounts();
 
   const toggleChatbot = () => {
     setIsChatbotVisible((prev) => !prev);
@@ -31,14 +33,16 @@ function App() {
     return <Loading />;
   }
 
+
+  console.log(data);
   return (
     <div className="container">
-      <Header onChangeAccount={handleChangeAccount} />
+      <Header onChangeAccount={handleChangeAccount} data={userAccounts}/>
       <div className="page">
-        {/* <StockWidget/> */}
-        <HistoryWidget/>
-        {/* <AccountWidget/> */}
-        {/* <Box position="relative" width="30rem">
+        <StockWidget />
+        <HistoryWidget />
+        <AccountWidget userAccount={userAccounts ? userAccounts[userId] : undefined}/>
+        <Box position="relative" width="30rem">
           <RecommendedProducts data={data} />
           <FloatingActionButton onClick={toggleChatbot}>
             <TextsmsIcon />
