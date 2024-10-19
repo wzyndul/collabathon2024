@@ -7,14 +7,15 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 60px;
   height: 100vh;
+  width: 100%;
   padding: 50px;
 }
 
 ::-webkit-scrollbar {
   width: 12px;
-  background-color: #e1a40a;
+  background-color: #FFD700;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -28,5 +29,5 @@
 
 .scrollable-element {
   scrollbar-width: thin;
-  scrollbar-color: #002e3d #e1a40a;
+  scrollbar-color: #002e3d #FFD700;
 }

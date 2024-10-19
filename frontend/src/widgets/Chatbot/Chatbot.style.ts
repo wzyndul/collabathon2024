@@ -32,27 +32,6 @@ export const dialogBubbleStyle = (isUser: boolean) => css`
 	-moz-box-shadow: 4px 4px 0px 0px #ffd700;
 	box-shadow: 4px 4px 0px 0px #ffd700;
 	max-width: 75%;
-
-	// adding triangle to the dialog window
-	// &::before {
-	//     content: '';
-	//     position: absolute;
-	//     bottom: -15px;
-	//     ${isUser ? "right: 20px;" : "left: 20px;"}
-	//     border-width: 10px 10px 0;
-	//     border-style: solid;
-	//     border-color: ${isUser ? "#002E3C" : "#fbfbfb"} transparent transparent transparent;
-	// }
-
-	// &::after {
-	//     content: '';
-	//     position: absolute;
-	//     bottom: -14px;
-	//     ${isUser ? "right: 20px;" : "left: 20px;"}
-	//     border-width: 10px 10px 0;
-	//     border-style: solid;
-	//     border-color: ${isUser ? "#002E3C" : "#fbfbfb"} transparent transparent transparent;
-	// }
 `;
 
 export const userInputStyle = css`
@@ -61,7 +40,6 @@ export const userInputStyle = css`
 	padding: 1rem;
 	background-color: #fbfbfe;
 	border-radius: 0 0 1rem 1rem;
-	// border: 1px solid #002E3C;
 `;
 
 export const iconButtonStyle = css`

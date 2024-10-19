@@ -6,7 +6,7 @@ export const buttonStyle = (
 	txtColor?: string,
 	bgHover?: string,
 	variant?: "text" | "outlined" | "contained" | undefined,
-	hoverAnimation?: boolean
+	hoverAnimation?: boolean,
 ) => css`
 	border-radius: 1rem;
 	background-color: ${variant === "outlined" ? "transparent" : bgColor};
