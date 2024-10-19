@@ -45,6 +45,8 @@ public class MembershipFunctionStorage {
         ageMembershipFunction.put(AgeCriteria.YOUNG, new TrapezoidalFunction(18,18,23, 28));
         ageMembershipFunction.put(AgeCriteria.STUDENT, new TrapezoidalFunction(19,19,21, 26));
         ageMembershipFunction.put(AgeCriteria.MIDDLE_AGED, new TriangularFunction(30, 50, 70));
+        ageMembershipFunction.put(AgeCriteria.PENSIONER, new TrapezoidalFunction(50, 80, 100, 100));
+        ageMembershipFunction.put(AgeCriteria.OLD, new TrapezoidalFunction(70, 90,100,100));
 
         //Company size
         companySizeMembershipFunction.put(CompanySizeCriteria.SMALL, new TrapezoidalFunction(0,0, 10, 30));

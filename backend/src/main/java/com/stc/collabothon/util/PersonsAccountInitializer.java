@@ -63,7 +63,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
         Client person2 = NaturalPerson.builder()
                 .firstName("Anna")
                 .lastName("KOWALSKA")
-                .dateOfBirth("15-05-1995")
+                .dateOfBirth("15-05-1977")
                 .salutation("Ms.")
                 .title("Marketing Specialist")
                 .phoneNumber("987-654-3210")
@@ -105,7 +105,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
                 .accountNumberInternal("5566778899")
                 .accountNumberDisplay("9988776655")
                 .currency("PLN")
-                .balanceAmount(100000.00)
+                .balanceAmount(1000000.00)
                 .client(business)
                 .build();
 
