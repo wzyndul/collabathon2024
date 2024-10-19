@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 export const cardStyle = (backgroundColor: string, color: string) => css`
-	border: 1px solid #ffd700;
+	// border: 1px solid #ffd700;
 	background-color: ${backgroundColor};
 	color: ${color};
 	border-radius: 1rem;
@@ -11,8 +11,8 @@ export const cardStyle = (backgroundColor: string, color: string) => css`
 	transition: transform 0.3s ease-in-out;
 
 	&:hover {
-		border-top: 1px solid #ffd700;
-		border-left: 1px solid #ffd700;
+		// border-top: 1px solid #ffd700;
+		// border-left: 1px solid #ffd700;
 		-webkit-box-shadow: 4px 4px 0px 0px #ffd700;
 		-moz-box-shadow: 4px 4px 0px 0px #ffd700;
 		box-shadow: 4px 4px 0px 0px #ffd700;

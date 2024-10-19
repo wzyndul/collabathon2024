@@ -10,6 +10,7 @@ export const productsContainerStyle = css`
 
 export const productsHeaderStyle = css`
 	display: flex;
+	padding: 1.5rem;
 	flex-wrap: wrap;
 	gap: 2rem;
 	justify-content: space-between;

@@ -4,7 +4,7 @@ import StockList from "../components/Stock/StockList";
 import StockChart from "../components/Stock/StockChart";
 
 interface StockWidgetProps {
-  //   symbols: string[];
+    // symbols: string[];
 }
 
 const StockWidget: React.FC<StockWidgetProps> = ({}: StockWidgetProps) => {
