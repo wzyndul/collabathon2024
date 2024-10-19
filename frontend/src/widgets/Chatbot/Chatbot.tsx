@@ -63,7 +63,7 @@ export const Chatbot = () => {
 			<Box css={chatWindowStyle}>
 				{messages.map((message, index) => (
 					<Box key={index} css={dialogLineContainerStyle(message.isUser)}>
-						<Paper elevation={2} css={dialogBubbleStyle(message.isUser)}>
+						<Paper elevation={0} css={dialogBubbleStyle(message.isUser)}>
 							{message.text}
 						</Paper>
 					</Box>
