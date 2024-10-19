@@ -22,19 +22,20 @@ const StockList: React.FC<StockListProps> = ({ onClick, selectedSymbol, StockIte
               width: 40,
               height: 40,
               marginRight: 2,
+              fontSize: 12
             }}
           >
             {stockItem.symbol.slice(0, 3)}
           </Avatar>
           <Box>
-            <Typography variant="body1">{stockItem.name}</Typography>
+            <Typography variant="body1" color="textSecondary">{stockItem.name}</Typography>
             <Typography variant="body2" color="textSecondary">
               {stockItem.symbol}
             </Typography>
           </Box>
         </Box>
         <Box sx={{ textAlign: "right" }}>
-          <Typography variant="body1">{stockItem.price.toFixed(1)}</Typography>
+          <Typography variant="body1" color="textSecondary">{stockItem.price.toFixed(1)}</Typography>
           <Typography variant="body2" color={stockItem.change > 0 ? "green" : "red"}>
             {stockItem.change} ({stockItem.changePercentage})
           </Typography>

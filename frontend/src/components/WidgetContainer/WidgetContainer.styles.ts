@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 
-export const widgetPaperStyle = (bgColor: string) => css`
+export const widgetPaperStyle = (bgColor?: string, txtColor?: string) => css`
+	border-radius: 1rem;
 	padding: 1.8rem;
 	background-color: ${bgColor};
-	border-radius: 1rem;
+	color: ${txtColor};
 `;

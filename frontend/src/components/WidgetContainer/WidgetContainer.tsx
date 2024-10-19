@@ -9,6 +9,7 @@ interface WidgetContainerProps {
 	width: string;
 	height: string;
 	bgColor?: string;
+	txtColor?: string;
 }
 
 export const WidgetContainer: React.FC<WidgetContainerProps> = ({
@@ -17,11 +18,12 @@ export const WidgetContainer: React.FC<WidgetContainerProps> = ({
 	width,
 	height,
 	bgColor = "#fbfbfe",
+	txtColor= "inherit"
 }) => {
 	const style = widgetPaperStyle(bgColor);
 
 	return (
-		<Paper variant="elevation" elevation={elevation} css={style} sx={{ width: width, height: height }}>
+		<Paper variant="elevation" elevation={elevation} css={style} sx={{ width: width, height: height, color: txtColor }}>
 			{children}
 		</Paper>
 	);
