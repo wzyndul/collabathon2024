@@ -158,14 +158,16 @@ public class OfferInitializer implements CommandLineRunner {
         savingOffer9.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
 
         SavingsOffer savingOffer10 = new SavingsOffer("Big Corporation Savings Plan", "Savings plan for big businesses",
-                "longDescription",
+                "The Big Corporation Savings Plan is designed specifically for upper middle-income corporations seeking to optimize their financial management while enjoying competitive interest rates. This savings account offers an interest rate of 1.8%, allowing businesses to grow their cash reserves efficiently over time. With a minimum deposit requirement of $5,000, this plan is perfect for established companies looking to maintain liquidity while earning interest on their funds. The flexibility of this savings plan allows corporations to access their funds whenever necessary, making it an ideal choice for businesses that need to manage cash flow without sacrificing earning potential. Additionally, this savings plan provides businesses with the security and stability they need in an ever-changing economic environment, ensuring that their financial future is safeguarded.",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
         savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
 
+
         SavingsOffer savingOffer11 = new SavingsOffer("Startup Savings Plan", "Savings plan for small businesses",
-                "longDescription",
+                "The Startup Savings Plan is tailored for small businesses and startups looking to build their financial foundation while taking advantage of a competitive interest rate of 1.8%. Designed with the unique challenges of startups in mind, this plan requires a minimum deposit of just $5,000, making it accessible for new businesses. With this savings account, entrepreneurs can effectively manage their cash flow and set aside funds for future investments or operational expenses. The account provides the flexibility needed for startups to withdraw funds when necessary while still allowing them to earn interest on their savings. This plan not only promotes financial discipline but also aids in long-term planning, empowering startups to achieve their goals while ensuring their financial resources are working for them.",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
         savingOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
+
 
         SavingsOffer savingOffer12 = new SavingsOffer("Pension Plus Account", "A reliable savings account for retirees.",
                 "The Pension Plus Account offers a steady 1.8% interest rate and is tailored for retirees looking for a secure way to grow their savings with minimal risk. " +
@@ -289,9 +291,11 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.MIDDLE_INCOME, 4.0, InvestmentType.TRUST_FUND, 30000, 0.8, 5, "Pension Fund");
         investmentOffer12.setAgeCriteria(AgeCriteria.PENSIONER);
 
-        InvestmentOffer investmentOffer13 = new InvestmentOffer("Corporate Investment Fund", "Investment for tech corporations", "longDesc",
+        InvestmentOffer investmentOffer13 = new InvestmentOffer("Corporate Investment Fund", "Investment for tech corporations",
+                "The Corporate Investment Fund is an exclusive opportunity for high-income individuals and large tech corporations looking to invest in the booming technology sector. This fund targets innovative startups and established companies poised for growth, particularly in areas such as artificial intelligence, blockchain, and renewable energy technologies. With a competitive return rate of 10.0%, investors can expect a robust yield over a commitment period of three years. The minimum investment of 50,000 allows for significant capital deployment, while the management fee of 2.5% ensures professional oversight and strategic direction for the fund's portfolio. This investment offers not only financial returns but also the chance to be part of transformative technologies that shape the future, appealing to those passionate about innovation and technological advancement. With a focus on large corporations, the fund is designed to leverage industry insights and connections to maximize investor benefits while fostering growth in the tech landscape.",
                 EligibilityCriteria.HIGH_INCOME, 10.0, InvestmentType.EQUITY, 50000, 2.5, 3, "Startup Fund");
         investmentOffer13.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+
 
         offerRepository.save(investmentOffer1);
         offerRepository.save(investmentOffer2);
