@@ -116,18 +116,73 @@ public class PersonsAccountInitializer implements CommandLineRunner {
         business.setAccount(account3);
         account3 = accountRepository.save(account3);
 
-        //TRANSACTIONS
-        CurrencyExchange currencyExchange = new CurrencyExchange();
-        currencyExchange.setTransactionDate(LocalDateTime.now());
-        currencyExchange.setAmount(1000.0);
-        currencyExchange.setDescription("Currency exchange from EUR to USD");
-        currencyExchange.setCurrency(Currency.EUR);
-        currencyExchange.setStatus(Status.SUCCESS);
-        currencyExchange.setAccount(account1);  // Use persisted account
-        currencyExchange.setTargetCurrency(Currency.USD);
-        currencyExchange.setExchangeRate(1.1);
-        currencyExchange.setOriginalAmount(1000);
-        currencyExchange.setExchangedAmount(1100);
+        // Add more transactions for account1 (first user)
+
+        // Currency Exchange
+        CurrencyExchange currencyExchange1 = new CurrencyExchange();
+        currencyExchange1.setTransactionDate(LocalDateTime.now().minusDays(1));
+        currencyExchange1.setAmount(3000.0);
+        currencyExchange1.setDescription("Currency exchange from PLN to USD");
+        currencyExchange1.setCurrency(Currency.PLN);
+        currencyExchange1.setStatus(Status.SUCCESS);
+        currencyExchange1.setAccount(account1);  // Use persisted account1
+        currencyExchange1.setTargetCurrency(Currency.USD);
+        currencyExchange1.setExchangeRate(0.25);  // Example rate
+        currencyExchange1.setOriginalAmount(3000);
+        currencyExchange1.setExchangedAmount(750);
+
+        // Loan for account1
+        Loan loan1 = new Loan();
+        loan1.setTransactionDate(LocalDateTime.now().minusDays(5));
+        loan1.setAmount(25000.0);
+        loan1.setDescription("Personal loan");
+        loan1.setCurrency(Currency.PLN);
+        loan1.setStatus(Status.PENDING);
+        loan1.setAccount(account1);  // Use persisted account1
+        loan1.setInterestRate(5.0);
+        loan1.setLoanAmount(25000.0);
+        loan1.setLoanDuration(180); // 15 years
+
+        // Investment for account1
+        Investment investment1 = new Investment();
+        investment1.setTransactionDate(LocalDateTime.now().minusDays(3));
+        investment1.setAmount(5000.0);
+        investment1.setDescription("Investment in renewable energy stocks");
+        investment1.setCurrency(Currency.EUR);
+        investment1.setStatus(Status.SUCCESS);
+        investment1.setAccount(account1);  // Use persisted account1
+        investment1.setInvestmentType(InvestmentType.EQUITY);
+        investment1.setManagementFee(1.3);
+        investment1.setStockName("Renewable Energy Fund");
+
+        // Money Transfer for account1
+        MoneyTransfer transfer1 = new MoneyTransfer();
+        transfer1.setTransactionDate(LocalDateTime.now().minusDays(7));
+        transfer1.setAmount(1200.0);
+        transfer1.setDescription("Transfer to Anna Kowalska");
+        transfer1.setCurrency(Currency.PLN);
+        transfer1.setStatus(Status.SUCCESS);
+        transfer1.setAccount(account1);  // Use persisted account1
+        transfer1.setRecipientAccount(account2);  // Transfer to Anna Kowalska (account2)
+
+        // Save all additional transactions for account1
+        bankTransactionRepository.save(currencyExchange1);
+        bankTransactionRepository.save(loan1);
+        bankTransactionRepository.save(investment1);
+        bankTransactionRepository.save(transfer1);
+
+        // Save other existing transactions
+        CurrencyExchange currencyExchange2 = new CurrencyExchange();
+        currencyExchange2.setTransactionDate(LocalDateTime.now());
+        currencyExchange2.setAmount(1000.0);
+        currencyExchange2.setDescription("Currency exchange from EUR to USD");
+        currencyExchange2.setCurrency(Currency.EUR);
+        currencyExchange2.setStatus(Status.SUCCESS);
+        currencyExchange2.setAccount(account1);  // Use persisted account
+        currencyExchange2.setTargetCurrency(Currency.USD);
+        currencyExchange2.setExchangeRate(1.1);
+        currencyExchange2.setOriginalAmount(1000);
+        currencyExchange2.setExchangedAmount(1100);
 
         Investment investment = new Investment();
         investment.setTransactionDate(LocalDateTime.now());
@@ -135,7 +190,7 @@ public class PersonsAccountInitializer implements CommandLineRunner {
         investment.setDescription("Investment in tech stocks");
         investment.setCurrency(Currency.USD);
         investment.setStatus(Status.SUCCESS);
-        investment.setAccount(account2);  // Use persisted account
+        investment.setAccount(account1);  // Use persisted account
         investment.setInvestmentType(InvestmentType.EQUITY);
         investment.setManagementFee(1.5);
         investment.setStockName("Tech Fund");
@@ -160,8 +215,8 @@ public class PersonsAccountInitializer implements CommandLineRunner {
         moneyTransfer.setAccount(account2);  // Use persisted account
         moneyTransfer.setRecipientAccount(account1);  // Use persisted account
 
-        // Now save the transactions
-        bankTransactionRepository.save(currencyExchange);
+        // Now save the original transactions
+        bankTransactionRepository.save(currencyExchange2);
         bankTransactionRepository.save(investment);
         bankTransactionRepository.save(loan);
         bankTransactionRepository.save(moneyTransfer);
