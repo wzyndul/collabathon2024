@@ -7,12 +7,14 @@ interface IPersonalInfo {
     lastname: string;
     salutation: string;
     age: string;
+    type: string;
 }
 
 export interface IAccount {
     id: number;
     client: IPersonalInfo;
     balanceAmount: number;
+    bban: string;
 }
 
 interface IFetchAccounts {
