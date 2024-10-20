@@ -19,13 +19,13 @@ export const RecommendedProducts = ({ data }: IProps) => {
 	const showIcon = (offerType: string): React.ReactNode => {
 		switch (offerType) {
 			case "LOAN":
-				return <HouseTwoToneIcon style={{ color: "#e0a200" }} />;
+				return <HouseTwoToneIcon style={{ color: "#FFD700" }} />;
 			case "INVESTMENT":
-				return <AttachMoneyTwoToneIcon style={{ color: "#e0a200" }} />;
+				return <AttachMoneyTwoToneIcon style={{ color: "#FFD700" }} />;
 			case "SAVINGS":
-				return <AccountBalanceWalletTwoToneIcon style={{ color: "#e0a200" }} />;
+				return <AccountBalanceWalletTwoToneIcon style={{ color: "#FFD700" }} />;
 			default:
-				return <AssuredWorkloadIcon style={{ color: "#e0a200" }} />;
+				return <AssuredWorkloadIcon style={{ color: "#FFD700" }} />;
 		}
 	};
 
@@ -36,9 +36,6 @@ export const RecommendedProducts = ({ data }: IProps) => {
 						<Typography variant="h5" css={{ fontWeight: "bold" }}>
 							Recommended Products
 						</Typography>
-						{/* <Button bgColor={"#FFD700"} txtColor={"black"} bgHover={"#ffc400"} endIcon={<ArrowForwardIcon />}>
-							READ MORE
-						</Button> */}
 					</Box>
 					<div css={productsCardsStyle}>
 						{data &&

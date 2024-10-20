@@ -86,13 +86,14 @@ public class OfferInitializer implements CommandLineRunner {
                         "With no complicated features, it serves as a foundation for those wanting to build a reliable financial cushion.",
                 EligibilityCriteria.MIDDLE_INCOME, 1.5, 500);
 
-        SavingsOffer savingOffer2 = new SavingsOffer("Premium Savings", "Savings account with premium benefits",
+        SavingsOffer savingOffer2 = new SavingsOffer("Premium Savings for corporations", "Savings account with premium benefits",
                 "Premium Savings is tailored for high-income individuals looking for enhanced benefits and a higher return on their savings. " +
                         "With an interest rate of 2.0%, it is among the best offerings for wealthier clients who can maintain a minimum balance of 5000.00 pln. " +
                         "The account comes with additional perks, such as personalized financial advice and preferential customer service, to cater to affluent customers. " +
                         "It is ideal for those who want their savings to work harder for them, combining flexibility with premium-level rewards. " +
                         "This account is particularly suited for professionals and executives seeking both security and exclusivity in their banking experience.",
                 EligibilityCriteria.HIGH_INCOME, 2.0, 5000);
+        savingOffer2.setCompanySizeCriteria(CompanySizeCriteria.BIG);
 
         SavingsOffer savingOffer3 = new SavingsOffer("Youth Savings", "Special savings account for young people",
                 "Youth Savings is a savings account crafted specifically for students and young adults at the start of their financial journey. " +
@@ -118,8 +119,8 @@ public class OfferInitializer implements CommandLineRunner {
                         "their savings continue to grow. The minimum balance requirement is 1000.00 pln, making it accessible while still encouraging steady saving. " +
                         "It provides flexible access to funds, enabling retirees to meet their living expenses without compromising on the growth of their savings. " +
                         "This account is perfect for retirees looking for both security and competitive interest rates to preserve and grow their nest egg.",
-                EligibilityCriteria.MIDDLE_INCOME, 2.5, 1000);
-        savingOffer4.setAgeCriteria(AgeCriteria.OLD);
+                EligibilityCriteria.HIGH_INCOME, 2.5, 1000);
+        savingOffer5.setAgeCriteria(AgeCriteria.OLD);
 
         SavingsOffer savingOffer6 = new SavingsOffer("Vacation Savings", "Save for holidays",
                 "Vacation Savings is designed for individuals who wish to save specifically for travel and holiday expenses. " +
@@ -148,7 +149,7 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.HIGH_INCOME, 2.5, 20000);
         savingOffer8.setAgeCriteria(AgeCriteria.PENSIONER);
 
-        SavingsOffer savingOffer9 = new SavingsOffer("Corporate Savings Plan", "Savings plan for small businesses",
+        SavingsOffer savingOffer9 = new SavingsOffer("Corporate Savings Plan", "Savings plan for big businesses",
                 "Corporate Savings Plan is designed for medium-sized businesses looking for a stable way to manage surplus cash flow. " +
                         "With an interest rate of 1.8% and a minimum balance of 5000.00 pln, this plan helps businesses grow their reserves while maintaining liquidity. " +
                         "It is specifically tailored for businesses in the upper-middle-income bracket, offering competitive returns with flexibility in accessing funds. " +
@@ -158,14 +159,17 @@ public class OfferInitializer implements CommandLineRunner {
         savingOffer9.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
 
         SavingsOffer savingOffer10 = new SavingsOffer("Big Corporation Savings Plan", "Savings plan for big businesses",
-                "longDescription",
-                EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
-        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.MEDIUM);
+                "The Big Corporation Savings Plan is designed specifically for upper middle-income corporations seeking to optimize their financial management while enjoying competitive interest rates. This savings account offers an interest rate of 1.8%, allowing businesses to grow their cash reserves efficiently over time. With a minimum deposit requirement of $5,000, this plan is perfect for established companies looking to maintain liquidity while earning interest on their funds. The flexibility of this savings plan allows corporations to access their funds whenever necessary, making it an ideal choice for businesses that need to manage cash flow without sacrificing earning potential. Additionally, this savings plan provides businesses with the security and stability they need in an ever-changing economic environment, ensuring that their financial future is safeguarded.",
+                EligibilityCriteria.UPPER_MIDDLE_INCOME, 2.8, 5000);
+        savingOffer10.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+
+
 
         SavingsOffer savingOffer11 = new SavingsOffer("Startup Savings Plan", "Savings plan for small businesses",
-                "longDescription",
+                "The Startup Savings Plan is tailored for small businesses and startups looking to build their financial foundation while taking advantage of a competitive interest rate of 1.8%. Designed with the unique challenges of startups in mind, this plan requires a minimum deposit of just $5,000, making it accessible for new businesses. With this savings account, entrepreneurs can effectively manage their cash flow and set aside funds for future investments or operational expenses. The account provides the flexibility needed for startups to withdraw funds when necessary while still allowing them to earn interest on their savings. This plan not only promotes financial discipline but also aids in long-term planning, empowering startups to achieve their goals while ensuring their financial resources are working for them.",
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 1.8, 5000);
         savingOffer11.setCompanySizeCriteria(CompanySizeCriteria.SMALL);
+
 
         SavingsOffer savingOffer12 = new SavingsOffer("Pension Plus Account", "A reliable savings account for retirees.",
                 "The Pension Plus Account offers a steady 1.8% interest rate and is tailored for retirees looking for a secure way to grow their savings with minimal risk. " +
@@ -214,7 +218,7 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.UPPER_MIDDLE_INCOME, 6.5, InvestmentType.EQUITY, 15000, 1.2, 6, "Green Energy Fund");
         investmentOffer3.setAgeCriteria(AgeCriteria.OLD);
 
-        InvestmentOffer investmentOffer4 = new InvestmentOffer("Healthcare Fund", "Invest in healthcare sector",
+        InvestmentOffer investmentOffer4 = new InvestmentOffer("Healthcare Fund for Startups", "Invest in healthcare sector",
                 "The Healthcare Fund provides exposure to one of the most resilient and essential sectors—healthcare. " +
                         "Targeted at high-income investors, this equity fund offers a 7.0% return, with a minimum investment of 20,000.00 pln, focusing on both established and innovative healthcare companies. " +
                         "With a 1.3% management fee, it is a moderate-risk investment that capitalizes on the aging global population and increased demand for medical products and services. " +
@@ -289,9 +293,11 @@ public class OfferInitializer implements CommandLineRunner {
                 EligibilityCriteria.MIDDLE_INCOME, 4.0, InvestmentType.TRUST_FUND, 30000, 0.8, 5, "Pension Fund");
         investmentOffer12.setAgeCriteria(AgeCriteria.PENSIONER);
 
-        InvestmentOffer investmentOffer13 = new InvestmentOffer("Corporate Investment Fund", "Investment for tech corporations", "longDesc",
+        InvestmentOffer investmentOffer13 = new InvestmentOffer("Corporate Investment Fund", "Investment for tech corporations",
+                "The Corporate Investment Fund is an exclusive opportunity for high-income individuals and large tech corporations looking to invest in the booming technology sector. This fund targets innovative startups and established companies poised for growth, particularly in areas such as artificial intelligence, blockchain, and renewable energy technologies. With a competitive return rate of 10.0%, investors can expect a robust yield over a commitment period of three years. The minimum investment of 50,000 allows for significant capital deployment, while the management fee of 2.5% ensures professional oversight and strategic direction for the fund's portfolio. This investment offers not only financial returns but also the chance to be part of transformative technologies that shape the future, appealing to those passionate about innovation and technological advancement. With a focus on large corporations, the fund is designed to leverage industry insights and connections to maximize investor benefits while fostering growth in the tech landscape.",
                 EligibilityCriteria.HIGH_INCOME, 10.0, InvestmentType.EQUITY, 50000, 2.5, 3, "Startup Fund");
         investmentOffer13.setCompanySizeCriteria(CompanySizeCriteria.BIG);
+
 
         offerRepository.save(investmentOffer1);
         offerRepository.save(investmentOffer2);

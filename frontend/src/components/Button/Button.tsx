@@ -13,6 +13,7 @@ interface ButtonProps {
 	endIcon?: React.ReactNode;
 	hoverAnimation?: boolean;
 	children: React.ReactNode;
+	onClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -25,6 +26,7 @@ export const Button: React.FC<ButtonProps> = ({
 	endIcon,
 	hoverAnimation,
 	children,
+	onClick,
 }) => {
 
 	return (
@@ -35,6 +37,7 @@ export const Button: React.FC<ButtonProps> = ({
 			startIcon={startIcon}
 			endIcon={endIcon}
 			disableElevation={true}
+			onClick={onClick}
 		>
 			{children}
 		</MUIButton>

@@ -1,4 +1,4 @@
-import { useCallback, useId, useState } from "react";
+import { useCallback, useState } from "react";
 import { Header } from "./components/Header/Header";
 import { RecommendedProducts } from "./widgets/RecommendedProducts/RecommendedProducts";
 import { Chatbot } from "./widgets/Chatbot/Chatbot";
@@ -12,6 +12,7 @@ import HistoryWidget from "./widgets/HistoryWidget/HistoryWidget";
 import AccountWidget from "./widgets/AccountWidg";
 import { useFetchAccounts } from "../src/hooks/useFetchAccounts";
 import { TransitionGroup } from "react-transition-group";
+import { Footer } from "./components/Footer/Footer";
 
 import "./App.css";
 
@@ -22,35 +23,36 @@ function App() {
   const { data, isLoading, isFetched } = useFetchProducts(true, userId);
   const { data: userAccounts } = useFetchAccounts();
 
-  const toggleChatbot = () => {
-    setIsChatbotVisible((prev) => !prev);
-  };
+	const toggleChatbot = () => {
+		setIsChatbotVisible((prev) => !prev);
+	};
 
-  if (isLoading || !isFetched) {
-    return <Loading />;
-  }
+	if (isLoading || !isFetched) {
+		return <Loading />;
+	}
 
-  return (
-    <div className="container">
-      <Header onChangeAccount={handleChangeAccount} data={userAccounts} />
-      <div className="page">
-        <StockWidget userId={userId} />
-        <HistoryWidget userId={userId} />
-        <AccountWidget userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined} />
-        <Box position="relative" width="30rem">
-          <RecommendedProducts data={data} />
-          <FloatingActionButton onClick={toggleChatbot}>
-            <TextsmsIcon />
-          </FloatingActionButton>
-        </Box>
-        {/* <Grow in={isChatbotVisible} timeout={300}>
-          <Box> */}
-        {/* {isChatbotVisible && (
-          <Grow in={isChatbotVisible}>
-            <Chatbot data={data} isChatbotVisible={isChatbotVisible} />
-          </Grow>
-        )} */}
-        <TransitionGroup>
+	return (
+		<div className="container">
+			<Header onChangeAccount={handleChangeAccount} data={userAccounts} />
+			<div className="page">
+				<div className="one">
+					<AccountWidget
+						userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined}
+					/>
+				</div>
+				<div className="two">
+				<HistoryWidget userId={userId} />
+
+					<StockWidget userId={userId} />
+				</div>
+				<div className="three">
+					<Box position="relative" width="30rem">
+						<RecommendedProducts data={data} />
+						<FloatingActionButton onClick={toggleChatbot}>
+							<TextsmsIcon />
+						</FloatingActionButton>
+					</Box>
+          <TransitionGroup>
           {isChatbotVisible && (
             <Grow in={isChatbotVisible} timeout={1000}>
               <div
@@ -66,12 +68,11 @@ function App() {
             </Grow>
           )}
         </TransitionGroup>
-
-        {/* </Box>
-        </Grow>  */}
-      </div>
-    </div>
-  );
+				</div>
+			</div>
+      <Footer />
+		</div>
+	);
 }
 
 export default App;
