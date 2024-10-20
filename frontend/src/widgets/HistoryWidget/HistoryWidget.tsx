@@ -396,7 +396,7 @@ const HistoryWidget: React.FC<HistoryWidgetProps> = ({ userId }: HistoryWidgetPr
 					</Button>
 				))}
 			</Box>
-			<HistoryList data={filteredData.slice(0, 4)} />
+			<HistoryList data={filteredData.slice(0, 3)} />
 		</WidgetContainer>
 	);
 };

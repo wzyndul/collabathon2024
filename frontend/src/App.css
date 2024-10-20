@@ -8,46 +8,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* flex-wrap: wrap; */
-  /* gap: 30px; */
   height: auto;
   width: 100%;
-  /* padding: 50px; */
+  gap: 20px;
 }
 
 .one {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 30px;
+  justify-content: flex-start;
   height: auto;
-  width: 88rem;
-  padding-left: 50px;
+  width: 85%;
   margin-bottom: -60px;
 }
 
 .two {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 30px;
   height: 100vh;
-  width: 100%;
+  width: 85%;
   margin-bottom: -60px;
 }
 
 .three {
   display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  /* justify-content: center; */
-  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 30px;
+  margin-bottom: 30px;
   height: auto;
-  width: 100%;
+  width: 85%;
   margin-bottom: 80px;
-  padding-left: 88px;
 }
 
 ::-webkit-scrollbar {
