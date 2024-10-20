@@ -4,27 +4,36 @@ import Paper from "@mui/material/Paper";
 import { widgetPaperStyle } from "./WidgetContainer.styles";
 
 interface WidgetContainerProps {
-	children: React.ReactNode;
-	elevation?: number;
-	width: string;
-	height: string;
-	bgColor?: string;
-	txtColor?: string;
+  children: React.ReactNode;
+  elevation?: number;
+  width: string;
+  height: string;
+  bgColor?: string;
+  txtColor?: string;
 }
 
 export const WidgetContainer: React.FC<WidgetContainerProps> = ({
-	children,
-	elevation = 3,
-	width,
-	height,
-	bgColor = "#fbfbfe",
-	txtColor= "inherit"
+  children,
+  elevation = 3,
+  width,
+  height,
+  bgColor = "#fbfbfe",
+  txtColor = "inherit",
 }) => {
-	const style = widgetPaperStyle(bgColor);
+  const style = widgetPaperStyle(bgColor);
 
-	return (
-		<Paper variant="elevation" elevation={elevation} css={style} sx={{ width: width, height: height, color: txtColor }}>
-			{children}
-		</Paper>
-	);
+  return (
+    <Paper
+      variant="elevation"
+      elevation={elevation}
+      css={style}
+      sx={{
+        width: width,
+        height: height,
+        color: txtColor,
+      }}
+    >
+      {children}
+    </Paper>
+  );
 };
