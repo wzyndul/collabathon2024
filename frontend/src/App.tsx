@@ -34,20 +34,29 @@ function App() {
 		<div className="container">
 			<Header onChangeAccount={handleChangeAccount} data={userAccounts} />
 			<div className="page">
-				<AccountWidget userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined} />
+				<div className="one">
+					<AccountWidget
+						userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined}
+					/>
+				</div>
+				<div className="two">
 				<HistoryWidget userId={userId} />
-				<StockWidget userId={userId} />
-				<Box position="relative" width="30rem">
-					<RecommendedProducts data={data} />
-					<FloatingActionButton onClick={toggleChatbot}>
-						<TextsmsIcon />
-					</FloatingActionButton>
-				</Box>
-				<Grow in={isChatbotVisible} timeout={300}>
-					<Box>
-						<Chatbot data={data} />
+
+					<StockWidget userId={userId} />
+				</div>
+				<div className="three">
+					<Box position="relative" width="30rem">
+						<RecommendedProducts data={data} />
+						<FloatingActionButton onClick={toggleChatbot}>
+							<TextsmsIcon />
+						</FloatingActionButton>
 					</Box>
-				</Grow>
+					<Grow in={isChatbotVisible} timeout={300}>
+						<Box>
+							<Chatbot key={userId} data={data}/>
+						</Box>
+					</Grow>
+				</div>
 			</div>
       <Footer />
 		</div>
