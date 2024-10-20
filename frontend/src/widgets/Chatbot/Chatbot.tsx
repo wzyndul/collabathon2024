@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { Box, Paper, Typography, IconButton, InputBase, Divider, Grow } from "@mui/material";
+import { Box, Paper, Typography, IconButton, InputBase, Divider } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { WidgetContainer } from "../../components/WidgetContainer/WidgetContainer";
 import {
@@ -30,6 +30,17 @@ export const Chatbot = ({ data, isChatbotVisible }: IProps) => {
   const [isChatActive, setIsChatActive] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [messages, setMessages] = useState<IMessage[]>([{ text: "Hello! How can I assist you today?", isUser: false }]);
+  
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   useEffect(() => {
     if (!isChatActive) {
@@ -46,8 +57,6 @@ export const Chatbot = ({ data, isChatbotVisible }: IProps) => {
     }
   }, [data, isChatActive]);
 
-  const [messages, setMessages] = useState<IMessage[]>([{ text: "Hello! How can I assist you today?", isUser: false }]);
-
   const handleSendMessage = useCallback(async () => {
     if (inputValue.trim() !== "") {
       try {
@@ -62,7 +71,6 @@ export const Chatbot = ({ data, isChatbotVisible }: IProps) => {
           ...prevMessages.slice(0, prevMessages.length - 1),
           { text: response.data.response, isUser: false },
         ]);
-        // setMessages(prevMessages => [...prevMessages, { text: response.data.response, isUser: false }]);
 
         setInputValue("");
       } catch (error) {
@@ -84,12 +92,11 @@ export const Chatbot = ({ data, isChatbotVisible }: IProps) => {
         {messages.map((message, index) => (
           <Box key={index} css={dialogLineContainerStyle(message.isUser)}>
             <Paper elevation={0} css={dialogBubbleStyle(message.isUser)}>
-              {message.type === "loading" ? <img src="loading-gif-url.gif" alt="Loading..." /> : message.text}
+              {message.type === "loading" ? <Dots /> : message.text}
             </Paper>
           </Box>
         ))}
-
-        {isLoading ? <Dots /> : null}
+        <div ref={messagesEndRef} />
       </Box>
       <Box css={userInputStyle}>
         <InputBase
