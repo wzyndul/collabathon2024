@@ -1,9 +1,7 @@
 import { Button } from "@mui/material";
-import { ButtonTooltip } from "../Tooltip/Tooltip";
-// import { useFetchAccounts } from "../../hooks/useFetchAccounts";
 import { IAccount } from "../../hooks/useFetchAccounts";
-import "./Header.css";
 import { useCallback } from "react";
+import "./Header.css";
 
 type IProps = {
 	onChangeAccount: (accountId: number) => void;
@@ -43,7 +41,6 @@ export function Header({ onChangeAccount, data }: IProps): React.ReactNode {
 						{personalData.type === "corporateClient"
 							? `${personalData.companyName}`
 							: `${personalData.salutation} ${personalData.firstName}`}
-						{/* <ButtonTooltip age={personalData.age} gender={personalData.salutation} accountStatus={user.balanceAmount} /> */}
 					</Button>
 				);
 			})}
