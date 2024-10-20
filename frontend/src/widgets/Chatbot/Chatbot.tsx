@@ -81,7 +81,7 @@ export const Chatbot = ({data}: IProps) => {
 					</Box>
 				))}
 
-				{isLoading?  <Dots/> : null}
+				{isLoading ?  <Dots/> : null}
 			</Box>
 			<Box css={userInputStyle}>
 				<InputBase
