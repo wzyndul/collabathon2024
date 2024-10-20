@@ -44,7 +44,7 @@ const data: HistoryDataElement[][] = [
 		currency: "USD",
 	},
 	{
-		id: 1,
+		id: 5,
 		transactionType: "CURRENCY_EXCHANGE",
 		transactionDate: "2021-07-14 12:00",
 		amount: 100,
@@ -54,7 +54,7 @@ const data: HistoryDataElement[][] = [
 		exchangedAmount: 90,
 	  },
 	  {
-		id: 2,
+		id: 6,
 		transactionType: "INVESTMENT",
 		transactionDate: "2021-07-14 12:00",
 		currency: "USD",
@@ -62,16 +62,16 @@ const data: HistoryDataElement[][] = [
 		stockName: "AAPL",
 	  },
 	  {
-		id: 3,
+		id: 7,
 		transactionType: "LOAN",
 		transactionDate: "2021-07-14 12:00",
-		description: "Mortgage",
-		loanAmount: 1000,
+		description: "Car",
+		loanAmount: 10000,
 		amount: 1000,
-		currency: "USD",
+		currency: "PLN",
 	  },
 	  {
-		id: 4,
+		id: 15,
 		transactionType: "MONEY_TRANSFER",
 		transactionDate: "2021-07-14 12:00",
 		description: "John Doe",
@@ -79,7 +79,7 @@ const data: HistoryDataElement[][] = [
 		currency: "USD",
 	  },
 	  {
-		id: 5,
+		id: 22,
 		transactionType: "CURRENCY_EXCHANGE",
 		transactionDate: "2021-08-01 09:30",
 		amount: 200,
@@ -89,7 +89,7 @@ const data: HistoryDataElement[][] = [
 		exchangedAmount: 150,
 	  },
 	  {
-		id: 6,
+		id: 56,
 		transactionType: "INVESTMENT",
 		transactionDate: "2021-08-01 09:30",
 		currency: "USD",
@@ -97,7 +97,7 @@ const data: HistoryDataElement[][] = [
 		stockName: "GOOGL",
 	  },
 	  {
-		id: 7,
+		id: 90,
 		transactionType: "LOAN",
 		transactionDate: "2021-08-01 09:30",
 		description: "Car Loan",
@@ -106,7 +106,7 @@ const data: HistoryDataElement[][] = [
 		currency: "USD",
 	  },
 	  {
-		id: 8,
+		id: 543,
 		transactionType: "MONEY_TRANSFER",
 		transactionDate: "2021-08-01 09:30",
 		description: "Alice Smith",
@@ -375,7 +375,7 @@ const HistoryWidget: React.FC<HistoryWidgetProps> = ({ userId }: HistoryWidgetPr
 					</Button>
 				))}
 			</Box>
-			<HistoryList data={filteredData.slice(0, 5)} />
+			<HistoryList data={filteredData.slice(0, 3)} />
 		</WidgetContainer>
 	);
 };
