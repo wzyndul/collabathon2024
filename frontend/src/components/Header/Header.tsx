@@ -17,12 +17,12 @@ export function Header({ onChangeAccount, data }: IProps): React.ReactNode {
 
 	return (
 		<div className="header">
-			{data.slice(0, 3).map((user) => {
+			{data.slice(0, 3).map((user, i) => {
 				const personalData = user.client;
 				return (
 					<Button
 						onClick={() => handleClick(user.id)}
-						key={user.id}
+						key={`${user.id}-${i}`}
 						size={"large"}
 						bgColor={"#002E3C"}
 						txtColor={"white"}

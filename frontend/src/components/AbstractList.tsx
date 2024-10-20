@@ -42,7 +42,6 @@ const AbstractList: React.FC<AbstractListProps> = ({
 	generateElement,
 	onClick,
 	selectedSymbol,
-	onShowMore,
 	hasMore = true,
 	isHistory = false
 }) => {
@@ -60,7 +59,7 @@ const AbstractList: React.FC<AbstractListProps> = ({
 
 					return (
 						<ListItem
-							key={item.id}
+							key={`${item.id}-${index}`}
 							onClick={onClick ? () => onClick(index) : undefined}
 							sx={{
 								display: "flex",
