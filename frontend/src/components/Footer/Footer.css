@@ -1,9 +1,9 @@
 .footer-container {
     display: flex;
-    background-color: black;
+    background-color: #002E3C;
     color: white;
     align-items: center;
     justify-content: end;
-    height: 50px;
+    height: 70px;
     padding: 10px;
 }

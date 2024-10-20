@@ -11,16 +11,17 @@ import TextsmsIcon from "@mui/icons-material/Textsms";
 import HistoryWidget from "./widgets/HistoryWidget/HistoryWidget";
 import AccountWidget from "./widgets/AccountWidg";
 import { useFetchAccounts } from "../src/hooks/useFetchAccounts";
+import { TransitionGroup } from "react-transition-group";
 import { Footer } from "./components/Footer/Footer";
 
 import "./App.css";
 
 function App() {
-	const [userId, setUserId] = useState(1);
-	const [isChatbotVisible, setIsChatbotVisible] = useState(false);
-	const handleChangeAccount = useCallback((accountId: number) => setUserId(accountId), []);
-	const { data, isLoading, isFetched } = useFetchProducts(true, userId);
-	const { data: userAccounts } = useFetchAccounts();
+  const [userId, setUserId] = useState(1);
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
+  const handleChangeAccount = useCallback((accountId: number) => setUserId(accountId), []);
+  const { data, isLoading, isFetched } = useFetchProducts(true, userId);
+  const { data: userAccounts } = useFetchAccounts();
 
 	const toggleChatbot = () => {
 		setIsChatbotVisible((prev) => !prev);
@@ -34,20 +35,40 @@ function App() {
 		<div className="container">
 			<Header onChangeAccount={handleChangeAccount} data={userAccounts} />
 			<div className="page">
-				<AccountWidget userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined} />
+				<div className="one">
+					<AccountWidget
+						userAccount={userAccounts ? userAccounts.find((element) => element.id === userId) : undefined}
+					/>
+				</div>
+				<div className="two">
 				<HistoryWidget userId={userId} />
-				<StockWidget userId={userId} />
-				<Box position="relative" width="30rem">
-					<RecommendedProducts data={data} />
-					<FloatingActionButton onClick={toggleChatbot}>
-						<TextsmsIcon />
-					</FloatingActionButton>
-				</Box>
-				<Grow in={isChatbotVisible} timeout={300}>
-					<Box>
-						<Chatbot data={data} />
+
+					<StockWidget userId={userId} />
+				</div>
+				<div className="three">
+					<Box position="relative" width="30rem">
+						<RecommendedProducts data={data} />
+						<FloatingActionButton onClick={toggleChatbot}>
+							<TextsmsIcon />
+						</FloatingActionButton>
 					</Box>
-				</Grow>
+          <TransitionGroup>
+          {isChatbotVisible && (
+            <Grow in={isChatbotVisible} timeout={300}>
+              <div
+                style={{
+                  position: "fixed",
+                  bottom: "20px",
+                  right: "20px",
+                  zIndex: 100,
+                }}
+              >
+                <Chatbot data={data} isChatbotVisible={isChatbotVisible} />
+              </div>
+            </Grow>
+          )}
+        </TransitionGroup>
+				</div>
 			</div>
       <Footer />
 		</div>
