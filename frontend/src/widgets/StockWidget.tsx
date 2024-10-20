@@ -294,7 +294,7 @@ const StockWidget: React.FC<StockWidgetProps> = ({ userId }: StockWidgetProps) =
   }
 
   return (
-    <WidgetContainer width={"50rem"} height={"528.25px"} bgColor={"#002E3C"} txtColor={"white"}>
+    <WidgetContainer width={"55rem"} height={"528.25px"} bgColor={"#002E3C"} txtColor={"white"}>
       <Typography variant="h5" sx={{ fontWeight: "bold", padding: "1rem 0 0 1rem" }}>
         Price {data[selectedSymbol].name}
       </Typography>
