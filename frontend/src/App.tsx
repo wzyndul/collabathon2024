@@ -54,7 +54,7 @@ function App() {
 					</Box>
           <TransitionGroup>
           {isChatbotVisible && (
-            <Grow in={isChatbotVisible} timeout={1000}>
+            <Grow in={isChatbotVisible} timeout={300}>
               <div
                 style={{
                   position: "fixed",
