@@ -1,4 +1,4 @@
-import { useCallback, useId, useState } from "react";
+import { useCallback, useState } from "react";
 import { Header } from "./components/Header/Header";
 import { RecommendedProducts } from "./widgets/RecommendedProducts/RecommendedProducts";
 import { Chatbot } from "./widgets/Chatbot/Chatbot";
@@ -11,6 +11,7 @@ import TextsmsIcon from "@mui/icons-material/Textsms";
 import HistoryWidget from "./widgets/HistoryWidget/HistoryWidget";
 import AccountWidget from "./widgets/AccountWidg";
 import { useFetchAccounts } from "../src/hooks/useFetchAccounts";
+import { Footer } from "./components/Footer/Footer";
 
 import "./App.css";
 
@@ -48,6 +49,7 @@ function App() {
 					</Box>
 				</Grow>
 			</div>
+      <Footer />
 		</div>
 	);
 }
